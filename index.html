@@ -53,6 +53,39 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
   .hero{display:grid !important;grid-template-columns:1.4fr 1fr !important;gap:12px !important;break-inside:auto;page-break-before:avoid;margin-top:8px}
   .hero img{max-height:3.4in;object-fit:cover;width:100%}
 }
+
+/* Full-screen before/after gallery */
+.ba{position:relative}
+.ba-expand{position:absolute;top:10px;right:10px;z-index:4;border:0;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 10px;cursor:pointer;line-height:1}
+.ba-expand:hover,.ba-expand:focus{background:rgba(0,0,0,.8)}
+.ba-frame{cursor:ew-resize}
+.lb{position:fixed;inset:0;z-index:8000;background:rgba(8,10,14,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 56px 72px;touch-action:none}
+.lb[hidden]{display:none!important}
+.lb-stage{position:relative;width:min(1400px,100%);max-height:100%;display:flex;align-items:center;justify-content:center}
+.lb-stage .ba-frame{width:100%;max-height:calc(100vh - 140px);border-radius:8px;background:#111}
+.lb-stage .ba-frame img{width:100%;height:auto;max-height:calc(100vh - 140px);object-fit:contain}
+.lb-stage .ba-after{max-height:calc(100vh - 140px);object-fit:contain}
+.lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;color:#fff;font-size:15px;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.lb-count{opacity:.85;white-space:nowrap}
+.lb-cap{min-width:0}
+.lb-x,.lb-prev,.lb-next{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:999px;z-index:2}
+.lb-x{top:12px;right:12px;width:44px;height:44px;font-size:28px;line-height:44px}
+.lb-prev,.lb-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:32px;line-height:48px}
+.lb-prev{left:10px}
+.lb-next{right:10px}
+.lb-x:hover,.lb-prev:hover,.lb-next:hover,.lb-x:focus,.lb-prev:focus,.lb-next:focus{background:rgba(255,255,255,.28)}
+body.lb-on{overflow:hidden}
+@media(max-width:700px){
+  .lb{padding:48px 8px 64px}
+  .lb-prev,.lb-next{width:40px;height:40px;font-size:26px}
+}
+
+@media print{
+  .lb,.ba-expand,.ba-before,.listing-only,.ba-range,.ba-handle,.ba-hint{display:none!important}
+  .ba-after-wrap{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;inset:auto!important}
+  .ba-after{width:100%!important;height:auto!important;max-height:none!important}
+  .ba-frame{border:0!important;overflow:visible!important;background:transparent!important}
+}
 </style></head><body>
 <header><div class="sub">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</div>
 <h1>687 Starflower Ln <span>· piano lounge, 40×50 garage gym &amp; backyard sauna</span></h1>
@@ -71,603 +104,669 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
 <div class="card"><h3>Main floor = piano lounge</h3>Steinway B as the focal point of the 21′4″ × 18′9″ great room, lid opening toward the fireplace; two black leather cigar chairs and the tufted bench at the hearth; the carved mirror panel over the mantel.</div>
 <div class="card"><h3>Lower level = movie + recovery</h3>Big sectional in the family-room corner facing the 75″ TV, massage chair in the same room, glass desk + Aeron in the secret office, kids’ room furnished.</div>
 <div class="card"><h3>Garage = CrossFit box + two lifts</h3>L-shaped gym of about 660 sf, a 6.5×5.5 office, cold plunge, Airstream in the 12×12, a 4-post lift in each side bay, and the Wall Connector at the garage-door end of the house wall. The 3 ft stair walkway stays clear.</div>
-<div class="card"><h3>Grass just off the deck = 8×12 wood-fired sauna</h3>A standalone 8×12, 4-person wood-fired skid sauna sits on the grass immediately east of the covered deck, a few steps from the included hot tub, with a chimney on the far end.</div></div></section>
+<div class="card"><h3>Butted to the deck = 9×16 wood-fired sauna</h3>The exact 9×16 wood-fired skid sauna is butted to the east fascia of the covered deck, with the door facing the deck so you step straight in, and the stove and chimney at the far end.</div></div></section>
 
 <section id="photos"><h2>Before and after: every listing photo</h2>
-<p>Each photo defaults to the <b>after</b> view — the rooms restyled with our furniture and the garage, sauna and yard concepts. Drag (or use the slider) to the left to reveal the original listing photo. Architecture, windows, floors and lighting are meant to stay as they are; the sellers’ furniture is replaced. A few utility and exterior shots barely change, because there was little furniture to swap.</p>
-<p class="warn">AI-assisted edits of the actual listing photos, made to show the feel. Placement follows the to-scale plans, but sizes in an edited photo are approximate; the plans and 3D model are the source of truth.</p>
-<h3 class="gal-sec">Exterior and the lot</h3><div class="gal"><figure class="ba" data-ba>
+<p>Each photo defaults to the <b>after</b> view — the rooms restyled with our furniture and the garage, sauna and yard concepts. Drag (or use the slider) to the left to reveal the original listing photo. <b>Click or tap any photo</b> to open it full-screen, with its own before/after slider still starting on the after view. Page through all 66 with the arrows, the keyboard, or a swipe; a counter and caption stay on screen. Architecture, windows, floors and lighting are meant to stay as they are; the sellers’ furniture is replaced. A few utility and exterior shots barely change, because there was little furniture to swap.</p>
+<p class="warn">AI-assisted edits of the actual listing photos, made to show the feel. Placement follows the to-scale plans, but sizes in an edited photo are approximate; the plans and the dimensioned drawings are the source of truth.</p>
+<h3 class="gal-sec">Exterior and the lot</h3><div class="gal"><figure class="ba" data-ba data-i="0" data-cap="Woodland Trails drive">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p00.jpg" alt="Listing: Woodland Trails drive">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p00-after.jpg" alt="Concept: Woodland Trails drive"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Woodland Trails drive">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Woodland Trails drive full screen">Full screen</button>
 </div>
 <figcaption>Woodland Trails drive</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="1" data-cap="Front and the 40x50 garage">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p01.jpg" alt="Listing: Front and the 40x50 garage">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p01-after.jpg" alt="Concept: Front and the 40x50 garage"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Front and the 40x50 garage">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Front and the 40x50 garage full screen">Full screen</button>
 </div>
 <figcaption>Front and the 40x50 garage</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="3" data-cap="Aerial, the wooded lot">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p03.jpg" alt="Listing: Aerial, the wooded lot">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p03-after.jpg" alt="Concept: Aerial, the wooded lot"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Aerial, the wooded lot">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Aerial, the wooded lot full screen">Full screen</button>
 </div>
 <figcaption>Aerial, the wooded lot</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="4" data-cap="Front porch">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p04.jpg" alt="Listing: Front porch">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p04-after.jpg" alt="Concept: Front porch"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Front porch">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Front porch full screen">Full screen</button>
 </div>
 <figcaption>Front porch</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="58" data-cap="Shed">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p58.jpg" alt="Listing: Shed">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p58-after.jpg" alt="Concept: Shed"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Shed">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Shed full screen">Full screen</button>
 </div>
 <figcaption>Shed</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="63" data-cap="Aerial">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p63.jpg" alt="Listing: Aerial">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p63-after.jpg" alt="Concept: Aerial"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Aerial">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Aerial full screen">Full screen</button>
 </div>
 <figcaption>Aerial</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="64" data-cap="Aerial, garage">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p64.jpg" alt="Listing: Aerial, garage">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p64-after.jpg" alt="Concept: Aerial, garage"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Aerial, garage">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Aerial, garage full screen">Full screen</button>
 </div>
 <figcaption>Aerial, garage</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="65" data-cap="Aerial, backyard">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p65.jpg" alt="Listing: Aerial, backyard">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p65-after.jpg" alt="Concept: Aerial, backyard"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Aerial, backyard">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Aerial, backyard full screen">Full screen</button>
 </div>
 <figcaption>Aerial, backyard</figcaption>
-</figure></div><h3 class="gal-sec">Deck and backyard</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Deck and backyard</h3><div class="gal"><figure class="ba" data-ba data-i="2" data-cap="Covered back deck">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p02.jpg" alt="Listing: Covered back deck">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p02-after.jpg" alt="Concept: Covered back deck"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Covered back deck">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Covered back deck full screen">Full screen</button>
 </div>
 <figcaption>Covered back deck</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="59" data-cap="Backyard">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p59.jpg" alt="Listing: Backyard">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p59-after.jpg" alt="Concept: Backyard"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Backyard">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Backyard full screen">Full screen</button>
 </div>
 <figcaption>Backyard</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="60" data-cap="Hot tub (included)">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p60.jpg" alt="Listing: Hot tub (included)">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p60-after.jpg" alt="Concept: Hot tub (included)"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Hot tub (included)">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Hot tub (included) full screen">Full screen</button>
 </div>
 <figcaption>Hot tub (included)</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="61" data-cap="Covered deck">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p61.jpg" alt="Listing: Covered deck">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p61-after.jpg" alt="Concept: Covered deck"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Covered deck">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Covered deck full screen">Full screen</button>
 </div>
 <figcaption>Covered deck</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="62" data-cap="Covered deck from the yard">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p62.jpg" alt="Listing: Covered deck from the yard">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p62-after.jpg" alt="Concept: Covered deck from the yard"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Covered deck from the yard">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Covered deck from the yard full screen">Full screen</button>
 </div>
 <figcaption>Covered deck from the yard</figcaption>
-</figure></div><h3 class="gal-sec">Main living</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Main living</h3><div class="gal"><figure class="ba" data-ba data-i="5" data-cap="Entry">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p05.jpg" alt="Listing: Entry">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p05-after.jpg" alt="Concept: Entry"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Entry">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Entry full screen">Full screen</button>
 </div>
 <figcaption>Entry</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="6" data-cap="Fireplace wall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p06.jpg" alt="Listing: Fireplace wall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p06-after.jpg" alt="Concept: Fireplace wall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Fireplace wall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Fireplace wall full screen">Full screen</button>
 </div>
 <figcaption>Fireplace wall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="7" data-cap="Foyer sitting area">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p07.jpg" alt="Listing: Foyer sitting area">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p07-after.jpg" alt="Concept: Foyer sitting area"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Foyer sitting area">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Foyer sitting area full screen">Full screen</button>
 </div>
 <figcaption>Foyer sitting area</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="21" data-cap="Dining toward the great room">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p21.jpg" alt="Listing: Dining toward the great room">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p21-after.jpg" alt="Concept: Dining toward the great room"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Dining toward the great room">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Dining toward the great room full screen">Full screen</button>
 </div>
 <figcaption>Dining toward the great room</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="22" data-cap="Dining to the great room">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p22.jpg" alt="Listing: Dining to the great room">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p22-after.jpg" alt="Concept: Dining to the great room"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Dining to the great room">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Dining to the great room full screen">Full screen</button>
 </div>
 <figcaption>Dining to the great room</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="23" data-cap="Great room">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p23.jpg" alt="Listing: Great room">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p23-after.jpg" alt="Concept: Great room"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Great room">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Great room full screen">Full screen</button>
 </div>
 <figcaption>Great room</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="24" data-cap="Great room to the front windows">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p24.jpg" alt="Listing: Great room to the front windows">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p24-after.jpg" alt="Concept: Great room to the front windows"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Great room to the front windows">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Great room to the front windows full screen">Full screen</button>
 </div>
 <figcaption>Great room to the front windows</figcaption>
-</figure></div><h3 class="gal-sec">Kitchen and dining</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Kitchen and dining</h3><div class="gal"><figure class="ba" data-ba data-i="8" data-cap="Built-ins toward the kitchen">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p08.jpg" alt="Listing: Built-ins toward the kitchen">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p08-after.jpg" alt="Concept: Built-ins toward the kitchen"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Built-ins toward the kitchen">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Built-ins toward the kitchen full screen">Full screen</button>
 </div>
 <figcaption>Built-ins toward the kitchen</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="9" data-cap="Kitchen">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p09.jpg" alt="Listing: Kitchen">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p09-after.jpg" alt="Concept: Kitchen"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen full screen">Full screen</button>
 </div>
 <figcaption>Kitchen</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="10" data-cap="Kitchen, wide view">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p10.jpg" alt="Listing: Kitchen, wide view">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p10-after.jpg" alt="Concept: Kitchen, wide view"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen, wide view">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen, wide view full screen">Full screen</button>
 </div>
 <figcaption>Kitchen, wide view</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="11" data-cap="Kitchen toward the dining windows">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p11.jpg" alt="Listing: Kitchen toward the dining windows">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p11-after.jpg" alt="Concept: Kitchen toward the dining windows"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen toward the dining windows">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen toward the dining windows full screen">Full screen</button>
 </div>
 <figcaption>Kitchen toward the dining windows</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="12" data-cap="Kitchen island and range wall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p12.jpg" alt="Listing: Kitchen island and range wall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p12-after.jpg" alt="Concept: Kitchen island and range wall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen island and range wall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen island and range wall full screen">Full screen</button>
 </div>
 <figcaption>Kitchen island and range wall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="13" data-cap="Kitchen range and cabinets">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p13.jpg" alt="Listing: Kitchen range and cabinets">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p13-after.jpg" alt="Concept: Kitchen range and cabinets"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen range and cabinets">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen range and cabinets full screen">Full screen</button>
 </div>
 <figcaption>Kitchen range and cabinets</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="14" data-cap="Kitchen and island">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p14.jpg" alt="Listing: Kitchen and island">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p14-after.jpg" alt="Concept: Kitchen and island"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen and island">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen and island full screen">Full screen</button>
 </div>
 <figcaption>Kitchen and island</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="15" data-cap="Kitchen sink and window">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p15.jpg" alt="Listing: Kitchen sink and window">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p15-after.jpg" alt="Concept: Kitchen sink and window"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen sink and window">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen sink and window full screen">Full screen</button>
 </div>
 <figcaption>Kitchen sink and window</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="16" data-cap="Kitchen toward the pantry">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p16.jpg" alt="Listing: Kitchen toward the pantry">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p16-after.jpg" alt="Concept: Kitchen toward the pantry"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen toward the pantry">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen toward the pantry full screen">Full screen</button>
 </div>
 <figcaption>Kitchen toward the pantry</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="17" data-cap="Kitchen stove wall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p17.jpg" alt="Listing: Kitchen stove wall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p17-after.jpg" alt="Concept: Kitchen stove wall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen stove wall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen stove wall full screen">Full screen</button>
 </div>
 <figcaption>Kitchen stove wall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="18" data-cap="Kitchen detail">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p18.jpg" alt="Listing: Kitchen detail">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p18-after.jpg" alt="Concept: Kitchen detail"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Kitchen detail">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Kitchen detail full screen">Full screen</button>
 </div>
 <figcaption>Kitchen detail</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="19" data-cap="Dining room">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p19.jpg" alt="Listing: Dining room">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p19-after.jpg" alt="Concept: Dining room"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Dining room">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Dining room full screen">Full screen</button>
 </div>
 <figcaption>Dining room</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="20" data-cap="Dining, French doors">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p20.jpg" alt="Listing: Dining, French doors">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p20-after.jpg" alt="Concept: Dining, French doors"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Dining, French doors">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Dining, French doors full screen">Full screen</button>
 </div>
 <figcaption>Dining, French doors</figcaption>
-</figure></div><h3 class="gal-sec">Mudroom, powder, laundry</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Mudroom, powder, laundry</h3><div class="gal"><figure class="ba" data-ba data-i="25" data-cap="Powder room">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p25.jpg" alt="Listing: Powder room">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p25-after.jpg" alt="Concept: Powder room"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Powder room">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Powder room full screen">Full screen</button>
 </div>
 <figcaption>Powder room</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="26" data-cap="Mudroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p26.jpg" alt="Listing: Mudroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p26-after.jpg" alt="Concept: Mudroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Mudroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Mudroom full screen">Full screen</button>
 </div>
 <figcaption>Mudroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="28" data-cap="Laundry">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p28.jpg" alt="Listing: Laundry">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p28-after.jpg" alt="Concept: Laundry"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Laundry">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Laundry full screen">Full screen</button>
 </div>
 <figcaption>Laundry</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="29" data-cap="Wet bar / prep area">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p29.jpg" alt="Listing: Wet bar / prep area">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p29-after.jpg" alt="Concept: Wet bar / prep area"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Wet bar / prep area">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Wet bar / prep area full screen">Full screen</button>
 </div>
 <figcaption>Wet bar / prep area</figcaption>
-</figure></div><h3 class="gal-sec">Primary suite</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Primary suite</h3><div class="gal"><figure class="ba" data-ba data-i="27" data-cap="Primary bedroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p27.jpg" alt="Listing: Primary bedroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p27-after.jpg" alt="Concept: Primary bedroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bedroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bedroom full screen">Full screen</button>
 </div>
 <figcaption>Primary bedroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="30" data-cap="Hall to the primary bath">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p30.jpg" alt="Listing: Hall to the primary bath">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p30-after.jpg" alt="Concept: Hall to the primary bath"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Hall to the primary bath">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Hall to the primary bath full screen">Full screen</button>
 </div>
 <figcaption>Hall to the primary bath</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="31" data-cap="Primary bath, double vanity">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p31.jpg" alt="Listing: Primary bath, double vanity">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p31-after.jpg" alt="Concept: Primary bath, double vanity"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bath, double vanity">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bath, double vanity full screen">Full screen</button>
 </div>
 <figcaption>Primary bath, double vanity</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="32" data-cap="Primary bath, second vanity">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p32.jpg" alt="Listing: Primary bath, second vanity">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p32-after.jpg" alt="Concept: Primary bath, second vanity"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bath, second vanity">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bath, second vanity full screen">Full screen</button>
 </div>
 <figcaption>Primary bath, second vanity</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="33" data-cap="Primary bath">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p33.jpg" alt="Listing: Primary bath">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p33-after.jpg" alt="Concept: Primary bath"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bath">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bath full screen">Full screen</button>
 </div>
 <figcaption>Primary bath</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="34" data-cap="Primary bath, tub">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p34.jpg" alt="Listing: Primary bath, tub">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p34-after.jpg" alt="Concept: Primary bath, tub"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bath, tub">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bath, tub full screen">Full screen</button>
 </div>
 <figcaption>Primary bath, tub</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="35" data-cap="Primary bedroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p35.jpg" alt="Listing: Primary bedroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p35-after.jpg" alt="Concept: Primary bedroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bedroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bedroom full screen">Full screen</button>
 </div>
 <figcaption>Primary bedroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="36" data-cap="Primary bedroom, TV wall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p36.jpg" alt="Listing: Primary bedroom, TV wall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p36-after.jpg" alt="Concept: Primary bedroom, TV wall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bedroom, TV wall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bedroom, TV wall full screen">Full screen</button>
 </div>
 <figcaption>Primary bedroom, TV wall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="37" data-cap="Primary bedroom, sitting end">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p37.jpg" alt="Listing: Primary bedroom, sitting end">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p37-after.jpg" alt="Concept: Primary bedroom, sitting end"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary bedroom, sitting end">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary bedroom, sitting end full screen">Full screen</button>
 </div>
 <figcaption>Primary bedroom, sitting end</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="38" data-cap="Primary closet">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p38.jpg" alt="Listing: Primary closet">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p38-after.jpg" alt="Concept: Primary closet"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary closet">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary closet full screen">Full screen</button>
 </div>
 <figcaption>Primary closet</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="39" data-cap="Primary closet">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p39.jpg" alt="Listing: Primary closet">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p39-after.jpg" alt="Concept: Primary closet"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary closet">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary closet full screen">Full screen</button>
 </div>
 <figcaption>Primary closet</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="40" data-cap="Primary closet island">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p40.jpg" alt="Listing: Primary closet island">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p40-after.jpg" alt="Concept: Primary closet island"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Primary closet island">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Primary closet island full screen">Full screen</button>
 </div>
 <figcaption>Primary closet island</figcaption>
-</figure></div><h3 class="gal-sec">Lower level</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Lower level</h3><div class="gal"><figure class="ba" data-ba data-i="41" data-cap="Lower family room, TV wall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p41.jpg" alt="Listing: Lower family room, TV wall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p41-after.jpg" alt="Concept: Lower family room, TV wall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower family room, TV wall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower family room, TV wall full screen">Full screen</button>
 </div>
 <figcaption>Lower family room, TV wall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="42" data-cap="Lower family room">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p42.jpg" alt="Listing: Lower family room">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p42-after.jpg" alt="Concept: Lower family room"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower family room">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower family room full screen">Full screen</button>
 </div>
 <figcaption>Lower family room</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="43" data-cap="Lower bedroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p43.jpg" alt="Listing: Lower bedroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p43-after.jpg" alt="Concept: Lower bedroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower bedroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower bedroom full screen">Full screen</button>
 </div>
 <figcaption>Lower bedroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="44" data-cap="Lower bedroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p44.jpg" alt="Listing: Lower bedroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p44-after.jpg" alt="Concept: Lower bedroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower bedroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower bedroom full screen">Full screen</button>
 </div>
 <figcaption>Lower bedroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="45" data-cap="Lower bedroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p45.jpg" alt="Listing: Lower bedroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p45-after.jpg" alt="Concept: Lower bedroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower bedroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower bedroom full screen">Full screen</button>
 </div>
 <figcaption>Lower bedroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="46" data-cap="Lower bedroom">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p46.jpg" alt="Listing: Lower bedroom">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p46-after.jpg" alt="Concept: Lower bedroom"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower bedroom">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower bedroom full screen">Full screen</button>
 </div>
 <figcaption>Lower bedroom</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="47" data-cap="Lower bath">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p47.jpg" alt="Listing: Lower bath">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p47-after.jpg" alt="Concept: Lower bath"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower bath">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower bath full screen">Full screen</button>
 </div>
 <figcaption>Lower bath</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="48" data-cap="Lower hall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p48.jpg" alt="Listing: Lower hall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p48-after.jpg" alt="Concept: Lower hall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Lower hall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Lower hall full screen">Full screen</button>
 </div>
 <figcaption>Lower hall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="49" data-cap="Hinged bookcase">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p49.jpg" alt="Listing: Hinged bookcase">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p49-after.jpg" alt="Concept: Hinged bookcase"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Hinged bookcase">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Hinged bookcase full screen">Full screen</button>
 </div>
 <figcaption>Hinged bookcase</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="50" data-cap="Secret office">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p50.jpg" alt="Listing: Secret office">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p50-after.jpg" alt="Concept: Secret office"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Secret office">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Secret office full screen">Full screen</button>
 </div>
 <figcaption>Secret office</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="51" data-cap="Secret office">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p51.jpg" alt="Listing: Secret office">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p51-after.jpg" alt="Concept: Secret office"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Secret office">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Secret office full screen">Full screen</button>
 </div>
 <figcaption>Secret office</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="52" data-cap="Unfinished storage">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p52.jpg" alt="Listing: Unfinished storage">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p52-after.jpg" alt="Concept: Unfinished storage"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Unfinished storage">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Unfinished storage full screen">Full screen</button>
 </div>
 <figcaption>Unfinished storage</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="53" data-cap="Unfinished storage">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p53.jpg" alt="Listing: Unfinished storage">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p53-after.jpg" alt="Concept: Unfinished storage"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Unfinished storage">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Unfinished storage full screen">Full screen</button>
 </div>
 <figcaption>Unfinished storage</figcaption>
-</figure></div><h3 class="gal-sec">Garage</h3><div class="gal"><figure class="ba" data-ba>
+</figure></div><h3 class="gal-sec">Garage</h3><div class="gal"><figure class="ba" data-ba data-i="54" data-cap="Garage doors">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p54.jpg" alt="Listing: Garage doors">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p54-after.jpg" alt="Concept: Garage doors"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Garage doors">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Garage doors full screen">Full screen</button>
 </div>
 <figcaption>Garage doors</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="55" data-cap="Garage interior">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p55.jpg" alt="Listing: Garage interior">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p55-after.jpg" alt="Concept: Garage interior"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Garage interior">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Garage interior full screen">Full screen</button>
 </div>
 <figcaption>Garage interior</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="56" data-cap="Garage, work wall">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p56.jpg" alt="Listing: Garage, work wall">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p56-after.jpg" alt="Concept: Garage, work wall"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Garage, work wall">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Garage, work wall full screen">Full screen</button>
 </div>
 <figcaption>Garage, work wall</figcaption>
-</figure><figure class="ba" data-ba>
+</figure><figure class="ba" data-ba data-i="57" data-cap="Garage, looking out">
 <div class="ba-frame">
 <img class="ba-before" src="photos/p57.jpg" alt="Listing: Garage, looking out">
 <div class="ba-after-wrap"><img class="ba-after" src="img/ba/p57-after.jpg" alt="Concept: Garage, looking out"></div>
 <div class="ba-handle" style="left:100%"></div>
 <input class="ba-range noprint" type="range" min="0" max="100" value="100" aria-label="Reveal listing photo of Garage, looking out">
-<div class="ba-hint noprint">Concept - drag to see the listing photo</div>
+<div class="ba-hint noprint">Concept — drag to see the listing photo</div>
+<button type="button" class="ba-expand noprint" aria-label="Open Garage, looking out full screen">Full screen</button>
 </div>
 <figcaption>Garage, looking out</figcaption>
 </figure></div></section>
@@ -676,12 +775,12 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
 <p class="warn">Walls, doors and windows are traced from the house’s permit drawings (¼″ = 1′) and checked against the listing’s room sizes; typical accuracy is about ±6 in. The finished lower level follows the listing floor plan, since it was finished differently from the original drawings. Items marked “measure” use typical sizes until we tape them.</p>
 <div class="full"><figure><a href="img/plan-main.jpg"><img loading="lazy" src="img/plan-main.jpg" alt="Main floor: great room piano lounge (red dims = clearances)"></a><figcaption>Main floor: great room piano lounge (red dims = clearances)</figcaption></figure></div>
 <div class="full"><figure><a href="img/plan-lower.jpg"><img loading="lazy" src="img/plan-lower.jpg" alt="Lower level: family room, secret office, kids’ room, storage room with the garage stair"></a><figcaption>Lower level: family room, secret office, kids’ room, storage room with the garage stair</figcaption></figure></div>
-<div class="fig2"><figure><a href="img/plan-garage.jpg"><img loading="lazy" src="img/plan-garage.jpg" alt="Garage shell from the drawings. The two-lift layout in the gym section is the current plan."></a><figcaption>Garage shell from the drawings. The two-lift layout in the gym section is the current plan.</figcaption></figure><figure><a href="img/site-plan-sauna.jpg"><img loading="lazy" src="img/site-plan-sauna.jpg" alt="Site plan: 8×12 wood-fired skid sauna just off the east end of the deck"></a><figcaption>Site plan: 8×12 wood-fired skid sauna just off the east end of the deck</figcaption></figure></div></section>
+<div class="fig2"><figure><a href="img/plan-garage.jpg"><img loading="lazy" src="img/plan-garage.jpg" alt="Garage shell from the drawings. The two-lift layout in the gym section is the current plan."></a><figcaption>Garage shell from the drawings. The two-lift layout in the gym section is the current plan.</figcaption></figure><figure><a href="img/site-plan-sauna.jpg"><img loading="lazy" src="img/site-plan-sauna.jpg" alt="Site plan: 9×16 wood-fired skid sauna butted to the east end of the deck"></a><figcaption>Site plan: 9×16 wood-fired skid sauna butted to the east end of the deck</figcaption></figure></div></section>
 
 <section id="model"><h2>3D model</h2>
-<p>Furnished model built from the same plans. Open it full-screen to walk the rooms, the garage and the sauna just off the deck.</p>
+<p>Furnished model built from the same plans. Open it full-screen to walk the rooms, the garage and the sauna butted to the east end of the deck.</p>
 <iframe class="noprint" src="model.html?view=overview" loading="lazy" title="3D model"></iframe>
-<div class="gal" style="margin-top:14px"><figure><a href="img/r-great_nw.jpg"><img loading="lazy" src="img/r-great_nw.jpg" alt="Great room from the kitchen corner: Steinway B center, cigar chairs at the fireplace"></a><figcaption>Great room from the kitchen corner: Steinway B center, cigar chairs at the fireplace</figcaption></figure><figure><a href="img/r-great_foyer.jpg"><img loading="lazy" src="img/r-great_foyer.jpg" alt="From the front door: piano lid opens toward the fireplace lounge"></a><figcaption>From the front door: piano lid opens toward the fireplace lounge</figcaption></figure><figure><a href="img/r-great_dining.jpg"><img loading="lazy" src="img/r-great_dining.jpg" alt="Through the dining arch: room to walk around the piano"></a><figcaption>Through the dining arch: room to walk around the piano</figcaption></figure><figure><a href="img/r-family_ne.jpg"><img loading="lazy" src="img/r-family_ne.jpg" alt="Lower family room: sectional tucked in the corner, massage chair at right"></a><figcaption>Lower family room: sectional tucked in the corner, massage chair at right</figcaption></figure><figure><a href="img/r-family_tv.jpg"><img loading="lazy" src="img/r-family_tv.jpg" alt="From the sectional: 75&quot; TV on the existing TV wall"></a><figcaption>From the sectional: 75" TV on the existing TV wall</figcaption></figure><figure><a href="img/r-office.jpg"><img loading="lazy" src="img/r-office.jpg" alt="Secret office: glass desk + Aeron"></a><figcaption>Secret office: glass desk + Aeron</figcaption></figure><figure><a href="img/r-kidroom.jpg"><img loading="lazy" src="img/r-kidroom.jpg" alt="Kids&#x27; room: full bed, nightstand, kids desk"></a><figcaption>Kids' room: full bed, nightstand, kids desk</figcaption></figure><figure><a href="img/r-garage_gym.jpg"><img loading="lazy" src="img/r-garage_gym.jpg" alt="Garage: lifting platform, rig, plunge, office wing"></a><figcaption>Garage: lifting platform, rig, plunge, office wing</figcaption></figure><figure><a href="img/r-main_aerial.jpg"><img loading="lazy" src="img/r-main_aerial.jpg" alt="Main floor from above"></a><figcaption>Main floor from above</figcaption></figure><figure><a href="img/r-lower_aerial.jpg"><img loading="lazy" src="img/r-lower_aerial.jpg" alt="Lower level from above"></a><figcaption>Lower level from above</figcaption></figure><figure><a href="img/r-exploded.jpg"><img loading="lazy" src="img/r-exploded.jpg" alt="Exploded cutaway: main floor lifted over the lower level"></a><figcaption>Exploded cutaway: main floor lifted over the lower level</figcaption></figure><figure><a href="img/r-sauna.jpg"><img loading="lazy" src="img/r-sauna.jpg" alt="8x12 wood-fired skid sauna just off the east end of the deck"></a><figcaption>8x12 wood-fired skid sauna just off the east end of the deck</figcaption></figure></div></section>
+<div class="gal" style="margin-top:14px"><figure><a href="img/r-great_nw.jpg"><img loading="lazy" src="img/r-great_nw.jpg" alt="Great room from the kitchen corner: Steinway B center, cigar chairs at the fireplace"></a><figcaption>Great room from the kitchen corner: Steinway B center, cigar chairs at the fireplace</figcaption></figure><figure><a href="img/r-great_foyer.jpg"><img loading="lazy" src="img/r-great_foyer.jpg" alt="From the front door: piano lid opens toward the fireplace lounge"></a><figcaption>From the front door: piano lid opens toward the fireplace lounge</figcaption></figure><figure><a href="img/r-great_dining.jpg"><img loading="lazy" src="img/r-great_dining.jpg" alt="Through the dining arch: room to walk around the piano"></a><figcaption>Through the dining arch: room to walk around the piano</figcaption></figure><figure><a href="img/r-family_ne.jpg"><img loading="lazy" src="img/r-family_ne.jpg" alt="Lower family room: sectional tucked in the corner, massage chair at right"></a><figcaption>Lower family room: sectional tucked in the corner, massage chair at right</figcaption></figure><figure><a href="img/r-family_tv.jpg"><img loading="lazy" src="img/r-family_tv.jpg" alt="From the sectional: 75&quot; TV on the existing TV wall"></a><figcaption>From the sectional: 75" TV on the existing TV wall</figcaption></figure><figure><a href="img/r-office.jpg"><img loading="lazy" src="img/r-office.jpg" alt="Secret office: glass desk + Aeron"></a><figcaption>Secret office: glass desk + Aeron</figcaption></figure><figure><a href="img/r-kidroom.jpg"><img loading="lazy" src="img/r-kidroom.jpg" alt="Kids&#x27; room: full bed, nightstand, kids desk"></a><figcaption>Kids' room: full bed, nightstand, kids desk</figcaption></figure><figure><a href="img/r-garage_gym.jpg"><img loading="lazy" src="img/r-garage_gym.jpg" alt="Garage: lifting platform, rig, plunge, office wing"></a><figcaption>Garage: lifting platform, rig, plunge, office wing</figcaption></figure><figure><a href="img/r-main_aerial.jpg"><img loading="lazy" src="img/r-main_aerial.jpg" alt="Main floor from above"></a><figcaption>Main floor from above</figcaption></figure><figure><a href="img/r-lower_aerial.jpg"><img loading="lazy" src="img/r-lower_aerial.jpg" alt="Lower level from above"></a><figcaption>Lower level from above</figcaption></figure><figure><a href="img/r-exploded.jpg"><img loading="lazy" src="img/r-exploded.jpg" alt="Exploded cutaway: main floor lifted over the lower level"></a><figcaption>Exploded cutaway: main floor lifted over the lower level</figcaption></figure><figure><a href="img/r-sauna.jpg"><img loading="lazy" src="img/r-sauna.jpg" alt="Elevation: 9×16 wood-fired skid sauna butted to the east end of the deck"></a><figcaption>Elevation: 9×16 wood-fired skid sauna butted to the east end of the deck</figcaption></figure></div></section>
 
 <section id="concepts"><h2>Photo concepts, in short</h2>
 <p>The full set of 66 listing photos, each with a before/after slider, is in <a href="#photos">Before and after</a>. A few highlights from the 3D model and the sauna concepts are there too. The after views use our own pieces — Steinway B and cigar chairs, the gray sectional and massage chair, the glass desk and Aeron in the secret office, the kids’ room, the gym and office, the wood-fired sauna — not the sellers’ furniture.</p>
@@ -711,35 +810,34 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
 <div class="card"><h3>Sectional, route B: garage stair</h3>From the right side of the garage: a straight 14-riser stair in a 3′11″ hall, then a <b>90° turn through a ~36″ door</b> at the bottom into the storage room, then a 36″ door into the family room. No finished floors to protect, but the bottom turn is the pinch point: pieces deeper than ~34″ or longer than the landing ceiling may not pivot. Measure before moving day.</div></div></section>
 
 <section id="garage"><h2>Garage: CrossFit gym, two lifts, cold plunge</h2>
-<p>The 40×50 heated garage holds the Airstream in the 12×12 center door, daily and weekend cars on two 4-post lifts, and an L-shaped gym of about <b>660 sf</b> across the back and left side. Permit drawings and the truss layout show <b>10 ft walls</b> and 12″ heeled modified scissor (cathedral) trusses, with a flat center of about <b>13′8″</b> (likely range 13′4″–14′8″ — tape it; the exterior ridge is about 17½–18 ft, which is why it feels taller). The rig, rings and rope sit under that center. There are three wall-ball targets, a clear handstand wall, a cardio row with a TV, and the GHD and reverse hyper. The cold plunge sits beside the gym. A 6.5×5.5 office is on the gym side of the house door. The 3 ft walkway to the basement stair stays open.</p>
-<p>The left 10×8 gets a BendPak HD-9XW behind the door tracks, shifted about 2 ft toward the ridge, with the Cadillac XT5 under and the Mustang GT on top, locked at about 74 in of drive-under. The right 10×8 gets a second HD-9XW in the Tesla’s current stall, also shifted about 2 ft toward the ridge, with the Model Y under and the 911 on top, locked at about 72 in. The Airstream Interstate 24X (Mercedes Sprinter) sits in the 12×12, nudged slightly right so it clears the shifted left lift. Do not use the top lock on either lift until the ceiling is taped. The Tesla Wall Connector moves to the <b>garage-door end of the house wall</b>, so the cable reaches around the rear to the Model Y’s driver-side port when the car is nose-in under the lift. (The earlier mid-wall placement was a long walk for that port.) The HD-9XW is 208–230V; plan two 240V circuits and a garage subpanel.</p>
-<div class="full"><figure><a href="img/687-garage-layout.jpg"><img loading="lazy" src="img/687-garage-layout.jpg" alt="Scenario B3, to scale: two BendPak HD-9XW high-rise lifts shifted toward the ridge, XT5 under and Mustang GT on top in the left bay, Model Y under and 911 on top in the right bay, Airstream in the 12x12, Wall Connector at the door end of the house wall, about 660 sf gym and 6.5x5.5 office."></a><figcaption>Scenario B3, to scale: two BendPak HD-9XW high-rise lifts, each shifted about 2 ft toward the ridge and locked mid-height. Left: XT5 under, Mustang GT on top. Right: Model Y under, 911 on top. Airstream Interstate 24X in the 12×12. Wall Connector at the door end of the house wall. ~660 sf gym and 6.5×5.5 office. 1 grid = 2 ft.</figcaption></figure></div>
-<div class="fig2"><figure><a href="img/p-garage-doors.jpg"><img loading="lazy" src="img/p-garage-doors.jpg" alt="Concept at the garage doors: Airstream in the center 12x12, a lift in each side bay, Wall Connector at the door-end wall"></a><figcaption>Concept at the garage doors: Airstream in the center 12×12, a lift in each side bay, Wall Connector at the door-end wall</figcaption></figure><figure><a href="img/p-garage-interior.jpg"><img loading="lazy" src="img/p-garage-interior.jpg" alt="From the doors, looking back at both lifts, the Airstream, the gym and the office"></a><figcaption>From the doors, looking back at both lifts, the Airstream, the gym and the office</figcaption></figure></div>
-<div class="fig2"><figure><a href="img/p-garage-gym.jpg"><img loading="lazy" src="img/p-garage-gym.jpg" alt="Gym build-out along the back wall: rig, rings, platforms, cardio and the cold plunge"></a><figcaption>Gym build-out along the back wall: rig, rings, platforms, cardio and the cold plunge</figcaption></figure><figure><a href="img/p-garage-wide.jpg"><img loading="lazy" src="img/p-garage-wide.jpg" alt="Wider garage concept looking out"></a><figcaption>Wider garage concept looking out. Architecture in this angle is approximate; use the plan and the door-end photos for layout.</figcaption></figure></div>
+<p>The 40×50 heated garage holds the Airstream in the 12×12 center door, daily and weekend cars on two 4-post lifts, and an L-shaped gym of about <b>660 sf</b> across the back and left side. Permit drawings and the truss layout show <b>10 ft walls</b> and 12″ heeled modified scissor (cathedral) trusses, with a flat center of about <b>13′8″</b> (likely range 13′4″–14′8″ — tape it; the exterior ridge is about 17½–18 ft, which is why it feels taller). The rig, rings and rope sit under that center. There are three wall-ball targets, a clear handstand wall, a cardio row with a TV, and the Rogue Donkey. The cold plunge sits beside the gym. A 6.5×5.5 office is on the gym side of the house door. The 3 ft walkway to the basement stair stays open.</p>
+<p>All five vehicles park <b>nose-in</b>: noses toward the house, rears toward the doors. The left 10×8 gets a BendPak HD-9XW behind the door tracks, shifted about 2 ft toward the ridge, with the <b>black Cadillac XT5</b> under and the <b>black Mustang GT</b> on top, locked at about 74 in of drive-under. The right 10×8 gets a second HD-9XW in the Tesla’s current stall, also shifted about 2 ft toward the ridge, with the <b>white Tesla Model Y</b> under and the <b>matte black 911 Carrera 4 GTS</b> on top, locked at about 72 in. The <b>silver 2022 Airstream Interstate 24X</b> (Mercedes Sprinter 3500 4x4) sits in the 12×12, nudged slightly right so it clears the shifted left lift. Do not use the top lock on either lift until the ceiling is taped. The Tesla Wall Connector moves to the <b>garage-door end of the house wall</b>, so the cable reaches around the rear to the Model Y’s driver-side port when the car is nose-in under the lift. (The earlier mid-wall placement was a long walk for that port.) The HD-9XW is 208–230V; plan two 240V circuits and a garage subpanel.</p>
+<div class="full"><figure><a href="img/687-garage-layout.jpg"><img loading="lazy" src="img/687-garage-layout.jpg" alt="Scenario B3, to scale: two BendPak HD-9XW high-rise lifts shifted toward the ridge, black XT5 under and black Mustang GT on top in the left bay, white Model Y under and matte black 911 Carrera 4 GTS on top in the right bay, silver Airstream Interstate 24X in the 12x12, Wall Connector at the door end of the house wall, about 660 sf gym and 6.5x5.5 office. All five nose-in."></a><figcaption>Scenario B3, to scale: two BendPak HD-9XW high-rise lifts, each shifted about 2 ft toward the ridge and locked mid-height. Left: black XT5 under, black Mustang GT on top. Right: white Model Y under, matte black 911 Carrera 4 GTS on top. Silver 2022 Airstream Interstate 24X in the 12×12. All five nose-in (noses toward the house). Wall Connector at the door end of the house wall. ~660 sf gym and 6.5×5.5 office. 1 grid = 2 ft.</figcaption></figure></div>
+<div class="fig2"><figure><a href="img/p-garage-doors.jpg"><img loading="lazy" src="img/p-garage-doors.jpg" alt="Concept at the garage doors, looking at the rears: silver Airstream in the center 12x12, black Mustang over the black XT5 on the left, matte black 911 over the white Model Y on the right, Wall Connector at the door-end wall"></a><figcaption>Concept at the garage doors, looking at the rears: silver Airstream in the center 12×12, black Mustang over the black XT5 on the left, matte black 911 over the white Model Y on the right, Wall Connector at the door-end wall</figcaption></figure><figure><a href="img/p-garage-interior.jpg"><img loading="lazy" src="img/p-garage-interior.jpg" alt="From the doors, looking in at the rears: both lifts, the silver Airstream, the gym and the office"></a><figcaption>From the doors, looking in at the rears: both lifts, the silver Airstream, the gym and the office</figcaption></figure></div>
+<div class="fig2"><figure><a href="img/p-garage-gym.jpg"><img loading="lazy" src="img/p-garage-gym.jpg" alt="Gym build-out along the back wall: rig, rings, platforms, cardio and the cold plunge"></a><figcaption>Gym build-out along the back wall: rig, rings, platforms, cardio and the cold plunge</figcaption></figure><figure><a href="img/p-garage-wide.jpg"><img loading="lazy" src="img/p-garage-wide.jpg" alt="Wider garage concept looking out"></a><figcaption>Wider garage concept looking toward the doors (fronts of the nose-in cars). Architecture in this angle is approximate; use the plan and the door-end photos for layout.</figcaption></figure></div>
 
-<h3>Equipment to buy</h3>
-<p>Prices checked Nov 14, 2026. Already owned and not in the totals: treadmill, Peloton, rower/ski, plates and dumbbells, the cold plunge, and the TV.</p>
+<h3>Equipment to buy — Rogue, best of line</h3>
+<p>Prices checked Nov 14, 2026, from <a href="https://www.roguefitness.com">Rogue.com</a>. This is a top-of-the-line Rogue package, not a mix of value brands. Already owned and not in the totals: treadmill, Peloton, rower/ski, plates and dumbbells, the cold plunge, and the TV.</p>
 <table class="costs">
 <thead><tr><th>Item</th><th>Notes / source</th><th class="num">Low</th><th class="num">Likely</th><th class="num">High</th></tr></thead>
 <tbody>
 <tr><td>Air bike</td><td><a href="https://www.roguefitness.com/rogue-echo-bike">Rogue Echo Bike V3.0</a> — $895 sale / $945 list</td><td class="num">$895</td><td class="num">$945</td><td class="num">$945</td></tr>
-<tr><td>Wall-mount rig</td><td><a href="https://www.roguefitness.com/rogue-4-monster-lite-wall-mount">Rogue MLW-4</a> $750; Monster Lite W-4 $595; larger MLW-10–24 $1,405–$2,395</td><td class="num">$595</td><td class="num">$750</td><td class="num">$2,395</td></tr>
+<tr><td>Rig</td><td><a href="https://www.roguefitness.com/monster-rig-2-0">Rogue Monster Rig 2.0 Base 10′</a> $2,365. High uses a <a href="https://www.roguefitness.com/monster-rig-2-0">Wingspan</a> configuration at about $3,730.</td><td class="num">$2,365</td><td class="num">$2,365</td><td class="num">$3,730</td></tr>
 <tr><td>Wood rings</td><td><a href="https://www.roguefitness.com/rogue-wood-rings">Rogue gymnastic wood rings</a> $105; add a Ring Hanger 2.0 ($85) in the likely case</td><td class="num">$105</td><td class="num">$190</td><td class="num">$200</td></tr>
 <tr><td>Climbing rope</td><td><a href="https://www.roguefitness.com/climbing-ropes">Rogue Manila 15′ × 1.5″</a> $77.50. A 20′ rope is longer than this 13′8″ center can use.</td><td class="num">$78</td><td class="num">$78</td><td class="num">$78</td></tr>
-<tr><td>Lifting platform, 8×7.5</td><td>DIY plywood and rubber on the low end; a nicer built platform at the high end</td><td class="num">$400</td><td class="num">$800</td><td class="num">$1,500</td></tr>
-<tr><td>GHD</td><td><a href="https://repfitness.com/products/ghd-glute-ham-developer">REP Fitness GHD</a> $479.99; Rogue Abram GHD 2.0 about $725 at the high end</td><td class="num">$480</td><td class="num">$480</td><td class="num">$725</td></tr>
-<tr><td>Reverse hyper</td><td><a href="https://titan.fitness/products/h-pnd">Titan H-PND</a> $819.97 sale / $1,024.99 list; Rogue RH-2 $845; Rogue Z Hyper $965 or Donkey $2,275</td><td class="num">$820</td><td class="num">$845</td><td class="num">$2,275</td></tr>
+<tr><td>Lifting platform</td><td><a href="https://www.roguefitness.com/rogue8x8-oly-platform">Rogue 8′×8′ Olympic platform</a> $562; likely and high add Rogue rubber tiles ($65–$85 each)</td><td class="num">$562</td><td class="num">$1,200</td><td class="num">$1,602</td></tr>
+<tr><td>GHD / reverse hyper</td><td><a href="https://www.roguefitness.com/rogue-donkey">Rogue Donkey</a> $2,275, which covers both a GHD and a reverse hyper in one machine</td><td class="num">$2,275</td><td class="num">$2,275</td><td class="num">$2,275</td></tr>
 <tr><td>Wall-ball targets</td><td>Two <a href="https://www.roguefitness.com/rogue-double-wall-ball-target">Rogue double targets</a> at $105 sale / $120 list; a third station at the high end</td><td class="num">$210</td><td class="num">$240</td><td class="num">$360</td></tr>
 <tr><td>Fillers</td><td>Med balls, extra change plates, storage — as needed</td><td class="num">$200</td><td class="num">$400</td><td class="num">$800</td></tr>
 </tbody>
-<tfoot><tr><td colspan="2">Equipment subtotal</td><td class="num">$3,800</td><td class="num">$4,800</td><td class="num">$9,300</td></tr></tfoot>
+<tfoot><tr><td colspan="2">Equipment subtotal</td><td class="num">$6,700</td><td class="num">$7,700</td><td class="num">$10,000</td></tr></tfoot>
 </table>
 
 <h3>Gym build-out</h3>
 <table class="costs">
 <thead><tr><th>Item</th><th>Notes</th><th class="num">Low</th><th class="num">Likely</th><th class="num">High</th></tr></thead>
 <tbody>
-<tr><td>Stall mats</td><td>Lifting and aisle zones, not the full 660 sf. Horse-stall mats about $50–$70 per 4×6.</td><td class="num">$1,200</td><td class="num">$2,000</td><td class="num">$4,500</td></tr>
+<tr><td>¾″ rubber flooring (default)</td><td><a href="https://www.roguefitness.com/rogue-gym-mat-25-piece-bundle-black">Rogue Gym Mats, 4×6, ¾″</a> — $95 each, 25-piece bundle $1,495 sale / $1,750 list. About 660 sf needs 28 mats (bundle + 3 singles). Low is the sale bundle; likely is list. High includes install. ½″ is a thinner option if you want it later.</td><td class="num">$1,780</td><td class="num">$2,035</td><td class="num">$5,000</td></tr>
 <tr><td>Curtain / divider</td><td>Industrial curtain along the gym edge</td><td class="num">$500</td><td class="num">$1,200</td><td class="num">$2,500</td></tr>
 <tr><td>Wall finish</td><td>Plywood or painted drywall on gym walls</td><td class="num">$800</td><td class="num">$2,000</td><td class="num">$4,000</td></tr>
 <tr><td>24k mini-split</td><td>Cold-climate wall cassette for the gym (office head is counted under the office)</td><td class="num">$4,500</td><td class="num">$7,000</td><td class="num">$12,000</td></tr>
@@ -750,19 +848,19 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
 <tr><td>Rings / rope strongback</td><td>Engineered bar, truss-manufacturer letter, and a permit. Do not hang from a truss web.</td><td class="num">$800</td><td class="num">$2,500</td><td class="num">$6,000</td></tr>
 <tr><td>Permits, speakers, misc.</td><td></td><td class="num">$900</td><td class="num">$3,500</td><td class="num">$4,500</td></tr>
 </tbody>
-<tfoot><tr><td colspan="2">Build-out subtotal</td><td class="num">$12,000</td><td class="num">$25,000</td><td class="num">$49,500</td></tr></tfoot>
+<tfoot><tr><td colspan="2">Build-out subtotal</td><td class="num">$12,580</td><td class="num">$25,035</td><td class="num">$50,000</td></tr></tfoot>
 </table>
 
 <h3>Totals, stacked so you can drop a line</h3>
 <table class="costs">
 <thead><tr><th></th><th class="num">Low</th><th class="num">Likely</th><th class="num">High</th></tr></thead>
 <tbody>
-<tr><td>Gym equipment + build-out</td><td class="num">$16,000</td><td class="num">$30,000</td><td class="num">$59,000</td></tr>
+<tr><td>Gym equipment + build-out</td><td class="num">$19,300</td><td class="num">$32,700</td><td class="num">$60,000</td></tr>
 <tr><td>Two BendPak HD-9XW high-rise lifts — <a href="https://www.bendpak.com/car-lifts/four-post-lifts/hd-9xw-four-post-lift-9000-lbs-capacity-5175863-bendpak">list $6,495 each</a> (Nov 14, 2026). 208–230V 2 HP (not 110V). Installed, about $8.5K–$12K each, including freight and set. Two 240V circuits and a load calc; plan a subpanel. A standard HD-9 cannot take the XT5 underneath (only about 1.7 in of margin).</td><td class="num">$17,000</td><td class="num">$20,000</td><td class="num">$25,000</td></tr>
 <tr><td>Garage office (see below)</td><td class="num">$4,000</td><td class="num">$9,000</td><td class="num">$16,000</td></tr>
 <tr><td>Garage subpanel (serves lifts, gym, office, charger — not counted twice above)</td><td class="num">$3,500</td><td class="num">$5,000</td><td class="num">$6,500</td></tr>
 </tbody>
-<tfoot><tr><td>Total if you do every line above</td><td class="num">$40,500</td><td class="num">$64,000</td><td class="num">$106,500</td></tr></tfoot>
+<tfoot><tr><td>Total if you do every line above</td><td class="num">$43,800</td><td class="num">$66,700</td><td class="num">$107,500</td></tr></tfoot>
 </table>
 <p class="muted">Estimates only, before tax and before a garage electrician’s load calculation. Confirm the 4 in slab, drain slope, mid-lock heights, the 2 ft ridge shift, and door-track clearance with the lift installer. Confirm the exact top-lock drive-under with BendPak. Confirm truss hanging with the truss manufacturer and the building department.</p>
 </section>
@@ -784,30 +882,41 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
 <p>About <b>$4,000 low / $9,000 likely / $16,000 high</b>, including a separate mini-split head and a simple desk setup, not including the gym unit or the garage subpanel. Confirm the house-door swing and the stair half-wall on site before framing.</p>
 </div></div></section>
 
-<section id="sauna"><h2>Standalone 8×12 wood-fired sauna just off the deck</h2>
-<div class="fig2"><figure><a href="img/p-sauna-backyard.jpg"><img loading="lazy" src="img/p-sauna-backyard.jpg" alt="Concept: 8x12 wood-fired skid sauna on the grass just east of the deck"></a><figcaption>Concept on the real backyard photo: an 8×12 wood-fired skid sauna on the grass just east of the deck</figcaption></figure><figure><a href="photos/p59.jpg"><img loading="lazy" src="photos/p59.jpg" alt="Same view today (listing photo)"></a><figcaption>Same view today (listing photo)</figcaption></figure></div>
-<div class="fig2" style="margin-top:14px"><figure><a href="img/p-sauna-deck.jpg"><img loading="lazy" src="img/p-sauna-deck.jpg" alt="Closer view of the skid sauna off the east end of the deck"></a><figcaption>Closer view: the skid sauna sits on a gravel pad right off the east end of the deck, a few steps from the hot tub</figcaption></figure><figure><a href="photos/p02.jpg"><img loading="lazy" src="photos/p02.jpg" alt="Same closer view today (listing photo)"></a><figcaption>Same closer view today (listing photo)</figcaption></figure></div>
-<div class="fig2" style="margin-top:14px"><figure><a href="img/site-plan-sauna.jpg"><img loading="lazy" src="img/site-plan-sauna.jpg" alt="Site plan: 8x12 sauna on the grass east of the deck"></a><figcaption>Site plan: 8×12 sauna on the grass east of the deck (approximate septic areas still shaded)</figcaption></figure><figure><a href="img/r-sauna.jpg"><img loading="lazy" src="img/r-sauna.jpg" alt="3D model: skid sauna just off the east end of the deck"></a><figcaption>3D model: skid sauna just off the east end of the deck</figcaption></figure></div>
+<section id="sauna"><h2>9×16 wood-fired sauna butted to the deck</h2>
+<div class="fig2"><figure><a href="img/p-sauna-backyard.jpg"><img loading="lazy" src="img/p-sauna-backyard.jpg" alt="Concept: 9x16 wood-fired skid sauna butted to the east end of the deck"></a><figcaption>Concept on the real backyard photo: the 9×16 wood-fired skid sauna butted to the east end of the deck, door facing the deck, stove and chimney at the far end. The drawings are the source of truth — this photo is a little short on length, and the door angle is approximate.</figcaption></figure><figure class="listing-only"><a href="photos/p59.jpg"><img loading="lazy" src="photos/p59.jpg" alt="Same view today (listing photo)"></a><figcaption>Same view today (listing photo)</figcaption></figure></div>
+<div class="fig2" style="margin-top:14px"><figure><a href="img/p-sauna-deck.jpg"><img loading="lazy" src="img/p-sauna-deck.jpg" alt="Closer view of the 9x16 skid sauna butted to the east end of the deck"></a><figcaption>Closer view: the sauna is butted to the deck fascia, with a step straight from the deck into the door. The chimney in this angle is shown a little too close to the deck; it belongs at the far end, as on the elevation.</figcaption></figure><figure class="listing-only"><a href="photos/p02.jpg"><img loading="lazy" src="photos/p02.jpg" alt="Same closer view today (listing photo)"></a><figcaption>Same closer view today (listing photo)</figcaption></figure></div>
+<div class="fig2" style="margin-top:14px"><figure><a href="img/site-plan-sauna.jpg"><img loading="lazy" src="img/site-plan-sauna.jpg" alt="Dimensioned site plan: 9x16 wood-fired skid sauna butted to the east end of the deck"></a><figcaption>Dimensioned site plan (concept, to scale): the exact 9′-0″ × 16′-0″ sauna butted to the deck fascia at the hot-tub end, with the 16 ft running along the remaining house wall. Drain field and tank are on the west / garage side. The sketched reserve is approximate — have a pumper mark it before staking.</figcaption></figure><figure><a href="img/sauna-deck-elevation.jpg"><img loading="lazy" src="img/sauna-deck-elevation.jpg" alt="Elevation: covered deck and 9x16 sauna, with chimney height versus the house roof"></a><figcaption>Elevation from the backyard (concept, to scale): sauna butted to the 31′-0″ covered deck, floors matched at about 1′-6″ above grade (tape the deck). Because the house roof is within 10 ft of the flue, the cap is about 15 ft above grade, pending a field tape.</figcaption></figure></div>
 <div class="grid" style="margin-top:14px">
 <div class="card"><h3>Siting</h3><ul>
-<li>On the grass immediately <b>east of the covered deck</b>, next to the hot tub’s east bay and close to the deck edge. A short path and a couple of steps off the east corner of the deck put the door a few steps from the tub. The deck itself stays as it is — sofa, French doors and porch roof are unchanged.</li>
-<li>The permit first-floor plan (sheet A4) shows the deck as <b>31′-0″ wide by about 11 ft deep</b>, on 6×6 posts with 5¼×11⅞ PSL beams and 5/4 wood decking. The included hot tub already sits in the east bay, behind the later cedar privacy screen.</li>
-<li>Foundation is three 6×6 pressure-treated skids on a compacted gravel pad (a short pier only if the grade needs it). This lawn is relatively flat.</li>
-<li>Whitewater Township RC-1 setbacks are 15 ft side and 30 ft rear; Woodland Trails allows accessory buildings 75 ft back from the road right-of-way. This backyard corner is well behind the road setback; confirm the east side-yard to the property line before staking.</li>
-<li>The county septic sketch puts a reserve area in the backyard, roughly 15–30 ft off the house — this is approximate, ±10–15 ft. The grass strip east of the deck is only about 11–12 ft deep, so a building set far enough from the house for chimney clearance can overlap the sketched reserve. <b>Have a pumper mark the tank, field and reserve first, then stake.</b></li>
+<li>Butted to the <b>east fascia of the covered deck</b>, at the hot-tub end, with <b>zero gap</b>. You step from the deck straight into the 32″ outswing door. Align the door with the ~3.5 ft walkway north of the tub. Relocate the cedar privacy screen now at that east edge — it blocks the door.</li>
+<li>The 16 ft length runs along the remaining house wall (about 16′-8″ of house past the deck). The 9 ft depth sits in the 12 ft backyard strip, leaving about 3 ft to the house wall. The 10′-6″ roof still clears the house by about 2.25 ft. This avoids a 16 ft projection into the yard.</li>
+<li>The permit first-floor plan (sheet A4) shows the deck as <b>31′-0″ wide by about 11 ft deep</b>, on 6×6 posts with 5¼×11⅞ PSL beams and 5/4 wood decking. The included hot tub already sits in the east bay. The sauna has its own gravel-pad foundation — <b>no load on the deck</b>. Flash the joint, including the 6″ roof overhang that will sit over the deck.</li>
+<li>Foundation is three 6×6 pressure-treated skids on a compacted gravel pad. This lawn is relatively flat, so piers are not expected unless a tape shows a slope.</li>
+<li>Whitewater Township RC-1 setbacks are 15 ft side and 30 ft rear, with a 35 ft height limit. Woodland Trails allows accessory buildings 75 ft back from the road right-of-way. This backyard corner is well behind the road setback; tape the east side lot line before staking.</li>
+<li>The drain field and tank are on the <b>west / garage side</b> of the house, clear of this corner. A sketched reserve in the backyard is roughly 15–30 ft off the house and about 4.7 ft north of this sauna — that sketch is approximate, ±10–15 ft. <b>Have a pumper mark the tank, field and reserve first, then stake.</b> Keep the sauna and its pad off the marked field and tank.</li>
 </ul></div>
-<div class="card"><h3>The pick: an 8×12 wood-fired skid sauna</h3><ul>
-<li>A standalone, 4-person wood-fired skid sauna, scaled from a 9×16 framing set so it can sit right off this deck without a 16-ft projection into the yard.</li>
-<li><b>8×12</b> (12 ft along the house, 8 ft deep), about 9–10 ft tall at the high side of a low (about 2.5:12) shingle shed roof. Board-and-batten siding, 2×6 walls with mineral-wool insulation. A small changing room at the west/door end, facing the deck; the hot room to the east, with benches for about four people.</li>
-<li>Wood-fired stove, <b>NIPPA WB-21 or equivalent</b>, fired from outside through the far (east) wall, with a Class-A chimney on that far end, away from the house and the porch roof. The stove is about $2,299, or $2,450 with the firing extension (needed because it is fired from outside), plus a chimney kit, a non-combustible hearth pad, heat shields and a spark arrestor — stove and chimney about $3,000–$4,500.</li>
-<li>DIY from the framing set, scaled to 8×12: about <b>$9,000–$16,000</b> in materials, plus the stove and chimney. Builder-built: about <b>$22,000–$40,000</b>.</li>
+<div class="card"><h3>The pick: the original 9×16 wood-fired skid sauna</h3><ul>
+<li>The exact <b>9′-0″ × 16′-0″</b> outdoor skid sauna framing set (not the earlier 8×12 scale-down). Roof with overhangs 17′-0″ × 10′-6″; height to the top of the 2.5:12 shingle shed is 9′-9 7/16″. Board-and-batten siding, 2×6 walls at 16″ with mineral-wool (R-23). Changing room 4′-6″ × 8′-1″ at the deck/door end; hot room 10′-1 ½″ × 8′-1″ (~540 cu ft), seating for about 8–10.</li>
+<li>Wood-fired stove, <b>NIPPA WB-21 or equivalent</b>, purchased with the 12″ thru-wall firing extension so it is fired from outside through the far (east) wall, away from the deck and the house. Use the maker’s listed clearances, an FRT 2×6 zone, protected-wall heat shields, cement board, and fiber-cement at the firing door. The stove is about $2,299, or $2,450 with the firing extension, plus a 6″ Class-A chimney kit, a non-combustible hearth pad, heat shields and a spark arrestor — stove and chimney about $3,000–$4,500.</li>
+<li>Height budget above the bottom of the skids: 5½″ skid + 5½″ joist + ¾″ subfloor + plates and 91⅝″ studs + rafter/roof ≈ 9′-9 7/16″ at the high side. Finished floor is about 13″ above the skid bottom. <b>Do not deepen the skids or joists</b> without re-checking that roof height. Raise the gravel pad instead so the finished floor matches the deck (about 1′-6″ above grade — tape the deck; the skid bottom then sits about 5″ above grade).</li>
+<li>DIY from the original 9×16 framing set: about <b>$12,000–$22,000</b> in materials, plus the stove and chimney. Builder-built: about <b>$28,000–$50,000</b>.</li>
 </ul></div>
 <div class="card"><h3>Chimney, hearth, clearances, power, and permits</h3><ul>
-<li><b>Class-A chimney</b> on the far (east) end, with a <b>spark arrestor</b> on the cap. Typical chimney rule: the top is at least <b>2 ft above anything within 10 ft</b> (often about 10 ft of pipe, and about 3 ft above the sauna ridge if nothing is closer). Keep the chimney about <b>10 ft from the house and the porch eaves</b>, and well clear of the deck roof and the hot tub. The east grass strip is tight for that 10 ft house clearance. If 10 ft from the house can’t be had without hitting the reserve, get a code opinion and keep the stove and chimney on the far end, clear of the eaves.</li>
-<li><b>Non-combustible hearth pad</b> under the stove and at the outside firing door, sized to the stove maker’s instructions (NIPPA WB-21 or equivalent), plus the listed heat shields and wall/ceiling clearances. Don’t sit the stove on the wood skids alone.</li>
+<li><b>6″ Class-A insulated chimney</b> at the far (east) end, with a support box, roof boot, removable top sections, and a <b>spark arrestor</b> on the cap. Code rule used here: the top is at least <b>3 ft above the sauna roof and 2 ft above anything within 10 ft</b>. The flue is only about 3–4 ft from the house wall, so the house 6/12 roof is within 10 ft and that second rule governs. Plan the cap at about <b>15 ft above grade</b> (~5–6 ft of pipe above the sauna roof), pending a field tape of the eave and the roof within 10 ft of the flue. This replaces an earlier blanket “keep 10 ft from the house and deck” clearance.</li>
+<li><b>Non-combustible hearth pad</b> under the stove and at the outside firing door, sized to the stove maker’s instructions, plus the listed heat shields and wall/ceiling clearances. Don’t sit the stove on the wood skids alone.</li>
 <li>Keep a clear working strip around the firing door, and don’t store firewood against the sauna wall that has the stove.</li>
 <li>No 240-volt circuit is required. A short 120V/20A run for a light and an outlet is optional; it can come from the nearby deck or house circuits.</li>
-<li>An accessory-building permit, and likely a wood-stove / chimney permit, should be confirmed with the county. Tell the insurer.</li>
+<li>An accessory-building permit, and a wood-stove / chimney permit, should be confirmed with Whitewater Township and the county. Tell the insurer. Concept only; not engineered or stamped.</li>
+</ul></div>
+<div class="card"><h3>Buildability versus the original 9×16 set</h3>
+<p>The exact 9×16 framing set <b>is buildable</b> at this corner if it is butted to the deck and the 16 ft runs along the house. Specs that fit as drawn, and the few adjustments this site needs:</p>
+<ul>
+<li><b>Fits:</b> 9′-0″ × 16′-0″ framing, 17′-0″ × 10′-6″ roof, 9′-9 7/16″ height, 2.5:12 shed, three 6×6 PT skids, 32″ outswing door, changing room and hot room sizes, NIPPA WB-21 (or equivalent) with listed clearances, west-side drain field and tank (clear), RC-1 and HOA setbacks at this corner (tape the east side lot line), and a separate gravel-pad foundation on this relatively flat lawn.</li>
+<li><b>Adjust — orientation:</b> run the 16 ft along the remaining house wall, not 16 ft out into the yard, so the building stays off the sketched reserve.</li>
+<li><b>Adjust — door and floor:</b> door faces the deck (not the yard); raise the pad so the finished floor matches the deck (about 1′-6″ a.g., tape it). Do not deepen the skids or joists.</li>
+<li><b>Adjust — chimney:</b> 3 ft above the sauna roof is not enough here; use the 2-ft-above-house-roof rule, cap about 15 ft a.g., pending a tape.</li>
+<li><b>Adjust — joint:</b> relocate the east-edge privacy screen; flash the 6″ roof overhang that will sit over the deck; do not ledger or bear any sauna load on the deck framing.</li>
+<li><b>Adjust — reserve:</b> the sketched reserve is about 4.7 ft north of the sauna (±10–15 ft). Have a pumper mark the field, tank and reserve first, then stake.</li>
 </ul></div></div></section>
 
 <section id="outdoors"><h2>Trails from the back door</h2><p>The west lot line borders state forest. An old two-track from the backyard reaches the Vasa Singletrack in about half a mile, and the Sand Lakes Quiet Area, Muncie Lakes and the main Vasa trailhead are each a short drive.</p>
@@ -826,30 +935,179 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
 <li>Confirm each HD-9XW (110.25 in overall width, 100.25 in posts) in the 10-ft bays, including a ~2 ft shift toward the ridge. Tape the ceiling along those shifted centerlines. Confirm the right-lift front posts and a car on top against the 8-ft door’s overhead tracks. Measure the XT5 with and without roof rails, and the Model Y with and without a rack, against the planned mid-lock drive-unders (about 74 in left, 72 in right).</li>
 <li>Wall Connector cable length once the right lift is placed; confirm it reaches the Model Y driver-rear port from the door-end of the house wall.</li>
 <li>Open the garage ceiling hatch (carefully) and note whether it opens into the shallow garage scissor cavity or reaches the house attic; look for a second access in the house closets; check whether the lid is a 20-minute / self-closing or 5/8″ Type X hatch.</li>
-<li>Stake the grass just east of the deck: distance from the house wall and eaves to the proposed sauna and chimney, distance to the fence and the east property line, and a look at the grade for a gravel skid pad.</li>
-<li>Have a pumper mark the septic tank, drain field and reserve before staking the sauna.</li>
-<li>Confirm the porch eave overhang at this east corner so the chimney stays clear of the roof.</li>
+<li>Stake the 9×16 sauna butted to the east deck fascia: tape the deck surface height above grade, the 3 ft strip to the house wall, the east side lot line, and the grade for a gravel skid pad that puts the finished floor even with the deck.</li>
+<li>Have a pumper mark the septic tank, drain field and reserve before staking the sauna. Keep the building and its pad off the marked field and tank (the field and tank are on the west / garage side).</li>
+<li>Tape the eave and the house roof within 10 ft of the proposed flue, so the Class-A cap can be set 2 ft above that roof (about 15 ft above grade, pending the tape). Confirm the east-edge privacy screen can be relocated, and that the 6″ entry-end roof overhang can be flashed over the deck.</li>
 </ol></div>
 <div class="card"><h3>How confident is this?</h3><ul><li><b>Main floor: high.</b> Permit drawings and the listing plan agree.</li><li><b>Lower level: medium-high.</b> Room sizes are from the listing plan, interior walls ±1 ft.</li><li><b>Garage: medium.</b> Shell from the drawings, contents from the gym plan. Ceiling height is medium-high at the 10 ft walls, medium at the 13′8″ center until it’s taped.</li><li><b>Septic areas: low.</b> Approximate, from the permit sketch.</li></ul></div></div></section>
 <p class="muted" style="margin-top:30px">Concept planning only, not an appraisal, survey or engineering document. Photos © their listing photographers, used here for private planning reference.</p>
 </main><script>
-document.querySelectorAll('[data-ba]').forEach(function(el){
-  var frame=el.querySelector('.ba-frame');
-  var wrap=el.querySelector('.ba-after-wrap');
-  var handle=el.querySelector('.ba-handle');
-  var range=el.querySelector('.ba-range');
-  var after=el.querySelector('.ba-after');
-  function set(v){v=Math.max(0,Math.min(100,+v));wrap.style.width=v+'%';handle.style.left=v+'%';if(range)range.value=v;}
-  function fit(){after.style.width=frame.clientWidth+'px';}
-  function fromEvent(e){var p=e.touches?e.touches[0]:e;var r=frame.getBoundingClientRect();set((p.clientX-r.left)/r.width*100);}
-  set(100);fit();
-  if(window.ResizeObserver)new ResizeObserver(fit).observe(frame);
-  else window.addEventListener('resize',fit);
-  var down=false;
-  frame.addEventListener('pointerdown',function(e){down=true;try{frame.setPointerCapture(e.pointerId)}catch(err){}fromEvent(e)});
-  frame.addEventListener('pointermove',function(e){if(down)fromEvent(e)});
-  frame.addEventListener('pointerup',function(){down=false});
-  frame.addEventListener('pointercancel',function(){down=false});
-  if(range)range.addEventListener('input',function(e){set(e.target.value)});
-});
+(function(){
+  function bindSlider(frame){
+    var wrap=frame.querySelector('.ba-after-wrap');
+    var handle=frame.querySelector('.ba-handle');
+    var range=frame.querySelector('.ba-range');
+    var after=frame.querySelector('.ba-after');
+    if(!wrap||!handle||!after) return {set:function(){}, fit:function(){}, wasMoved:function(){return false}};
+    function set(v){v=Math.max(0,Math.min(100,+v));wrap.style.width=v+'%';handle.style.left=v+'%';if(range)range.value=v;}
+    function fit(){after.style.width=frame.clientWidth+'px';}
+    function fromEvent(e){var p=(e.touches&&e.touches[0])||(e.changedTouches&&e.changedTouches[0])||e;var r=frame.getBoundingClientRect();set((p.clientX-r.left)/r.width*100);}
+    set(100);fit();
+    if(window.ResizeObserver)new ResizeObserver(fit).observe(frame);
+    else window.addEventListener('resize',fit);
+    if(range)range.addEventListener('input',function(e){set(e.target.value)});
+    var down=false,sx=0,sy=0,moved=false;
+    frame.addEventListener('pointerdown',function(e){
+      if(e.target.closest&&e.target.closest('.ba-expand')) return;
+      down=true;moved=false;sx=e.clientX;sy=e.clientY;
+      try{frame.setPointerCapture(e.pointerId)}catch(err){}
+      fromEvent(e);
+    });
+    frame.addEventListener('pointermove',function(e){
+      if(!down)return;
+      if(Math.abs(e.clientX-sx)>6||Math.abs(e.clientY-sy)>6)moved=true;
+      fromEvent(e);
+    });
+    frame.addEventListener('pointerup',function(){down=false});
+    frame.addEventListener('pointercancel',function(){down=false});
+    return {set:set, fit:fit, wasMoved:function(){return moved}};
+  }
+
+  var gridSliders=new Map();
+  document.querySelectorAll('[data-ba] .ba-frame').forEach(function(frame){
+    gridSliders.set(frame, bindSlider(frame));
+  });
+
+  var items=[];
+  document.querySelectorAll('#photos [data-ba]').forEach(function(el){
+    var before=el.querySelector('.ba-before');
+    var after=el.querySelector('.ba-after');
+    var cap=(el.getAttribute('data-cap')||(el.querySelector('figcaption')||{}).textContent||'').trim();
+    items.push({i:items.length, before:before&&before.src, after:after&&after.src, cap:cap, el:el});
+    el.setAttribute('data-idx', String(items.length-1));
+  });
+
+  var lb=document.createElement('div');
+  lb.id='lb';
+  lb.className='lb noprint';
+  lb.hidden=true;
+  lb.setAttribute('role','dialog');
+  lb.setAttribute('aria-modal','true');
+  lb.setAttribute('aria-label','Before and after photo viewer');
+  lb.innerHTML=
+    '<button type="button" class="lb-x" aria-label="Close">&times;</button>'+
+    '<button type="button" class="lb-prev" aria-label="Previous photo">&#8249;</button>'+
+    '<button type="button" class="lb-next" aria-label="Next photo">&#8250;</button>'+
+    '<div class="lb-stage"><div class="ba-frame" id="lb-frame">'+
+      '<img class="ba-before" alt="">'+
+      '<div class="ba-after-wrap"><img class="ba-after" alt=""></div>'+
+      '<div class="ba-handle" style="left:100%"></div>'+
+      '<div class="ba-hint">Concept — drag to see the listing photo</div>'+
+    '</div></div>'+
+    '<div class="lb-bar"><div class="lb-cap"></div><div class="lb-count"></div></div>';
+  document.body.appendChild(lb);
+  var frame=document.getElementById('lb-frame');
+  var imgB=frame.querySelector('.ba-before');
+  var imgA=frame.querySelector('.ba-after');
+  var capEl=lb.querySelector('.lb-cap');
+  var countEl=lb.querySelector('.lb-count');
+  var slider=bindSlider(frame);
+  var cur=0, open=false;
+
+  function show(i){
+    if(!items.length)return;
+    cur=(i+items.length)%items.length;
+    var it=items[cur];
+    imgB.src=it.before; imgB.alt='Listing: '+it.cap;
+    imgA.src=it.after; imgA.alt='Concept: '+it.cap;
+    capEl.textContent=it.cap;
+    countEl.textContent=(cur+1)+' / '+items.length;
+    slider.set(100);
+    requestAnimationFrame(slider.fit);
+  }
+  function openAt(i){
+    show(i);
+    lb.hidden=false;
+    open=true;
+    document.body.classList.add('lb-on');
+    lb.querySelector('.lb-x').focus();
+  }
+  function close(){
+    lb.hidden=true;
+    open=false;
+    document.body.classList.remove('lb-on');
+  }
+
+  items.forEach(function(it){
+    var el=it.el;
+    var fr=el.querySelector('.ba-frame');
+    var st=gridSliders.get(fr);
+    fr.addEventListener('click',function(e){
+      if(e.target.closest&&e.target.closest('.ba-expand')){e.preventDefault();openAt(it.i);return;}
+      if(st&&st.wasMoved())return;
+      if(e.target.closest&&e.target.closest('input'))return;
+      openAt(it.i);
+    });
+    var btn=el.querySelector('.ba-expand');
+    if(btn)btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openAt(it.i);});
+  });
+
+  lb.querySelector('.lb-x').addEventListener('click',close);
+  lb.querySelector('.lb-prev').addEventListener('click',function(){show(cur-1)});
+  lb.querySelector('.lb-next').addEventListener('click',function(){show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+
+  document.addEventListener('keydown',function(e){
+    if(!open)return;
+    if(e.key==='Escape'){e.preventDefault();close()}
+    else if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1)}
+    else if(e.key==='ArrowRight'){e.preventDefault();show(cur+1)}
+  });
+
+  var sy=0,sx=0,track=false;
+  lb.addEventListener('pointerdown',function(e){
+    if(e.target.closest&&e.target.closest('.ba-frame')&&!e.target.closest('.lb-bar')) return;
+    track=true;sy=e.clientY;sx=e.clientX;
+  });
+  lb.addEventListener('pointerup',function(e){
+    if(!track)return;track=false;
+    var dy=e.clientY-sy,dx=e.clientX-sx;
+    if(Math.abs(dy)>50&&Math.abs(dy)>Math.abs(dx)) show(dy<0?cur+1:cur-1);
+  });
+  var bar=lb.querySelector('.lb-bar');
+  var bx=0;
+  bar.addEventListener('pointerdown',function(e){bx=e.clientX});
+  bar.addEventListener('pointerup',function(e){
+    var dx=e.clientX-bx;
+    if(Math.abs(dx)>50) show(dx<0?cur+1:cur-1);
+  });
+
+  document.querySelectorAll('main figure > a > img, main .fig2 img, main .full img, main .hero img').forEach(function(img){
+    if(img.closest('[data-ba]'))return;
+    var fig=img.closest('figure');
+    if(fig) fig.style.cursor='zoom-in';
+    img.style.cursor='zoom-in';
+    (fig||img).addEventListener('click',function(e){
+      if(e.target.closest&&e.target.closest('a')&&e.target.closest('a').getAttribute('href')&&!e.target.closest('a').querySelector('img'))return;
+      e.preventDefault();
+      var src=img.getAttribute('src')||'';
+      var name=src.split('/').pop().replace('.jpg','');
+      var map={'p-garage-doors':'54','p-garage-interior':'55','p-garage-wide':'57','p-sauna-deck':'02','p-sauna-backyard':'59'};
+      var num=null;
+      var m=src.match(/p(\d{2})-after/);
+      if(m) num=m[1];
+      else if(map[name]) num=map[name];
+      if(num){
+        var idx=items.findIndex(function(it){return (it.after||'').indexOf('p'+num+'-after')>=0});
+        if(idx>=0){openAt(idx);return;}
+      }
+      imgB.src=src; imgB.alt=img.alt||'';
+      imgA.src=src; imgA.alt=img.alt||'';
+      capEl.textContent=(fig&&fig.querySelector('figcaption')&&fig.querySelector('figcaption').textContent)||img.alt||'';
+      countEl.textContent='';
+      slider.set(100);
+      lb.hidden=false;open=true;document.body.classList.add('lb-on');
+    });
+  });
+})();
 </script></body></html>

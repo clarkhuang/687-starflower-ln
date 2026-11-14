@@ -29,3 +29,36 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
   .hero{display:grid !important;grid-template-columns:1.4fr 1fr !important;gap:12px !important;break-inside:auto;page-break-before:avoid;margin-top:8px}
   .hero img{max-height:3.4in;object-fit:cover;width:100%}
 }
+
+/* Full-screen before/after gallery */
+.ba{position:relative}
+.ba-expand{position:absolute;top:10px;right:10px;z-index:4;border:0;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 10px;cursor:pointer;line-height:1}
+.ba-expand:hover,.ba-expand:focus{background:rgba(0,0,0,.8)}
+.ba-frame{cursor:ew-resize}
+.lb{position:fixed;inset:0;z-index:8000;background:rgba(8,10,14,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 56px 72px;touch-action:none}
+.lb[hidden]{display:none!important}
+.lb-stage{position:relative;width:min(1400px,100%);max-height:100%;display:flex;align-items:center;justify-content:center}
+.lb-stage .ba-frame{width:100%;max-height:calc(100vh - 140px);border-radius:8px;background:#111}
+.lb-stage .ba-frame img{width:100%;height:auto;max-height:calc(100vh - 140px);object-fit:contain}
+.lb-stage .ba-after{max-height:calc(100vh - 140px);object-fit:contain}
+.lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;color:#fff;font-size:15px;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.lb-count{opacity:.85;white-space:nowrap}
+.lb-cap{min-width:0}
+.lb-x,.lb-prev,.lb-next{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:999px;z-index:2}
+.lb-x{top:12px;right:12px;width:44px;height:44px;font-size:28px;line-height:44px}
+.lb-prev,.lb-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:32px;line-height:48px}
+.lb-prev{left:10px}
+.lb-next{right:10px}
+.lb-x:hover,.lb-prev:hover,.lb-next:hover,.lb-x:focus,.lb-prev:focus,.lb-next:focus{background:rgba(255,255,255,.28)}
+body.lb-on{overflow:hidden}
+@media(max-width:700px){
+  .lb{padding:48px 8px 64px}
+  .lb-prev,.lb-next{width:40px;height:40px;font-size:26px}
+}
+
+@media print{
+  .lb,.ba-expand,.ba-before,.listing-only,.ba-range,.ba-handle,.ba-hint{display:none!important}
+  .ba-after-wrap{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;inset:auto!important}
+  .ba-after{width:100%!important;height:auto!important;max-height:none!important}
+  .ba-frame{border:0!important;overflow:visible!important;background:transparent!important}
+}

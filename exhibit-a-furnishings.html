@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Exhibit A — Furnishings · 687 Starflower Ln</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#0f1115;--panel:#171a21;--line:#262a33;--text:#e8e6e1;--muted:#9a9fa9;--accent:#d19a5b;--accent2:#7fb4c9;--ok:#7fd18a;--bad:#e08a8a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 -apple-system,"Segoe UI",Inter,Roboto,sans-serif}
+header{padding:28px 36px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#1a1d25,#0f1115)}
+h1{margin:0;font-size:28px}h1 span{color:var(--accent)}.sub{color:var(--muted)}
+nav{position:sticky;top:0;z-index:3;background:rgba(15,17,21,.95);border-bottom:1px solid var(--line);padding:8px 36px;display:flex;flex-wrap:wrap;gap:12px;font-size:13px}
+a{color:var(--accent2)}nav a{text-decoration:none}
+main{max-width:1200px;margin:0 auto;padding:10px 36px 60px}
+section{margin-top:34px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:6px}h3{font-size:16px;margin-bottom:4px;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.tag{display:inline-block;font-size:11px;padding:0 7px;border-radius:9px;border:1px solid;margin-left:4px;white-space:nowrap}
+.S{color:var(--ok);border-color:var(--ok)}.I{color:#e0c36a;border-color:#e0c36a}.U{color:var(--bad);border-color:var(--bad)}.C{color:#b9a3e6;border-color:#b9a3e6}
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:18px}.hero img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.cta{display:inline-block;background:var(--accent);color:#1a1207;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;margin:6px 8px 0 0}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}.gal figure{margin:0}.gal img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.gal figcaption{font-size:11.5px;color:var(--muted)}.gal a{text-decoration:none}
+.key{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.warn{border-left:3px solid var(--accent);background:#1f1a12;padding:8px 12px;border-radius:6px}
+ul{padding-left:20px}li{margin:3px 0}.muted{color:var(--muted);font-size:13px}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:800px){.hero,.pc{grid-template-columns:1fr}}
+
+.hero{grid-template-columns:1.5fr 1fr}.rendergrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:18px}.rendergrid img{width:100%;border-radius:12px}figure{margin:0}figcaption{color:var(--muted);font-size:13px}iframe{width:100%;height:640px;border:1px solid var(--line);border-radius:12px} @media(max-width:700px){header,nav{padding:18px}main{padding:10px 18px}.hero{grid-template-columns:1fr}.rendergrid{grid-template-columns:1fr}}.fig2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fig2 img,.full img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.full{margin:12px 0}.pill{display:inline-block;background:#232733;border:1px solid var(--line);border-radius:999px;padding:2px 10px;margin:2px;font-size:12.5px}
+.ok{color:var(--ok)}.tight{color:#e0c36a}.no{color:var(--bad)}
+.gal-sec{margin:18px 0 8px;font-size:15px}
+table.costs{width:100%;border-collapse:collapse;font-size:14px}table.costs th,table.costs td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}table.costs th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;opacity:.8}table.costs td.num,table.costs th.num{text-align:right;white-space:nowrap}
+table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
+.ba{margin:0}
+.ba-frame{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line);user-select:none;touch-action:none;cursor:ew-resize;background:#111}
+.ba-frame img{display:block;width:100%;height:auto;margin:0;border:0;border-radius:0;pointer-events:none;-webkit-user-drag:none}
+.ba-after-wrap{position:absolute;left:0;top:0;bottom:0;width:100%;overflow:hidden}
+.ba-handle{position:absolute;top:0;bottom:0;left:100%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.ba-handle:after{content:"";position:absolute;top:50%;left:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.35);background-image:linear-gradient(#333,#333),linear-gradient(#333,#333);background-size:2px 10px,10px 2px;background-position:center;background-repeat:no-repeat}
+.ba-range{position:absolute;left:0;right:0;bottom:0;width:100%;margin:0;opacity:0;height:44px;cursor:ew-resize}
+.ba-hint{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:3px 8px;border-radius:999px;pointer-events:none;letter-spacing:.02em}
+@media(max-width:800px){.fig2{grid-template-columns:1fr}}
+@media print{nav,iframe,.noprint,.ba-range,.ba-handle,.ba-hint{display:none!important}body{background:#fff;color:#111}header{background:#fff}.card{background:#fafafa;border-color:#ddd}a{color:#1d5f80}
+ section{break-inside:auto}figure,img,.card,table{break-inside:avoid}h2{break-after:avoid}.gal{grid-template-columns:repeat(2,1fr)!important}.printonly{display:block!important}main{max-width:none}
+ #sauna .grid,#sauna .fig2,#garage .fig2,#office .fig2{grid-template-columns:1fr!important}
+ .ba-after-wrap{width:100%!important}}
+.printonly{display:none}
+@media print{
+  header{padding:10px 20px !important;margin:0 !important;break-after:avoid;page-break-after:avoid}
+  header h1{font-size:22px;margin:4px 0}
+  .hero{break-inside:avoid;page-break-before:avoid;margin-top:8px}
+  .cta{display:none !important}
+}
+@media print{
+  nav{position:static !important;display:none !important}
+  .hero{display:grid !important;grid-template-columns:1.4fr 1fr !important;gap:12px !important;break-inside:auto;page-break-before:avoid;margin-top:8px}
+  .hero img{max-height:3.4in;object-fit:cover;width:100%}
+}
+
+/* Full-screen before/after gallery */
+.ba{position:relative}
+.ba-expand{position:absolute;top:10px;right:10px;z-index:4;border:0;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 10px;cursor:pointer;line-height:1}
+.ba-expand:hover,.ba-expand:focus{background:rgba(0,0,0,.8)}
+.ba-frame{cursor:ew-resize}
+.lb{position:fixed;inset:0;z-index:8000;background:rgba(8,10,14,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 56px 72px;touch-action:none}
+.lb[hidden]{display:none!important}
+.lb-stage{position:relative;width:min(1400px,100%);max-height:100%;display:flex;align-items:center;justify-content:center}
+.lb-stage .ba-frame{width:100%;max-height:calc(100vh - 140px);border-radius:8px;background:#111}
+.lb-stage .ba-frame img{width:100%;height:auto;max-height:calc(100vh - 140px);object-fit:contain}
+.lb-stage .ba-after{max-height:calc(100vh - 140px);object-fit:contain}
+.lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;color:#fff;font-size:15px;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.lb-count{opacity:.85;white-space:nowrap}
+.lb-cap{min-width:0}
+.lb-x,.lb-prev,.lb-next{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:999px;z-index:2}
+.lb-x{top:12px;right:12px;width:44px;height:44px;font-size:28px;line-height:44px}
+.lb-prev,.lb-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:32px;line-height:48px}
+.lb-prev{left:10px}
+.lb-next{right:10px}
+.lb-x:hover,.lb-prev:hover,.lb-next:hover,.lb-x:focus,.lb-prev:focus,.lb-next:focus{background:rgba(255,255,255,.28)}
+body.lb-on{overflow:hidden}
+@media(max-width:700px){
+  .lb{padding:48px 8px 64px}
+  .lb-prev,.lb-next{width:40px;height:40px;font-size:26px}
+}
+
+@media print{
+  .lb,.ba-expand,.ba-before,.listing-only,.ba-range,.ba-handle,.ba-hint{display:none!important}
+  .ba-after-wrap{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;inset:auto!important}
+  .ba-after{width:100%!important;height:auto!important;max-height:none!important}
+  .ba-frame{border:0!important;overflow:visible!important;background:transparent!important}
+}
+
+.meta-card p{margin:0;line-height:1.7}
+.sig-line{border-bottom:1px solid var(--text);width:min(420px,100%);height:2.4em;margin:22px 0 4px}
+blockquote{border-left:3px solid var(--accent);background:#1f1a12;padding:10px 14px;border-radius:6px;margin:12px 0}
+main.exhibit{max-width:1100px}
+.back{display:inline-block;margin:12px 8px 0 0;font-size:13px;color:var(--muted)}
+</style>
+</head><body>
+<header><div class="sub">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</div>
+<h1>687 Starflower Ln <span>· Furnishings Exhibit A</span></h1>
+<div class="sub">Personal property included by a separate bill of sale · draft November 15, 2026 · MLS 1949596</div></header>
+<nav><a href="index.html">Concept site</a><a href="index.html#furnishings">Furnishings section</a><a href="exhibit-a-furnishings.pdf">Furnishings Exhibit A (PDF)</a><a href="687-Starflower-Concept.pdf">Concept PDF</a></nav>
+<main class="exhibit">
+<p><a class="cta" href="exhibit-a-furnishings.pdf">Furnishings Exhibit A (PDF)</a><a class="back" href="index.html">← Back to the concept site</a></p>
+<div class="card meta-card"><p><strong>Property:</strong> 687 Starflower Lane, Williamsburg, Michigan<br/>
+<strong>Parcel:</strong> 13-031-005-05<br/>
+<strong>MLS:</strong> 1949596<br/>
+<strong>Sellers:</strong> Brian J. Jackson and Courtney Jackson<br/>
+<strong>Buyers:</strong> Clark Huang and Jenny Roes<br/>
+<strong>Date of this draft:</strong> November 15, 2026</p></div>
+
+<hr/>
+
+<h2>Scope and method</h2>
+
+<p>This Exhibit A lists <strong>movable personal property</strong> the Buyers propose to purchase from the Sellers by a <strong>separate bill of sale</strong>, at a fair <strong>used-market</strong> value, in connection with a purchase of the real estate. The real-estate price is <strong>not</strong> stated on this exhibit.</p>
+
+<p><strong>Included:</strong> televisions and TV stands (wall mounts stay with the real estate); dining, coffee, and side tables; kitchen-island bar stools and dining chairs; and similar hard-surface or functional pieces a buyer would likely keep (consoles, dressers, desks, outdoor tables, grill, patio heater).</p>
+
+<p><strong>Excluded from this exhibit:</strong> couches, sofas, sectionals, upholstered living-room chairs and recliners; the <strong>primary-suite bed, mattress, and leather bench</strong> (Buyer is bringing Jenny&#x27;s own king bed); rugs, pillows, throws, art, mirrors, and other décor or soft furnishings; clothes, kitchenware, and ordinary household contents; garage tools, exercise equipment, bicycles, and similar personal effects.</p>
+
+<p><strong>Conditional (Bedroom 2 and Bedroom 3 only):</strong> bed frames/headboards, and mattresses only if they prove like-new, are listed in a separate section. They are <strong>included only if Buyer confirms like-new condition at walkthrough.</strong> The primary-suite bed is not in that section.</p>
+
+<p>Values are <strong>estimates from the full-size 2304×1536 listing photos</strong> (Realtor CDN, November 2026 pull), not a walkthrough or an appraiser&#x27;s inventory. Used values are generally about 20–40% of estimated new cost for furniture in like-new or lightly used condition (this house was occupied beginning around March 2024). Televisions are priced from current used-market comps, which are often lower than 20–40% of new because TVs depreciate quickly. <strong>All items and values are to be confirmed at a walkthrough.</strong> Sizes (especially TV diagonals and bed/mattress sizes) are photo estimates.</p>
+
+<p>Sold <strong>as-is</strong>. Values reflect negotiated used-market value. The list is to be confirmed at the final walkthrough. Seller may remove items marked by mutual agreement before closing.</p>
+
+<hr/>
+
+<h2>Itemized list (base — no conditional beds)</h2>
+
+<h3>Kitchen</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>1</td><td>Wall-mounted flat-screen TV, approximately 32–43 in.</td><td><a href="photos/p09.jpg">p09</a>, <a href="photos/p10.jpg">p10</a>, <a href="photos/p11.jpg">p11</a>, <a href="photos/p15.jpg">p15</a></td><td class="num">$250–$500</td><td class="num"><strong>$100</strong></td><td>Like-new appearance; thin-bezel set on the kitchen wall between the range and the window. Size estimated from photos; confirm at walkthrough. Wall mount conveys with the real estate.</td></tr><tr><td>2</td><td>Set of 4 white X-back counter-height bar stools with dark patterned seats</td><td><a href="photos/p09.jpg">p09</a>, <a href="photos/p10.jpg">p10</a>, <a href="photos/p11.jpg">p11</a>, <a href="photos/p12.jpg">p12</a>, <a href="photos/p14.jpg">p14</a>, <a href="photos/p22.jpg">p22</a></td><td class="num">$600–$1,120</td><td class="num"><strong>$360</strong></td><td>Like-new; wood frames match the dining chairs. Priced at $90 each.</td></tr><tr><td>3</td><td>Cream/off-white 2-door, 2-drawer console (buffet) beside the pantry</td><td><a href="photos/p11.jpg">p11</a>, <a href="photos/p18.jpg">p18</a></td><td class="num">$400–$800</td><td class="num"><strong>$200</strong></td><td>Like-new hard casegood. Gold mirror, tray, and décor on top are excluded.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Kitchen subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$660</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Dining room</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>4</td><td>Solid-wood farmhouse dining table (natural pine/oak top, turned legs, center drawer; seats 6)</td><td><a href="photos/p14.jpg">p14</a>, <a href="photos/p16.jpg">p16</a>, <a href="photos/p19.jpg">p19</a>, <a href="photos/p20.jpg">p20</a>, <a href="photos/p21.jpg">p21</a>, <a href="photos/p22.jpg">p22</a></td><td class="num">$1,200–$2,500</td><td class="num"><strong>$600</strong></td><td>Excellent condition; substantial solid-top table, lightly used in a 2024 house.</td></tr><tr><td>5</td><td>Set of 6 white X-back dining chairs with dark patterned seats (matching the island stools)</td><td><a href="photos/p14.jpg">p14</a>, <a href="photos/p16.jpg">p16</a>, <a href="photos/p19.jpg">p19</a>, <a href="photos/p20.jpg">p20</a>, <a href="photos/p21.jpg">p21</a>, <a href="photos/p22.jpg">p22</a></td><td class="num">$900–$1,500</td><td class="num"><strong>$540</strong></td><td>Like-new; priced at $90 each. Counted in <a href="photos/p19.jpg">p19</a>–<a href="photos/p21.jpg">p21</a>.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Dining room subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$1,140</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Great room (main floor)</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>6</td><td>Wall-mounted flat-screen TV, approximately 65–75 in., over the fireplace</td><td><a href="photos/p06.jpg">p06</a>, <a href="photos/p22.jpg">p22</a>, <a href="photos/p23.jpg">p23</a>, <a href="photos/p24.jpg">p24</a></td><td class="num">$600–$1,500</td><td class="num"><strong>$400</strong></td><td>Excellent condition. Size estimated from the fireplace surround; confirm diagonal at walkthrough. The wall mount and the dark mantel shelf convey with the real estate.</td></tr><tr><td>7</td><td>Round two-tier side table (dark metal/wood) beside the loveseat</td><td><a href="photos/p23.jpg">p23</a>, <a href="photos/p24.jpg">p24</a></td><td class="num">$150–$300</td><td class="num"><strong>$80</strong></td><td>Good/like-new hard side table.</td></tr><tr><td>8</td><td>Dark rectangular side table between the sofa and the recliner</td><td><a href="photos/p23.jpg">p23</a></td><td class="num">$100–$250</td><td class="num"><strong>$70</strong></td><td>Hard side table; partially obscured by the recliner in the photos.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Great room (main floor) subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$550</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Primary suite (bed excluded)</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>9</td><td>Wall-mounted flat-screen TV, approximately 75–85 in.</td><td><a href="photos/p07.jpg">p07</a>, <a href="photos/p36.jpg">p36</a>, <a href="photos/p37.jpg">p37</a></td><td class="num">$1,200–$2,500</td><td class="num"><strong>$600</strong></td><td>Excellent condition; very large thin-bezel set. Size estimated against the door and the console; confirm diagonal at walkthrough. Wall mount conveys with the real estate. The primary bed, leather bench, and recliner are excluded (Buyer is bringing a king bed).</td></tr><tr><td>10</td><td>Black double dog-crate media console with light stone/solid top and two drawers</td><td><a href="photos/p07.jpg">p07</a>, <a href="photos/p36.jpg">p36</a>, <a href="photos/p37.jpg">p37</a></td><td class="num">$500–$1,000</td><td class="num"><strong>$280</strong></td><td>Like-new specialty TV-stand / crate console. Decorative bowls excluded.</td></tr><tr><td>11</td><td>Dark wood tall chest (drawers plus a side door), between the window and the closet</td><td><a href="photos/p36.jpg">p36</a>, <a href="photos/p37.jpg">p37</a></td><td class="num">$500–$900</td><td class="num"><strong>$220</strong></td><td>Like-new casegood.</td></tr><tr><td>12</td><td>Dark wood tall chest of drawers with acrylic/crystal knobs, opposite wall</td><td><a href="photos/p36.jpg">p36</a></td><td class="num">$400–$800</td><td class="num"><strong>$180</strong></td><td>Like-new; visible at the right edge of <a href="photos/p36.jpg">p36</a>. Confirm full piece at walkthrough.</td></tr><tr><td>13</td><td>Dark nightstand with a lower basket (one visible)</td><td><a href="photos/p27.jpg">p27</a></td><td class="num">$150–$300</td><td class="num"><strong>$80</strong></td><td>One nightstand is visible to the left of the bed in <a href="photos/p27.jpg">p27</a>. Confirm whether a matching second nightstand is present.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Primary suite (bed excluded) subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$1,360</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Lower-level family room</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>14</td><td>Wall-mounted flat-screen TV, approximately 75 in. class</td><td><a href="photos/p41.jpg">p41</a></td><td class="num">$800–$1,800</td><td class="num"><strong>$400</strong></td><td>Excellent condition; the set is slightly wider than the media console. Confirm diagonal at walkthrough. Wall mount conveys with the real estate.</td></tr><tr><td>15</td><td>Soundbar on the media console</td><td><a href="photos/p41.jpg">p41</a></td><td class="num">$150–$400</td><td class="num"><strong>$80</strong></td><td>Appears like-new; sits on the console, not built in.</td></tr><tr><td>16</td><td>Dark media console (two center doors, two open side cubbies, bun feet)</td><td><a href="photos/p41.jpg">p41</a></td><td class="num">$250–$500</td><td class="num"><strong>$150</strong></td><td>Like-new TV stand. Baskets and décor excluded.</td></tr><tr><td>17</td><td>Square solid-wood coffee table with turned legs and a light top</td><td><a href="photos/p41.jpg">p41</a>, <a href="photos/p42.jpg">p42</a></td><td class="num">$300–$700</td><td class="num"><strong>$180</strong></td><td>Excellent condition; similar wood tone to the dining table.</td></tr><tr><td>18</td><td>Dark wood side table with a lower shelf, beside the sectional</td><td><a href="photos/p42.jpg">p42</a></td><td class="num">$150–$300</td><td class="num"><strong>$80</strong></td><td>Hard side table. Lamp and décor on top are excluded. Sectional and upholstered chairs are excluded.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Lower-level family room subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$890</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Bedroom 2 (lower level; navy/black bed)</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>19</td><td>Wall-mounted flat-screen TV, approximately 50–55 in.</td><td><a href="photos/p47.jpg">p47</a></td><td class="num">$350–$700</td><td class="num"><strong>$180</strong></td><td>Like-new appearance; slightly narrower than the 6-drawer dresser. Wall mount conveys with the real estate.</td></tr><tr><td>20</td><td>Dark wood 6-drawer dresser</td><td><a href="photos/p47.jpg">p47</a></td><td class="num">$400–$800</td><td class="num"><strong>$200</strong></td><td>Like-new casegood. Tray and décor excluded.</td></tr><tr><td>21</td><td>Small dark desk (against the window wall)</td><td><a href="photos/p47.jpg">p47</a></td><td class="num">$150–$350</td><td class="num"><strong>$100</strong></td><td>Hard desk. Computer monitor, accessories, and the upholstered gaming chair are excluded.</td></tr><tr><td>22</td><td>Small dark nightstand</td><td><a href="photos/p46.jpg">p46</a></td><td class="num">$80–$200</td><td class="num"><strong>$50</strong></td><td>Hard nightstand; basket and contents excluded.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Bedroom 2 (lower level; navy/black bed) subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$530</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Bedroom 3 (lower level; sleigh bed / guest)</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>23</td><td>Wall-mounted flat-screen TV, approximately 50–65 in.</td><td><a href="photos/p43.jpg">p43</a>, <a href="photos/p44.jpg">p44</a></td><td class="num">$400–$900</td><td class="num"><strong>$200</strong></td><td>Like-new appearance. Size estimated from the wall and door; confirm at walkthrough. Wall mount conveys with the real estate.</td></tr><tr><td>24</td><td>Dark wood dresser, against the window wall</td><td><a href="photos/p44.jpg">p44</a></td><td class="num">$400–$800</td><td class="num"><strong>$180</strong></td><td>Like-new casegood. Lamps and décor excluded.</td></tr><tr><td>25</td><td>Nightstand with a wood top, dark legs, and a lower shelf (one visible)</td><td><a href="photos/p43.jpg">p43</a>, <a href="photos/p44.jpg">p44</a></td><td class="num">$120–$280</td><td class="num"><strong>$70</strong></td><td>Hard nightstand. Confirm whether a matching second nightstand is present.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Bedroom 3 (lower level; sleigh bed / guest) subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$450</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Lower-level hall</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>26</td><td>Natural pine/cream sideboard (wood top, drawers and cupboard doors)</td><td><a href="photos/p45.jpg">p45</a></td><td class="num">$400–$900</td><td class="num"><strong>$250</strong></td><td>Like-new hard console at the lower-hall window, beside the stair. Lamp and décor excluded.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Lower-level hall subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$250</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Lower-level office (secret office)</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>27</td><td>Light-wood X-base desk with a matching return (L-configuration)</td><td><a href="photos/p51.jpg">p51</a></td><td class="num">$400–$800</td><td class="num"><strong>$250</strong></td><td>Like-new hard desk set. Computer monitor, art, and the upholstered executive chair are excluded.</td></tr><tr><td>28</td><td>Dark printer stand / small cabinet</td><td><a href="photos/p51.jpg">p51</a></td><td class="num">$120–$300</td><td class="num"><strong>$80</strong></td><td>Hard cabinet. Printer itself is personal electronics and is excluded unless Buyer later adds it.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Lower-level office (secret office) subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$330</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Covered rear porch</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>29</td><td>Square light stone/concrete coffee table with a glass top</td><td><a href="photos/p61.jpg">p61</a>, <a href="photos/p62.jpg">p62</a></td><td class="num">$300–$700</td><td class="num"><strong>$180</strong></td><td>Hard outdoor table, good condition. The outdoor sectional and the two cube ottomans are excluded (upholstered/soft).</td></tr><tr><td>30</td><td>Black metal side table with a glass top</td><td><a href="photos/p61.jpg">p61</a>, <a href="photos/p62.jpg">p62</a></td><td class="num">$80–$200</td><td class="num"><strong>$50</strong></td><td>Hard outdoor side table.</td></tr><tr><td>31</td><td>Covered gas grill</td><td><a href="photos/p02.jpg">p02</a>, <a href="photos/p62.jpg">p62</a></td><td class="num">$400–$1,200</td><td class="num"><strong>$200</strong></td><td>Mid-size grill under a cover; brand and burner count not readable. Confirm make, condition, and fuel at walkthrough.</td></tr><tr><td>32</td><td>Standing patio heater</td><td><a href="photos/p62.jpg">p62</a></td><td class="num">$150–$400</td><td class="num"><strong>$100</strong></td><td>Tall propane-style heater behind the grill; confirm condition and fuel at walkthrough.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Covered rear porch subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$530</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Garage</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>33</td><td>Small café/work table and 2 metal mesh chairs</td><td><a href="photos/p55.jpg">p55</a>, <a href="photos/p57.jpg">p57</a></td><td class="num">$150–$350</td><td class="num"><strong>$80</strong></td><td>Hard table and chairs at the back of the garage, beside the tire rack.</td></tr><tr><td>34</td><td>1 wood slat bench and 2 matching slat chairs, stored in the garage loft / hanging from the ceiling</td><td><a href="photos/p55.jpg">p55</a>, <a href="photos/p56.jpg">p56</a></td><td class="num">$250–$600</td><td class="num"><strong>$140</strong></td><td>Outdoor-style slat furniture in good visible condition. Bikes, tools, and storage boxes are excluded.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Garage subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$220</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Unfinished lower-level storage / utility</h3>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Quality / notes</th></tr></thead>
+<tbody><tr><td>35</td><td>White craft/sewing desk (long work table with drawers)</td><td><a href="photos/p52.jpg">p52</a>, <a href="photos/p53.jpg">p53</a></td><td class="num">$200–$500</td><td class="num"><strong>$120</strong></td><td>Hard desk. Sewing machine, craft supplies, and the upholstered chair are excluded.</td></tr><tr><td>36</td><td>White 5-drawer chest</td><td><a href="photos/p52.jpg">p52</a>, <a href="photos/p53.jpg">p53</a></td><td class="num">$150–$350</td><td class="num"><strong>$80</strong></td><td>Like-new inexpensive casegood.</td></tr><tr><td>37</td><td>White 2-door storage cabinet (beside the water heater)</td><td><a href="photos/p53.jpg">p53</a></td><td class="num">$150–$350</td><td class="num"><strong>$80</strong></td><td>Hard cabinet.</td></tr><tr><td>38</td><td>White open bookcase / shelf unit</td><td><a href="photos/p53.jpg">p53</a></td><td class="num">$80–$200</td><td class="num"><strong>$60</strong></td><td>Hard shelf unit. Contents excluded.</td></tr><tr><td>39</td><td>3–4 natural-wood chairs stored overhead on the joists</td><td><a href="photos/p53.jpg">p53</a></td><td class="num">$120–$300</td><td class="num"><strong>$80</strong></td><td>Stacked light-wood chairs; condition of seats not fully visible. Confirm count and condition at walkthrough.</td></tr></tbody>
+<tfoot><tr><td></td><td><strong>Unfinished lower-level storage / utility subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$420</strong></td><td></td></tr></tfoot>
+</table>
+
+<h3>Base total (this section)</h3>
+
+<p><strong>$7,330</strong> used-market point estimate.<br/>
+Estimated range: <strong>$5,860 – $9,530</strong>, reflecting uncertainty in TV sizes, exact brands, and used comps.<br/>
+Sum of estimated new-cost ranges for these items: $13,450–$28,850.</p>
+
+<hr/>
+
+<h2>Conditional items — Bedroom 2 and Bedroom 3 beds</h2>
+
+<p><strong>Conditional: included only if Buyer confirms like-new condition at walkthrough.</strong></p>
+
+<p>The listing photos of Bedroom 2 (<a href="photos/p46.jpg">p46</a>, <a href="photos/p47.jpg">p47</a>) and Bedroom 3 (<a href="photos/p43.jpg">p43</a>, <a href="photos/p44.jpg">p44</a>) are clear enough to judge the <strong>frames and headboards</strong>. Both frames appear relatively new and lightly used: clean finishes, no obvious chips, scratches, sagging, or damage, consistent with furniture in a house first occupied around March 2024. The Bedroom 3 sleigh bed (storage drawers) is the more substantial piece.</p>
+
+<p>The photos are <strong>not</strong> sufficient to judge the <strong>mattresses</strong>. Both beds are fully made, so the mattress surface, brand, and wear cannot be seen. Mattresses are listed below only as a placeholder, at used value, and should be added only if they prove like-new at the walkthrough.</p>
+
+<p>The <strong>primary-suite bed and mattress are not included</strong> on this exhibit.</p>
+
+<table class="costs">
+<thead><tr><th>#</th><th>Room</th><th>Description</th><th>Photo(s)</th><th class="num">Est. new cost</th><th class="num">Used value</th><th>Notes</th></tr></thead>
+<tbody><tr><td>40</td><td>Bedroom 2 (lower level; navy/black bed)</td><td>Dark platform/panel bed frame with a padded two-panel headboard (full or queen)</td><td><a href="photos/p46.jpg">p46</a>, <a href="photos/p47.jpg">p47</a></td><td class="num">$400–$900</td><td class="num"><strong>$200</strong></td><td>Conditional: included only if Buyer confirms like-new condition at walkthrough. In the photos the frame appears relatively new and lightly used (clean finish, no obvious chips, scratches, or sagging), consistent with a house occupied since about March 2024. The primary-suite bed is not included.</td></tr><tr><td>41</td><td>Bedroom 2 (lower level; navy/black bed)</td><td>Mattress on the Bedroom 2 bed (size to be confirmed; likely full or queen)</td><td><a href="photos/p46.jpg">p46</a>, <a href="photos/p47.jpg">p47</a></td><td class="num">$400–$1,200</td><td class="num"><strong>$200</strong></td><td>Conditional: included only if Buyer confirms like-new condition at walkthrough. The mattress is fully made in every photo, so its surface, brand, and age cannot be judged from the listing photos.</td></tr><tr><td>42</td><td>Bedroom 3 (lower level; sleigh bed / guest)</td><td>Dark wood sleigh bed frame with under-bed storage drawers (likely queen)</td><td><a href="photos/p43.jpg">p43</a>, <a href="photos/p44.jpg">p44</a></td><td class="num">$800–$1,800</td><td class="num"><strong>$400</strong></td><td>Conditional: included only if Buyer confirms like-new condition at walkthrough. In the photos the frame and drawer fronts appear relatively new and lightly used, with a smooth finish and no visible wear. This is the stronger of the two secondary bed frames.</td></tr><tr><td>43</td><td>Bedroom 3 (lower level; sleigh bed / guest)</td><td>Mattress on the Bedroom 3 sleigh bed (size to be confirmed; likely queen)</td><td><a href="photos/p43.jpg">p43</a>, <a href="photos/p44.jpg">p44</a></td><td class="num">$400–$1,200</td><td class="num"><strong>$250</strong></td><td>Conditional: included only if Buyer confirms like-new condition at walkthrough. The mattress is fully made in every photo, so its surface, brand, and age cannot be judged from the listing photos.</td></tr></tbody>
+<tfoot><tr><td></td><td></td><td><strong>Conditional frames subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$600</strong></td><td></td></tr><tr><td></td><td></td><td><strong>Conditional mattresses subtotal</strong></td><td></td><td class="num"></td><td class="num"><strong>$450</strong></td><td>Add only if like-new at walkthrough</td></tr></tfoot>
+</table>
+
+<h3>Totals with and without the conditional beds</h3>
+
+<table class="costs">
+<thead><tr><th></th><th class="num">Point estimate</th><th class="num">Range</th></tr></thead>
+<tbody><tr><td><strong>Base Exhibit A (no beds)</strong></td><td class="num"><strong>$7,330</strong></td><td class="num">$5,860 – $9,530</td></tr><tr><td>Base + Bedroom 2 and 3 <strong>frames only</strong></td><td class="num"><strong>$7,930</strong></td><td class="num">$6,340 – $10,310</td></tr><tr><td>Base + frames + <strong>mattresses</strong> (if like-new)</td><td class="num"><strong>$8,380</strong></td><td class="num">$6,700 – $10,890</td></tr></tbody>
+</table>
+
+<hr/>
+
+<h2>Room subtotals (base list)</h2>
+
+<table class="costs">
+<thead><tr><th>Room</th><th class="num">Used subtotal</th></tr></thead>
+<tbody><tr><td>Kitchen</td><td class="num">$660</td></tr><tr><td>Dining room</td><td class="num">$1,140</td></tr><tr><td>Great room (main floor)</td><td class="num">$550</td></tr><tr><td>Primary suite (bed excluded)</td><td class="num">$1,360</td></tr><tr><td>Lower-level family room</td><td class="num">$890</td></tr><tr><td>Bedroom 2 (lower level; navy/black bed)</td><td class="num">$530</td></tr><tr><td>Bedroom 3 (lower level; sleigh bed / guest)</td><td class="num">$450</td></tr><tr><td>Lower-level hall</td><td class="num">$250</td></tr><tr><td>Lower-level office (secret office)</td><td class="num">$330</td></tr><tr><td>Covered rear porch</td><td class="num">$530</td></tr><tr><td>Garage</td><td class="num">$220</td></tr><tr><td>Unfinished lower-level storage / utility</td><td class="num">$420</td></tr></tbody>
+<tfoot><tr><td><strong>Base total</strong></td><td class="num"><strong>$7,330</strong></td></tr></tfoot>
+</table>
+
+<hr/>
+
+<h2>Largest items by used value (base list)</h2>
+
+<ol><li><strong>$600</strong> — Wall-mounted flat-screen TV, approximately 75–85 in. (Primary suite (bed excluded); <a href="photos/p07.jpg">p07</a>, <a href="photos/p36.jpg">p36</a>, <a href="photos/p37.jpg">p37</a>)</li><li><strong>$600</strong> — Solid-wood farmhouse dining table (natural pine/oak top, turned legs, center drawer; seats 6) (Dining room; <a href="photos/p14.jpg">p14</a>, <a href="photos/p16.jpg">p16</a>, <a href="photos/p19.jpg">p19</a>, <a href="photos/p20.jpg">p20</a>, <a href="photos/p21.jpg">p21</a>, <a href="photos/p22.jpg">p22</a>)</li><li><strong>$540</strong> — Set of 6 white X-back dining chairs with dark patterned seats (matching the island stools) (Dining room; <a href="photos/p14.jpg">p14</a>, <a href="photos/p16.jpg">p16</a>, <a href="photos/p19.jpg">p19</a>, <a href="photos/p20.jpg">p20</a>, <a href="photos/p21.jpg">p21</a>, <a href="photos/p22.jpg">p22</a>)</li><li><strong>$400</strong> — Wall-mounted flat-screen TV, approximately 75 in. class (Lower-level family room; <a href="photos/p41.jpg">p41</a>)</li><li><strong>$400</strong> — Wall-mounted flat-screen TV, approximately 65–75 in., over the fireplace (Great room (main floor); <a href="photos/p06.jpg">p06</a>, <a href="photos/p22.jpg">p22</a>, <a href="photos/p23.jpg">p23</a>, <a href="photos/p24.jpg">p24</a>)</li><li><strong>$360</strong> — Set of 4 white X-back counter-height bar stools with dark patterned seats (Kitchen; <a href="photos/p09.jpg">p09</a>, <a href="photos/p10.jpg">p10</a>, <a href="photos/p11.jpg">p11</a>, <a href="photos/p12.jpg">p12</a>, <a href="photos/p14.jpg">p14</a>, <a href="photos/p22.jpg">p22</a>)</li><li><strong>$280</strong> — Black double dog-crate media console with light stone/solid top and two drawers (Primary suite (bed excluded); <a href="photos/p07.jpg">p07</a>, <a href="photos/p36.jpg">p36</a>, <a href="photos/p37.jpg">p37</a>)</li><li><strong>$250</strong> — Natural pine/cream sideboard (wood top, drawers and cupboard doors) (Lower-level hall; <a href="photos/p45.jpg">p45</a>)</li></ol>
+
+<p>If the conditional Bedroom 3 sleigh-bed frame ($400) is added, it would rank among these largest items.</p>
+
+<hr/>
+
+<h2>Built-in items and fixtures that should stay with the real estate</h2>
+
+<p>The following are <strong>not</strong> on the bill of sale. Unless the purchase agreement says otherwise, they convey with the real estate, or they are flagged as ambiguous and should be named in the PA.</p>
+
+<h3>Conveys with the real estate (typical)</h3>
+
+<ul><li>Built-in kitchen cabinets, pantry shelving, granite/stone counters, island, and backsplash</li><li>Built-in kitchen appliances visible in the photos: Samsung French-door refrigerator, gas range, dishwasher, and the appliance in the backsplash niche (microwave or similar)</li><li>Washer and dryer in the laundry (<a href="photos/p29.jpg">p29</a>) — typically convey; confirm they are included in the PA</li><li>All light fixtures and ceiling fans, including kitchen pendants, the dining chandelier, closet chandelier, and bath sconces</li><li>Window treatments / Roman shades throughout</li><li>Great-room stone fireplace, dark mantel shelf, and the built-in arched cabinets and shelves flanking the fireplace (<a href="photos/p06.jpg">p06</a>, <a href="photos/p24.jpg">p24</a>)</li><li>Built-in mudroom bench and hooks (<a href="photos/p26.jpg">p26</a>)</li><li>Primary closet built-ins, including the island, shoe wall, and the makeup vanity (<a href="photos/p38.jpg">p38</a>, <a href="photos/p39.jpg">p39</a>, <a href="photos/p40.jpg">p40</a>)</li><li>Lower-level built-in bookcases / cabinets (<a href="photos/p41.jpg">p41</a>, <a href="photos/p42.jpg">p42</a>, <a href="photos/p49.jpg">p49</a>)</li><li><strong>Wall-mounted TV brackets / mounts</strong> in the kitchen, great room, primary suite, family room, Bedroom 2, and Bedroom 3 (the televisions themselves are personal property on this Exhibit A)</li><li>Retractable porch screens, attached porch ceiling lights, and the hanging porch lantern if it is a fixture (<a href="photos/p61.jpg">p61</a>, <a href="photos/p62.jpg">p62</a>)</li><li>Hot-tub privacy screen (appears built-in on the deck)</li><li>Water heater in the unfinished lower level (<a href="photos/p53.jpg">p53</a>)</li><li>If the compact white/gray unit beside the water heater is a water softener or other hard-plumbed treatment system, it typically conveys; if it is a portable dehumidifier, treat it as personal property (see ambiguous, below)</li><li>Plumbing and electrical fixtures (hose bibs, exterior receptacles, garage utility faucet, etc.)</li></ul>
+
+<h3>Ambiguous — name these in the purchase agreement</h3>
+
+<ul><li><strong>Viking spa / hot tub</strong> on the covered rear porch (<a href="photos/p02.jpg">p02</a>, <a href="photos/p60.jpg">p60</a>, <a href="photos/p61.jpg">p61</a>, <a href="photos/p62.jpg">p62</a>), with cover and cover-lifter. It is a portable cabinet spa (the “VIKING” name is visible on the cabinet in <a href="photos/p60.jpg">p60</a>), sitting on the deck, and is likely hardwired (a 240V disconnect is typical and was not clearly photographed). This is <strong>not</strong> valued on this Exhibit A. Confirm whether it conveys with the real estate, is retained by Seller, or is sold separately. If sold separately, a used mid-size Viking spa in good condition would typically be a much larger number than any item on this list (often a few thousand dollars used; new mid-size Viking models are commonly several thousand to about $10,000).</li><li><strong>Stair lift</strong> bolted to the main stair (<a href="photos/p07.jpg">p07</a>, <a href="photos/p23.jpg">p23</a>). Attached, so it can be treated as a fixture, but sellers often remove a stair lift. State in the PA whether Seller will leave it, remove it, or sell it separately. <strong>Not</strong> valued on this Exhibit A.</li><li><strong>White chest freezer</strong> in the garage (<a href="photos/p55.jpg">p55</a>). Freestanding appliance; not on this Exhibit A unless Buyer later adds it.</li><li><strong>White/gray compact mechanical unit</strong> beside the water heater (<a href="photos/p53.jpg">p53</a>). Appears to be a dehumidifier, but could be a compact water-treatment unit. If it is plumbed as a softener, it typically conveys; if it is a portable dehumidifier, it is personal property.</li><li><strong>Second nightstands</strong> in the primary suite and Bedroom 3, if they exist but were not fully visible.</li><li>Garage cabinet system and metal shelving (<a href="photos/p55.jpg">p55</a>, <a href="photos/p56.jpg">p56</a>): hard functional storage, but treated as outside the narrowed scope of this exhibit (along with tools, compressors, blowers, and other shop equipment). Buyer may ask for them separately.</li></ul>
+
+<hr/>
+
+<h2>Items visible in the photos and intentionally omitted</h2>
+
+<ul><li>Great-room leather sofa, loveseat, and recliner; white tufted ottoman (<a href="photos/p06.jpg">p06</a>, <a href="photos/p23.jpg">p23</a>, <a href="photos/p24.jpg">p24</a>)</li><li>Primary-suite bed, mattress, bedding, leather storage bench, and upholstered recliner (<a href="photos/p27.jpg">p27</a>, <a href="photos/p36.jpg">p36</a>, <a href="photos/p37.jpg">p37</a>)</li><li>Lower-level family-room sectional, ottoman, and upholstered chairs (<a href="photos/p41.jpg">p41</a>, <a href="photos/p42.jpg">p42</a>)</li><li>Outdoor wicker/resin sectional and cube ottomans on the rear porch (<a href="photos/p61.jpg">p61</a>, <a href="photos/p62.jpg">p62</a>)</li><li>Upholstered chairs: office executive chair (<a href="photos/p51.jpg">p51</a>), Bedroom 2 gaming chair (<a href="photos/p47.jpg">p47</a>), storage-room chair (<a href="photos/p52.jpg">p52</a>), lower-hall chair (<a href="photos/p49.jpg">p49</a>, <a href="photos/p50.jpg">p50</a>)</li><li>Rugs, pillows, throws, art, mirrors, plants, lamps (except as fixtures), and décor</li><li>Computers, monitors, printers, and small electronics other than the TVs and the family-room soundbar</li><li>Clothing, kitchen contents, pantry food, and closet contents</li><li>Garage and storage-room tools, shop vacuum, blowers, tires, ladders, bicycles, exercise equipment, sewing machine, and boxed goods</li></ul>
+
+<hr/>
+
+<h2>Bill-of-sale language (for the addendum)</h2>
+
+<blockquote><p>Buyer will also purchase the personal property listed in this Exhibit A for the used-market total shown (base total, plus any conditional Bedroom 2 and Bedroom 3 bed items Buyer confirms as like-new at walkthrough), by separate bill of sale, as-is, paid at closing. The personal-property price was negotiated separately and is based on used market value. Wall-mounted television brackets, built-in appliances and cabinetry, window treatments, light fixtures, and other fixtures remain with the real estate except as the purchase agreement expressly provides. The Viking spa and the stair lift are addressed in the purchase agreement and are not part of this bill of sale unless added by written agreement. This list is to be confirmed at the final walkthrough. Seller may remove items marked by mutual agreement before closing.</p></blockquote>
+
+<p><strong>Sold as-is; values reflect negotiated used-market value; list to be confirmed at final walkthrough; Seller may remove items marked by mutual agreement before closing.</strong></p>
+
+<hr/>
+
+<h2>Signatures</h2>
+
+<p>The undersigned agree that the personal property checked and totaled on this Exhibit A will be transferred by separate bill of sale at closing, on the terms above.</p>
+
+<p><strong>Buyers</strong></p>
+
+<div class="sig-line"></div>
+<p>Clark Huang                      Date: ______________</p>
+
+<div class="sig-line"></div>
+<p>Jenny Roes                  Date: ______________</p>
+
+<p><strong>Sellers</strong></p>
+
+<div class="sig-line"></div>
+<p>Brian J. Jackson                 Date: ______________</p>
+
+<div class="sig-line"></div>
+<p>Courtney Jackson                 Date: ______________</p>
+
+<hr/>
+
+<p class="muted" style="margin-top:30px">Draft Exhibit A. Photo-based used-market estimates prepared November 15, 2026, from the MLS 1949596 listing photographs. Listing photo links go to the photos already on this concept site. This is not an appraisal. Values and items are to be confirmed at a walkthrough.</p>
+</main>
+</body></html>

@@ -43,7 +43,7 @@ R = [
 ('r-main_aerial','Main floor from above'),
 ('r-lower_aerial','Lower level from above'),
 ('r-exploded','Exploded cutaway: main floor lifted over the lower level'),
-('r-sauna','Elevation: 9×16 wood-fired skid sauna butted to the east end of the deck'),
+('r-sauna','Elevation: 9×16 wood-fired skid sauna, 16 ft perpendicular to the deck'),
 ]
 
 def fig(src, cap):

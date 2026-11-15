@@ -93,7 +93,7 @@ function label(text,x,y,z,size,color){const c=document.createElement('canvas'),k
 const LBL={main:[],lower:[],garage:[],site:[]};
 H.ROOMS.forEach(([lv,n,dm,x0,y0,x1,y1])=>{const base={main:0,lower:H.LZ,garage:H.GZ}[lv]; LBL[lv].push(label(n+(dm?'  '+dm:''),(x0+x1)/2,(y0+y1)/2,base+(lv==='garage'?12:7.6),1.1,'#cfe6f0'));});
 [['piano',4.6],['cigar1',3.4],['tbench',2.4],['sect',3.6],['tv',4.2],['massage',4.6],['gdesk',4.0],['bed',5.2],['kdesk',4.8],['cplunge',4],['airstream',11],['office',4],['rig',11]].forEach(([id,h])=>{const f=H.FU.find(q=>q.id===id); LBL[f.lv].push(label(f.name,(f.x0+f.x1)/2,(f.y0+f.y1)/2,f.z0+h,0.8));});
-LBL.site.push(label('8x12 wood-fired skid sauna (off the deck)',44,-11,9.5,1.1)); LBL.site.push(label('Hot tub (included)',31,-5,4.5,0.9)); LBL.site.push(label('Septic reserve - keep clear',23,-24,1.5,1.0,'#ffe58a')); LBL.site.push(label('Drain field (approx.)',-24,-26,1.5,1.0,'#ffb36b'));
+LBL.site.push(label('9×16 wood-fired skid sauna (perpendicular to the deck)',36.5,-20,9.5,1.1)); LBL.site.push(label('Hot tub (included)',31,-5,4.5,0.9)); LBL.site.push(label('Septic reserve - keep clear',23,-24,1.5,1.0,'#ffe58a')); LBL.site.push(label('Drain field (approx.)',-24,-26,1.5,1.0,'#ffb36b'));
 // ---------- levels ----------
 let mode=P.get('level')||'all';
 function setLevel(m){mode=m; const ex=(m==='exploded');
@@ -121,7 +121,7 @@ const V={
  storage:{p:[30,-4.4,30],t:[0,-6,16],lv:'lower',ceil:1,l:'Storage room + garage stair door'},
  garage_gym:{p:[-29,5.3,25.5],t:[-14,2.8,-2],lv:'all',ceil:1,l:'Garage: gym, plunge, office'},
  garage_top:{p:[-20,62,32],t:[-20,0,18],lv:'all',l:'Garage from above'},
- sauna:{p:[70,22,-36],t:[40,2,-8],lv:'all',l:'8x12 skid sauna just off the east end of the deck'},
+ sauna:{p:[58,16,-46],t:[36.5,3,-20],lv:'all',l:'9×16 skid sauna, 16 ft out from the deck'},
  stair_route:{p:[-24,12,42],t:[2,-6,12],lv:'lower',l:'Garage stair to storage (move route)'}
 };
 function jump(id){const v=V[id]; if(!v)return false; setLevel(v.lv); groups.ceil.visible=!!v.ceil||P.has('ceil'); groups.labels.visible=P.has('labels')||(!v.ceil&&!P.has('nolabels')); IL.forEach(l=>l.visible=!!v.ceil); cam.position.set(...v.p); ctl.target.set(...v.t); if(v.fov)cam.fov=v.fov; cam.updateProjectionMatrix(); ctl.update(); return true;}

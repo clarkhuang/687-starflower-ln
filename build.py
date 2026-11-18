@@ -249,4 +249,6 @@ page = (root/'page.tpl').read_text()
 for k, v in {'{{CSS}}': css, '{{GAL}}': gal, '{{RENDERS}}': renders, '{{JS}}': JS}.items():
     page = page.replace(k, v)
 (root/'index.html').write_text(page)
-print('ok', len(page), 'sliders', page.count('data-ba'))
+backup = (root/'backup-power.tpl').read_text().replace('{{CSS}}', css)
+(root/'backup-power.html').write_text(backup)
+print('ok', len(page), 'sliders', page.count('data-ba'), 'backup', len(backup))

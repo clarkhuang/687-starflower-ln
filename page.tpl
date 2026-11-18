@@ -3,7 +3,7 @@
 <header><div class="sub">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</div>
 <h1>687 Starflower Ln <span>· piano lounge, 40×50 garage gym &amp; backyard sauna</span></h1>
 <div class="sub">2024 custom ranch on 5.13 wooded acres backing onto state forest · listed at $1,295,000 (MLS 1949596) · concept prepared Nov 14, 2026</div></header>
-<nav><a href="#overview">Overview</a><a href="#photos">Before &amp; after</a><a href="#plans">Floor plans</a><a href="#model">3D model</a><a href="#concepts">Photo concepts</a><a href="#fit">Fit &amp; tight spots</a><a href="#move">Move-in routes</a><a href="#garage">Garage gym</a><a href="#office">Garage office</a><a href="#sauna">Sauna</a><a href="#outdoors">Trails</a><a href="#measure">To measure</a><a href="#furnishings">Furnishings Exhibit A</a><a href="687-Starflower-Concept.pdf">PDF</a></nav>
+<nav><a href="#overview">Overview</a><a href="#photos">Before &amp; after</a><a href="#plans">Floor plans</a><a href="#model">3D model</a><a href="#concepts">Photo concepts</a><a href="#fit">Fit &amp; tight spots</a><a href="#move">Move-in routes</a><a href="#garage">Garage gym</a><a href="#office">Garage office</a><a href="backup-power.html">Backup power &amp; garage</a><a href="#sauna">Sauna</a><a href="#outdoors">Trails</a><a href="#measure">To measure</a><a href="#furnishings">Furnishings Exhibit A</a><a href="687-Starflower-Concept.pdf">PDF</a></nav>
 <main>
 <section id="overview"><div class="hero"><img src="img/ba/p01-after.jpg" alt="Front of 687 Starflower Ln"><div class="card">
 <h3>The house at a glance</h3><table>
@@ -12,7 +12,7 @@
 <tr><td>Garage</td><td>40×50 attached, heated, 10×8 / 12×12 / 10×8 doors, 10 ft walls rising to about 13′8″ in the flat center</td></tr>
 <tr><td>Built</td><td>2024, 2×6 frame, poured/insulated-panel full basement</td></tr><tr><td>Heat / utilities</td><td>Propane forced air + central air, gas fireplace, Cherryland Electric, well + septic</td></tr>
 <tr><td>Extras</td><td>Covered back deck (~31×11) with hot tub, fenced yard, shed, coffered ceilings, hinged-bookcase secret office</td></tr></table>
-<p><a class="cta" href="model.html">Open the 3D model</a><a class="cta" href="687-Starflower-Concept.pdf">Download PDF</a><a class="cta" href="exhibit-a-furnishings.pdf">Furnishings Exhibit A (PDF)</a></p></div></div>
+<p><a class="cta" href="model.html">Open the 3D model</a><a class="cta" href="687-Starflower-Concept.pdf">Download PDF</a><a class="cta" href="exhibit-a-furnishings.pdf">Furnishings Exhibit A (PDF)</a><a class="cta" href="backup-power.html">Backup power &amp; garage</a></p></div></div>
 <div class="grid" style="margin-top:14px">
 <div class="card"><h3>Main floor = piano lounge</h3>Steinway B as the focal point of the 21′4″ × 18′9″ great room, lid opening toward the fireplace; two black leather cigar chairs and the tufted bench at the hearth; the carved mirror panel over the mantel.</div>
 <div class="card"><h3>Lower level = movie + recovery</h3>Big sectional in the family-room corner facing the 75″ TV, massage chair in the same room, glass desk + Aeron in the secret office, kids’ room furnished.</div>
@@ -138,6 +138,7 @@
 <tfoot><tr><td>Total if you do every line above</td><td class="num">$64,785</td><td class="num">$88,340</td><td class="num">$130,070</td></tr></tfoot>
 </table>
 <p class="muted">Estimates only, before tax and before a garage electrician’s load calculation. Confirm the 4 in slab, drain slope, mid-lock heights, the 2 ft ridge shift, and door-track clearance with the lift installer. Confirm the exact top-lock drive-under with BendPak. Confirm truss hanging with the truss manufacturer and the building department.</p>
+<p>Backup power, a Tesla Wall Connector, a propane generator, tank options, and a second look at lift choices are collected on a separate page: <a href="backup-power.html">Backup power &amp; garage</a>.</p>
 </section>
 
 <section id="office"><h2>Garage office, left of the house door</h2>

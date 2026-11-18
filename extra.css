@@ -62,3 +62,8 @@ body.lb-on{overflow:hidden}
   .ba-after{width:100%!important;height:auto!important;max-height:none!important}
   .ba-frame{border:0!important;overflow:visible!important;background:transparent!important}
 }
+
+.table-wrap{overflow-x:auto;margin:14px 0}
+table.costs.wide{min-width:720px}
+tr.rec td{background:rgba(127,209,138,.08)}
+.note{border-left:3px solid var(--accent);background:#1f1a12;padding:8px 12px;border-radius:6px;margin:12px 0}

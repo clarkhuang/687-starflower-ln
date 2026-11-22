@@ -16,9 +16,9 @@ PH = {
 34:'Primary bath, tub',35:'Primary bedroom',36:'Primary bedroom, TV wall',37:'Primary bedroom, sitting end',
 38:'Primary closet',39:'Primary closet',40:'Primary closet island',
 41:'Lower family room, TV wall',42:'Lower family room',43:'Lower bedroom',44:'Lower bedroom',45:'Lower bedroom',
-46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Secret office',51:'Secret office',
-52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors',55:'Garage interior',56:'Garage, work wall',
-57:'Garage, looking out',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
+46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door',51:'Speakeasy: round high-top for 4 and bar cart',
+52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream, one lift',55:'Garage interior, v2 layout',56:'Garage gym, stretch area and office',
+57:'Garage, looking out: one lift, Airstream, XT5',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
 62:'Covered deck from the yard',63:'Aerial',64:'Aerial, garage',65:'Aerial, backyard',
 }
 GROUPS = [
@@ -37,7 +37,7 @@ R = [
 ('r-great_dining','Through the dining arch: room to walk around the piano'),
 ('r-family_ne','Lower family room: sectional tucked in the corner, massage chair at right'),
 ('r-family_tv','From the sectional: 75" TV on the existing TV wall'),
-('r-office','Speakeasy behind the hinged bookcase: tall table, 4 tall chairs, bar cart'),
+('r-office','Speakeasy behind the hinged bookcase: 42 in round high-top for 4, bar stools, brass bar cart, low pendant'),
 ('r-kidroom',"Bedroom 2 (kids' room): full bed, nightstand, kids desk, 6-drawer dresser"),
 ('r-bedroom3','Bedroom 3 (teen room, later guest): sleigh bed, nightstand, dresser, small desk'),
 ('r-basement_office','Office in the storage / utility room: glass desk, Aeron, printer stand, storage'),

@@ -90,8 +90,8 @@
 </ul></div>
 </div>
 <p><b>What to expect:</b> from April to September, about 6 kW as-is roughly matches a frugal outage day (about one aPower a day in July). From December to February it covers only about <b>10–15% of an outage day</b> (about 2 kWh a day in January), so the generator is still needed in winter.</p>
-<div class="full"><figure><a href="img/bp-solar-monthly.jpg"><img loading="lazy" src="img/bp-solar-monthly.jpg" alt="Monthly solar output estimates for the garage south roof"></a><figcaption>Estimated monthly output per kW (left) and average daily output for 2.2, 4.3, 6 and 15.5 kW arrays with today’s tree line (right). PVWatts v8 with snow-loss and tree-shade estimates; tree inputs are estimates until a measured shade report.</figcaption></figure></div>
-<div class="full"><figure><a href="img/bp-roof-sketch.jpg"><img loading="lazy" src="img/bp-roof-sketch.jpg" alt="Garage south roof panel layout sketch"></a><figcaption>Garage south roof sketch, not to survey: about 36 panels at most (light blue) and a suggested 10-panel, about 4.3 kW starter block (dark blue), with the ridge setback and the 36 in fire pathway.</figcaption></figure></div>
+<div class="full"><figure><a href="img/bp-solar-monthly.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-solar-monthly.jpg" alt="Monthly solar output estimates for the garage south roof"></a><figcaption>Estimated monthly output per kW (left) and average daily output for 2.2, 4.3, 6 and 15.5 kW arrays with today’s tree line (right). PVWatts v8 with snow-loss and tree-shade estimates; tree inputs are estimates until a measured shade report.</figcaption></figure></div>
+<div class="full"><figure><a href="img/bp-roof-sketch.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-roof-sketch.jpg" alt="Garage south roof panel layout sketch"></a><figcaption>Garage south roof sketch, not to survey: about 36 panels at most (light blue) and a suggested 10-panel, about 4.3 kW starter block (dark blue), with the ridge setback and the 36 in fire pathway.</figcaption></figure></div>
 </section>
 
 <section id="lift">

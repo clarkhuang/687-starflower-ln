@@ -28,19 +28,10 @@ ul{padding-left:20px}li{margin:3px 0}.muted{color:var(--muted);font-size:13px}
 .gal-sec{margin:18px 0 8px;font-size:15px}
 table.costs{width:100%;border-collapse:collapse;font-size:14px}table.costs th,table.costs td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}table.costs th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;opacity:.8}table.costs td.num,table.costs th.num{text-align:right;white-space:nowrap}
 table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
-.ba{margin:0}
-.ba-frame{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line);user-select:none;touch-action:none;cursor:ew-resize;background:#111}
-.ba-frame img{display:block;width:100%;height:auto;margin:0;border:0;border-radius:0;pointer-events:none;-webkit-user-drag:none}
-.ba-after-wrap{position:absolute;left:0;top:0;bottom:0;width:100%;overflow:hidden}
-.ba-handle{position:absolute;top:0;bottom:0;left:100%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
-.ba-handle:after{content:"";position:absolute;top:50%;left:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.35);background-image:linear-gradient(#333,#333),linear-gradient(#333,#333);background-size:2px 10px,10px 2px;background-position:center;background-repeat:no-repeat}
-.ba-range{position:absolute;left:0;right:0;bottom:0;width:100%;margin:0;opacity:0;height:44px;cursor:ew-resize}
-.ba-hint{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:3px 8px;border-radius:999px;pointer-events:none;letter-spacing:.02em}
 @media(max-width:800px){.fig2{grid-template-columns:1fr}}
-@media print{nav,iframe,.noprint,.ba-range,.ba-handle,.ba-hint{display:none!important}body{background:#fff;color:#111}header{background:#fff}.card{background:#fafafa;border-color:#ddd}a{color:#1d5f80}
+@media print{nav,iframe,.noprint{display:none!important}body{background:#fff;color:#111}header{background:#fff}.card{background:#fafafa;border-color:#ddd}a{color:#1d5f80}
  section{break-inside:auto}figure,img,.card,table{break-inside:avoid}h2{break-after:avoid}.gal{grid-template-columns:repeat(2,1fr)!important}.printonly{display:block!important}main{max-width:none}
  #sauna .grid,#sauna .fig2,#garage .fig2,#office .fig2{grid-template-columns:1fr!important}
- .ba-after-wrap{width:100%!important}}
 .printonly{display:none}
 @media print{
   header{padding:10px 20px !important;margin:0 !important;break-after:avoid;page-break-after:avoid}
@@ -54,43 +45,12 @@ table.costs tfoot td{font-weight:700;border-top:2px solid var(--line)}
   .hero img{max-height:3.4in;object-fit:cover;width:100%}
 }
 
-/* Full-screen before/after gallery */
-.ba{position:relative}
-.ba-expand{position:absolute;top:10px;right:10px;z-index:4;border:0;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 10px;cursor:pointer;line-height:1}
-.ba-expand:hover,.ba-expand:focus{background:rgba(0,0,0,.8)}
-.ba-frame{cursor:ew-resize}
-.lb{position:fixed;inset:0;z-index:8000;background:rgba(8,10,14,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 56px 72px;touch-action:none}
-.lb[hidden]{display:none!important}
-.lb-stage{position:relative;width:min(1400px,100%);max-height:100%;display:flex;align-items:center;justify-content:center}
-.lb-stage .ba-frame{width:100%;max-height:calc(100vh - 140px);border-radius:8px;background:#111}
-.lb-stage .ba-frame img{width:100%;height:auto;max-height:calc(100vh - 140px);object-fit:contain}
-.lb-stage .ba-after{max-height:calc(100vh - 140px);object-fit:contain}
-.lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;color:#fff;font-size:15px;background:linear-gradient(transparent,rgba(0,0,0,.65))}
-.lb-count{opacity:.85;white-space:nowrap}
-.lb-cap{min-width:0}
-.lb-x,.lb-prev,.lb-next{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:999px;z-index:2}
-.lb-x{top:12px;right:12px;width:44px;height:44px;font-size:28px;line-height:44px}
-.lb-prev,.lb-next{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:32px;line-height:48px}
-.lb-prev{left:10px}
-.lb-next{right:10px}
-.lb-x:hover,.lb-prev:hover,.lb-next:hover,.lb-x:focus,.lb-prev:focus,.lb-next:focus{background:rgba(255,255,255,.28)}
-body.lb-on{overflow:hidden}
-@media(max-width:700px){
-  .lb{padding:48px 8px 64px}
-  .lb-prev,.lb-next{width:40px;height:40px;font-size:26px}
-}
-
-@media print{
-  .lb,.ba-expand,.ba-before,.listing-only,.ba-range,.ba-handle,.ba-hint{display:none!important}
-  .ba-after-wrap{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;inset:auto!important}
-  .ba-after{width:100%!important;height:auto!important;max-height:none!important}
-  .ba-frame{border:0!important;overflow:visible!important;background:transparent!important}
-}
-
 .table-wrap{overflow-x:auto;margin:14px 0}
 table.costs.wide{min-width:720px}
 tr.rec td{background:rgba(127,209,138,.08)}
 .note{border-left:3px solid var(--accent);background:#1f1a12;padding:8px 12px;border-radius:6px;margin:12px 0}
+
+figure a img{cursor:zoom-in}
 </style></head><body>
 <header><div class="sub">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</div>
 <h1>687 Starflower Ln <span>· backup power &amp; garage</span></h1>
@@ -182,8 +142,8 @@ tr.rec td{background:rgba(127,209,138,.08)}
 </ul></div>
 </div>
 <p><b>What to expect:</b> from April to September, about 6 kW as-is roughly matches a frugal outage day (about one aPower a day in July). From December to February it covers only about <b>10–15% of an outage day</b> (about 2 kWh a day in January), so the generator is still needed in winter.</p>
-<div class="full"><figure><a href="img/bp-solar-monthly.jpg"><img loading="lazy" src="img/bp-solar-monthly.jpg" alt="Monthly solar output estimates for the garage south roof"></a><figcaption>Estimated monthly output per kW (left) and average daily output for 2.2, 4.3, 6 and 15.5 kW arrays with today’s tree line (right). PVWatts v8 with snow-loss and tree-shade estimates; tree inputs are estimates until a measured shade report.</figcaption></figure></div>
-<div class="full"><figure><a href="img/bp-roof-sketch.jpg"><img loading="lazy" src="img/bp-roof-sketch.jpg" alt="Garage south roof panel layout sketch"></a><figcaption>Garage south roof sketch, not to survey: about 36 panels at most (light blue) and a suggested 10-panel, about 4.3 kW starter block (dark blue), with the ridge setback and the 36 in fire pathway.</figcaption></figure></div>
+<div class="full"><figure><a href="img/bp-solar-monthly.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-solar-monthly.jpg" alt="Monthly solar output estimates for the garage south roof"></a><figcaption>Estimated monthly output per kW (left) and average daily output for 2.2, 4.3, 6 and 15.5 kW arrays with today’s tree line (right). PVWatts v8 with snow-loss and tree-shade estimates; tree inputs are estimates until a measured shade report.</figcaption></figure></div>
+<div class="full"><figure><a href="img/bp-roof-sketch.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-roof-sketch.jpg" alt="Garage south roof panel layout sketch"></a><figcaption>Garage south roof sketch, not to survey: about 36 panels at most (light blue) and a suggested 10-panel, about 4.3 kW starter block (dark blue), with the ridge setback and the 36 in fire pathway.</figcaption></figure></div>
 </section>
 
 <section id="lift">

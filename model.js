@@ -49,6 +49,10 @@ const BUILD={
  platform(f,g,w,d){lb(g,-w/2,-d/2,w/2,d/2,0,.15,0x1c1c1c); lb(g,-1.2,-d/2,1.2,d/2,.15,.17,0xb08a5a); lb(g,-3.6,-.08,3.6,.08,.8,.95,0x999999); lb(g,-3.3,-1.5,-2.9,1.5,0,1.5,0x2a6fb0);lb(g,2.9,-1.5,3.3,1.5,0,1.5,0x2a6fb0);},
  rig(f,g,w,d){[-w/2,-w/6,w/6,w/2].forEach(x=>{lb(g,x-.15,-d/2,x+.15,-d/2+.3,0,9.5,0x222222);lb(g,x-.15,d/2-.3,x+.15,d/2,0,9.5,0x222222);});
    lb(g,-w/2,-d/2,w/2,d/2,9.2,9.5,0x222222); lb(g,-w/2,-.1,w/2,.1,7.6,7.8,0x444444); lb(g,-1.2,-.04,-1.1,.04,6.5,9.2,0xc8a060);lb(g,1.1,-.04,1.2,.04,6.5,9.2,0xc8a060); lb(g,2.9,-.12,3.1,.12,0,9.2,0xd9c08c);},
+ table(f,g,w,d){const c=new THREE.Color(f.c||'#8a6a45').getHex(); lb(g,-w/2,-d/2,w/2,d/2,f.h-.12,f.h,c); [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>lb(g,a*(w/2-.25)-.1,b*(d/2-.25)-.1,a*(w/2-.25)+.1,b*(d/2-.25)+.1,0,f.h-.12,0x222222));},
+ lift(f,g,w,d){const c=new THREE.Color(f.c||'#6a1b9a').getHex(); [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>lb(g,a*w/2-(a>0?.6:0),b*d/2-(b>0?.6:0),a*w/2+(a<0?.6:0),b*d/2+(b<0?.6:0),0,f.h,c)); lb(g,-w/2+.7,-d/2+.6,-w/2+2.5,d/2-.6,6.3,6.6,0x555a60); lb(g,w/2-2.5,-d/2+.6,w/2-.7,d/2-.6,6.3,6.6,0x555a60); lb(g,-w/2,-d/2,w/2,-d/2+.6,6.0,6.6,c); lb(g,-w/2,d/2-.6,w/2,d/2,6.0,6.6,c);},
+ loft(f,g,w,d){lb(g,-w/2,-d/2,w/2,d/2,0,f.h,mat(new THREE.Color(f.c||'#b9a27e').getHex(),.55));},
+ gofficeloft(f,g,w,d){const c=mat(0xd8dde6,.55); lb(g,-w/2,d/2-.3,w/2-3.2,d/2,0,f.h,c); lb(g,w/2-.3,-d/2,w/2,d/2,0,f.h,c); lb(g,w/2-3.2,d/2-.15,w/2-.3,d/2-.1,0,6.8,mat(0x9fc6e0,.5)); lb(g,-w/2,-d/2,w/2,d/2,f.h-.1,f.h,mat(0xf1efea,.5));},
  target(f,g,w,d){lb(g,-w/2,-d/2,w/2,d/2,0,f.h,0xe0c36a);},
  tv(f,g,w,d){lb(g,-w/2,-d/2,w/2,d/2,0,f.h,0x0b0b0c);},
  soundbar(f,g,w,d){lb(g,-w/2,-d/2,w/2,d/2,0,f.h,0x1a1a1a);},
@@ -92,7 +96,7 @@ function label(text,x,y,z,size,color){const c=document.createElement('canvas'),k
  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));s.scale.set(size*c.width/c.height,size,1);s.position.set(x,z,y);s.renderOrder=9;groups.labels.add(s);return s;}
 const LBL={main:[],lower:[],garage:[],site:[]};
 H.ROOMS.forEach(([lv,n,dm,x0,y0,x1,y1])=>{const base={main:0,lower:H.LZ,garage:H.GZ}[lv]; LBL[lv].push(label(n+(dm?'  '+dm:''),(x0+x1)/2,(y0+y1)/2,base+(lv==='garage'?12:7.6),1.1,'#cfe6f0'));});
-[['piano',4.6],['cigar1',3.4],['tbench',2.4],['sect',3.6],['tv',4.2],['massage',4.6],['gdesk',4.0],['bed',5.2],['kdesk',4.8],['cplunge',4],['airstream',11],['office',4],['rig',11]].forEach(([id,h])=>{const f=H.FU.find(q=>q.id===id); LBL[f.lv].push(label(f.name,(f.x0+f.x1)/2,(f.y0+f.y1)/2,f.z0+h,0.8));});
+[['piano',4.6],['cigar1',3.4],['tbench',2.4],['sect',3.6],['tv',4.2],['massage',4.6],['bed',5.2],['kdesk',4.8]].concat(H.FU.filter(q=>q.lbl).map(q=>[q.id,q.lbl])).forEach(([id,h])=>{const f=H.FU.find(q=>q.id===id); if(!f)return; LBL[f.lv].push(label(f.name,(f.x0+f.x1)/2,(f.y0+f.y1)/2,f.z0+h,0.8));});
 LBL.site.push(label('9×16 wood-fired skid sauna (perpendicular to the deck)',36.5,-20,9.5,1.1)); LBL.site.push(label('Hot tub (included)',31,-5,4.5,0.9)); LBL.site.push(label('Septic reserve - keep clear',23,-24,1.5,1.0,'#ffe58a')); LBL.site.push(label('Drain field (approx.)',-24,-26,1.5,1.0,'#ffb36b'));
 // ---------- levels ----------
 let mode=P.get('level')||'all';
@@ -116,10 +120,16 @@ const V={
  great_dining:{p:[20,5.5,6],t:[22,2.8,30],lv:'main',ceil:1,l:'Through the dining arch to the piano'},
  family_ne:{p:[29.8,-4.34,15.5],t:[12,-7.4,2],lv:'lower',ceil:1,l:'Family room: sectional corner'},
  family_tv:{p:[13.5,-6.2,2.8],t:[17,-6.0,18.4],lv:'lower',ceil:1,l:'Family room: view from the sectional'},
- office:{p:[9.0,-4.6,13.2],t:[2.5,-7.4,3],lv:'lower',ceil:1,l:'Secret office'},
- kidroom:{p:[41,-4.4,13.5],t:[49,-7.4,2],lv:'lower',ceil:1,l:"Kid's room"},
- storage:{p:[30,-4.4,30],t:[0,-6,16],lv:'lower',ceil:1,l:'Storage room + garage stair door'},
- garage_gym:{p:[-29,5.3,25.5],t:[-14,2.8,-2],lv:'all',ceil:1,l:'Garage: gym, plunge, office'},
+ office:{p:[9.0,-4.6,13.2],t:[2.5,-7.4,3],lv:'lower',ceil:1,l:'Speakeasy behind the bookcase: tall table, chairs, bar cart'},
+ kidroom:{p:[41,-4.4,13.5],t:[49,-7.4,2],lv:'lower',ceil:1,l:"Bedroom 2 (kids' room)"},
+ bedroom3:{p:[37,-4.4,24.2],t:[47,-7.6,32],lv:'lower',ceil:1,l:'Bedroom 3 (teen room, later guest)'},
+ basement_office:{p:[17.5,-4.4,23.2],t:[27,-7.6,30.5],lv:'lower',ceil:1,l:'Office in the storage / utility room'},
+ primary:{p:[38.5,5.3,16.8],t:[46,2.4,3],lv:'main',ceil:1,l:'Primary bedroom: king bed'},
+ dining:{p:[24.8,5.3,13.6],t:[18.5,2.3,3],lv:'main',ceil:1,l:'Dining room and kitchen stools'},
+ storage:{p:[30,-4.4,30],t:[0,-6,16],lv:'lower',ceil:1,l:'Storage / office room + garage stair door'},
+ garage_gym:{p:[-26.5,8.6,27.5],t:[-20,2.2,3],lv:'all',ceil:1,l:'Garage: 13 ft lifting zone, rig, rope, plunge'},
+ garage_stretch:{p:[-22.5,4.8,17.5],t:[-35.5,2.2,8],lv:'all',ceil:1,l:'Garage: stretch / TV area and office under the loft'},
+ garage_lift:{p:[-15.0,8.4,44.2],t:[-8.5,4.2,24],lv:'all',ceil:1,l:'Garage: one lift (Model Y under, 911 on top), Wall Connector'},
  garage_top:{p:[-20,62,32],t:[-20,0,18],lv:'all',l:'Garage from above'},
  sauna:{p:[58,16,-46],t:[36.5,3,-20],lv:'all',l:'9×16 skid sauna, 16 ft out from the deck'},
  stair_route:{p:[-24,12,42],t:[2,-6,12],lv:'lower',l:'Garage stair to storage (move route)'}

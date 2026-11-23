@@ -132,7 +132,7 @@ const V={
  dining:{p:[24.8,5.3,13.6],t:[18.5,2.3,3],lv:'main',ceil:1,l:'Dining room and kitchen stools'},
  storage:{p:[30,-4.4,30],t:[0,-6,16],lv:'lower',ceil:1,l:'Storage / office room + garage stair door'},
  garage_gym:{p:[-26.5,8.6,27.5],t:[-20,4.2,3],lv:'all',ceil:1,l:'Garage: 13 ft lifting zone, rig, rope, plunge'},
- garage_rings:{p:[-14.6,6.2,22.5],t:[-22.5,7.4,13.0],lv:'all',ceil:1,l:'Garage: high rings and climbing rope on ceiling strongbacks'},
+ garage_rings:{p:[-14.6,6.2,22.5],t:[-22.5,7.4,13.0],lv:'all',ceil:1,l:'Garage: high rings and climbing rope on one center strongback'},
  garage_stretch:{p:[-22.5,4.8,17.5],t:[-35.5,2.2,8],lv:'all',ceil:1,l:'Garage: stretch / TV area and office under the loft'},
  garage_lift:{p:[-15.0,8.4,44.2],t:[-8.5,4.2,24],lv:'all',ceil:1,l:'Garage: one lift (Model Y under, 911 on top), Wall Connector'},
  garage_top:{p:[-20,62,32],t:[-20,0,18],lv:'all',l:'Garage from above'},

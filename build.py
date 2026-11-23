@@ -44,7 +44,7 @@ R = [
 ('r-primary','Primary bedroom: king bed, nightstands, tall chests (bed wall to confirm)'),
 ('r-dining','Dining table with 6 chairs; counter stools at the island'),
 ('r-garage_gym','Garage gym v2: 8x8 platform and rig under the 13 ft center, rope, plunge, GHD'),
-('r-garage_rings','Garage: high rings and a 1.5 in climbing rope on ceiling strongbacks in the 13 ft zone (truss-maker approval required)'),
+('r-garage_rings','Garage: high rings and a 1.5 in climbing rope together on one center strongback in the 13 ft zone (truss-maker approval required)'),
 ('r-garage_stretch','Garage: 8x8 stretch / bodyweight / TV area and the office under the rear loft'),
 ('r-garage_lift','Garage: one 4-post lift in the right bay (Model Y under, 911 on top)'),
 ('r-garage_top','Garage v2 from above'),
@@ -79,8 +79,10 @@ renders = ''.join(fig(f'img/{a}.jpg', b) for a, b in R)
 
 JS = ''
 
+import systems
+SYS = systems.build()
 page = (root/'page.tpl').read_text()
-for k, v in {'{{CSS}}': css, '{{GAL}}': gal, '{{RENDERS}}': renders, '{{JS}}': JS}.items():
+for k, v in {'{{CSS}}': css, '{{GAL}}': gal, '{{RENDERS}}': renders, '{{JS}}': JS, '{{SYSTEMS}}': SYS}.items():
     page = page.replace(k, v)
 (root/'index.html').write_text(page)
 backup = (root/'backup-power.tpl').read_text().replace('{{CSS}}', css)

@@ -30,7 +30,6 @@ GROUPS = [
 ('Mudroom, powder, laundry',[25,26,28,29]),
 ('Primary suite',[27,30,31,32,33,34,35,36,37,38,39,40]),
 ('Lower level',[41,42,43,44,45,46,47,48,49,50,51,52,53]),
-('Garage',[54,56]),
 ]
 R = []  # 3D-model still screenshots removed Nov 23 (the interactive model stays)
 

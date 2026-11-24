@@ -386,6 +386,8 @@ function planOverrides(FU){
     Object.assign(f,{x0:g[0],y0:g[1],x1:g[2],y1:g[3]}); if(g[4])f.name=g[4]; if(f.id==='airstream')Object.assign(f,{kind:'sprinter',h:9.75,name:'2022 Airstream Interstate 24X: Mercedes Sprinter high-roof Class B van, about 24′6″–25′ × 6′7″ (plus mirrors) × 9′9″, nose-in in the center bay'});
     if(f.id==='porsche')f.name='Porsche 911 Carrera 4 GTS (992), matte black (on top of the lift)';
     if(f.id==='lift')f.c='#8e9297'; if(f.id==='xt5')f.c='#0b0b0c';
+    // HARD RULE (Clark, Nov 24): all vehicles and the lift run front-to-back (drive-in direction), nose toward the back wall. Never sideways.
+    if(['xt5','airstream','modely','porsche','lift'].includes(f.id)&&Math.abs(f.x1-f.x0)>=Math.abs(f.y1-f.y0))console.error('ORIENTATION RULE BROKEN: '+f.id+' is wider than it is long; vehicles must run front-to-back');
     if(f.id==='nglute')Object.assign(f,{kind:'floorglute',h:1.4});
     if(f.id==='tread')Object.assign(f,{kind:'xebex',h:5.0,name:'Curved treadmill: Xebex Runner Smart Connect (our own), 71 × 35 × 60 in, non-motorized; console toward the doors'});
     if(f.id==='rower')Object.assign(f,{kind:'skirow',h:3.4,name:'EnergyFit Ski-Row Air (our own, from FL): rower 103 × 33 × 40 in, flips up to a ski-erg (54 in long, 84 in tall)'});

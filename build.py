@@ -14,22 +14,22 @@ PH = {
 21:'Dining toward the great room',22:'Dining to the great room',23:'Great room',24:'Great room to the front windows',
 25:'Powder room',26:'Mudroom',27:'Primary bedroom',28:'Laundry',29:'Wet bar / prep area',
 30:'Hall to the primary bath',31:'Primary bath, double vanity',32:'Primary bath, second vanity',33:'Primary bath',
-34:'Primary bath, tub',35:'Primary bedroom',36:'Primary bedroom, TV wall',37:'Primary bedroom, sitting end',
+34:'Primary bath, tub',35:'Primary bath, tub',36:'Primary bedroom, TV wall',37:'Primary bedroom, sitting end',
 38:'Primary closet',39:'Primary closet',40:'Primary closet island',
-41:'Lower family room, TV wall',42:'Lower family room',43:'Lower bedroom',44:'Lower bedroom',45:'Lower bedroom',
-46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door: existing orange wall and art kept, Jenny’s table and chair, red rug',51:'Speakeasy with its existing walls: Jenny’s 42″ × 42″ espresso high-top, 4 counter chairs and her honey-oak and marble bar cart',
-52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream and the lift with the 911 over the Model Y, all nose-in just inside the doors',55:'Garage from the doors: vehicles at the doors, gym on rubber mats',56:'Back-left corner: TV on the south wall with the futon 8 ft back facing it, the existing gray cabinets, Peloton, air bike, Floor Glute, and the paddleboard and kayaks on the suspended loft',
+41:'Lower family room, TV wall',42:'Lower family room',43:'Lower bedroom',44:'Lower bedroom',45:'Lower hall landing',
+46:'Lower bedroom',47:'Lower bath',48:'Lower bath',49:'Lower family room: the hinged bookcase, with the end of the gray sectional in front of it',50:'Speakeasy through the open bookcase door: existing orange wall and art kept, Jenny’s table and chair, red rug',51:'Speakeasy with its existing walls: Jenny’s 42″ × 42″ espresso high-top, 4 counter chairs and her honey-oak and marble bar cart',
+52:'Unfinished storage: an open office in the middle of the mechanicals, on a rug in front of the slatwall, set off by a movable KALLAX cube; the furnace and water heater stay open with clear service floor',53:'Unfinished storage, long view: the same office in front of the far slatwall; walls stay unfinished and the water heater stays open',54:'Garage doors: XT5, Airstream and the lift with the 911 over the Model Y, all nose-in just inside the doors',55:'Garage from the doors: vehicles at the doors, gym on rubber mats',56:'Back-left corner: TV on the south wall with the futon 8 ft back facing it, the existing gray cabinets, Peloton, air bike, Floor Glute, and the paddleboard and kayaks on the suspended loft',
 57:'Along the south wall toward the doors: the window by the side door, the side door, the batteries, the Xebex and Ski-Row, and the Airstream and XT5 noses',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
 62:'Covered deck from the yard',63:'Aerial',64:'Aerial, garage',65:'Aerial, backyard',
 }
 GROUPS = [
 ('Exterior and the lot',[0,1,3,4,58,63,64,65]),
 ('Deck and backyard',[2,59,60,61,62]),
-('Main living',[5,6,7,21,22,23,24]),
-('Kitchen and dining',[8,9,10,11,12,13,14,15,16,17,18,19,20]),
-('Mudroom, powder, laundry',[25,26,28,29]),
-('Primary suite',[27,30,31,32,33,34,35,36,37,38,39,40]),
-('Lower level',[41,42,43,44,45,46,47,48,49,50,51,52,53]),
+('Main living',[5,6,23]),
+('Kitchen and dining',[8,9,10,11,12,13,15,16,17,18,19]),
+('Mudroom, powder, laundry',[25,26,28]),
+('Primary suite',[27,31,32,33,34,35,38,39]),
+('Lower level',[41,42,45,46,48,49,50,52,53]),
 ]
 R = []  # 3D-model still screenshots removed Nov 23 (the interactive model stays)
 

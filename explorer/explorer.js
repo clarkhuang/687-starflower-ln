@@ -239,47 +239,25 @@ const BUILD={
    C.lb(-w/2+.45,-d/2+(low?4.8:3.8),w/2-.45,d/2-(low?3.6:3.2),Math.min(f.h,hb+.2),Math.min(f.h,hb+.28),c);
    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>C.mesh(new THREE.CylinderGeometry(1.05,1.05,.75,20),0x111111,1,{},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.3),1.05,b*(d/2-3.0));}));
    C.lb(-w/2+.5,-d/2+.25,-w/2+1.3,-d/2+.32,1.6,2.0,0xf5f5f5);C.lb(w/2-1.3,-d/2+.25,w/2-.5,-d/2+.32,1.6,2.0,0xf5f5f5);C.lb(-w/2+.4,d/2-.32,w/2-.4,d/2-.25,1.7,2.0,0xb3261e);},
- p911(f,C,w,d){const MB=0x070708, MATTE={roughness:1,metalness:0}, y0=-d/2;
-   const pr=[[0,.5],[0,1.45],[.5,1.85],[3.9,2.3],[5.9,3.95],[7.7,4.05],[10.6,3.0],[d-.7,2.35],[d,2.05],[d,.5]];
-   const sh=new THREE.Shape();pr.forEach(([u,v],i)=>i?sh.lineTo(y0+u,v):sh.moveTo(y0+u,v));
-   C.mesh(new THREE.ExtrudeGeometry(sh,{depth:w-.2,bevelEnabled:false}),MB,1,MATTE,m=>{m.rotation.y=-Math.PI/2;m.position.x=(w-.2)/2;});
-   const gl=0x0b1118; C.lb(-w/2+.05,y0+6.0,-w/2+.12,y0+9.6,3.0,3.8,gl);C.lb(w/2-.12,y0+6.0,w/2-.05,y0+9.6,3.0,3.8,gl);
-   C.lb(-w/2+.6,y0+4.2,w/2-.6,y0+4.4,2.45,3.7,gl);
-   C.lb(-w/2+.35,d/2-.55,w/2-.35,d/2-.1,2.35,2.6,MB);C.lb(-w/2+.3,d/2-.08,w/2-.3,d/2-.02,1.55,1.75,0xb3261e);
-   C.lb(-w/2+.45,y0+.02,-w/2+1.15,y0+.1,1.35,1.7,0xf5f5f5);C.lb(w/2-1.15,y0+.02,w/2-.45,y0+.1,1.35,1.7,0xf5f5f5);
-   [[-1,y0+2.7],[1,y0+2.7],[-1,d/2-2.9],[1,d/2-2.9]].forEach(([a,y])=>C.mesh(new THREE.CylinderGeometry(1.08,1.08,.8,22),0x111111,1,{roughness:.9},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.3),1.08,y);}));},
- sprinter(f,C,w,d){const S=0xc4c8cd, MET={metalness:.55,roughness:.38}, T=0x1a1a1a, G=0x121a22, y0=-d/2, H=f.h;
-   const box=(x0,ya,x1,yb,z0,z1,c,ex)=>C.mesh(new THREE.BoxGeometry(x1-x0,z1-z0,yb-ya),c,1,ex||MET,m=>m.position.set((x0+x1)/2,(z0+z1)/2,(ya+yb)/2));
-   // hood + front clip (nose toward the back wall, -y)
-   box(-w/2+.25,y0+.35,w/2-.25,y0+3.1,1.2,4.05,S);box(-w/2+.15,y0,w/2-.15,y0+.4,.95,2.15,T,{roughness:.8});
-   box(-w/2+.9,y0-.02,w/2-.9,y0+.36,2.25,3.55,0x0d0d0d,{roughness:.6});
-   C.lb(-w/2+.35,y0-.03,-w/2+1.0,y0+.05,3.15,3.6,0xf2f2f2);C.lb(w/2-1.0,y0-.03,w/2-.35,y0+.05,3.15,3.6,0xf2f2f2);
-   // raked windshield
-   C.mesh(new THREE.BoxGeometry(w-.5,3.45,.12),G,1,{roughness:.15,metalness:.3},m=>{m.position.set(0,5.65,y0+3.55);m.rotation.x=0.42;});
-   // high-roof body
-   box(-w/2,y0+3.1,w/2,d/2,2.0,4.1,S);box(-w/2,y0+4.35,w/2,d/2,4.1,H-.12,S);box(-w/2+.12,y0+4.35,w/2-.12,d/2-.05,H-.12,H,S);
-   box(-w/2+.4,y0+3.35,w/2-.4,y0+4.4,7.2,H-.12,S);
-   // black lower trim / rocker + rear bumper
-   box(-w/2-.02,y0+.4,w/2+.02,d/2-.3,.95,2.9,T,{roughness:.85});box(-w/2,d/2-.3,w/2,d/2+.12,.9,1.95,T,{roughness:.85});
-   // windows: cab doors, sliding-door glass, rear doors
-   [-1,1].forEach(a=>{const x=a*(w/2+.015);
-     C.lb(x-.04,y0+4.4,x+.04,y0+7.0,4.5,6.9,G);C.lb(x-.04,y0+11.0,x+.04,y0+14.0,4.7,6.9,G);
-     C.lb(x-.03,y0+7.15,x+.03,y0+7.22,2.0,8.3,0x8e939a);
-     // mirrors (stick out past the 6'7" body)
-     C.lb(a>0?w/2+.05:-w/2-.75,y0+4.35,a>0?w/2+.75:-w/2-.05,y0+4.6,5.2,6.4,T);});
-   C.lb(-w/2+.3,d/2+.01,-.07,d/2+.05,4.85,7.9,G);C.lb(.07,d/2+.01,w/2-.3,d/2+.05,4.85,7.9,G);C.lb(-.04,d/2,.04,d/2+.06,2.0,H-.4,0x8e939a);
-   [-1,1].forEach(a=>{const xa=a<0?-w/2-.02:w/2-.36,xb=a<0?-w/2+.36:w/2+.02;C.lb(xa,d/2-.3,xb,d/2+.07,3.3,4.8,0xc1121f);C.lb(xa,d/2-.3,xb,d/2+.07,2.75,3.3,0xd9d9d6);});C.lb(-w/2-.05,d/2-.1,w/2+.05,d/2+.4,1.0,1.75,T,{roughness:.85});C.lb(-.9,d/2+.3,.9,d/2+.75,1.0,1.2,0x2a2a2a);C.lb(-1.95,d/2+.04,-1.0,d/2+.08,2.0,2.5,0xf2f2ef);C.lb(.55,d/2+.04,1.1,d/2+.09,3.85,4.0,T);C.lb(-.4,d/2-.05,.4,d/2+.06,H-.35,H-.2,0xc1121f);const DT=(txt,cw,ch,font)=>{const cv=document.createElement('canvas');cv.width=cw;cv.height=ch;const g=cv.getContext('2d');g.fillStyle='#d8dbe0';g.font=font;g.textAlign='center';g.textBaseline='middle';g.fillText(txt,cw/2,ch/2);const tx=new THREE.CanvasTexture(cv);tx.encoding=THREE.sRGBEncoding;tx.anisotropy=8;return tx;};const DC=(tx,x,z,pw,ph,col)=>{const mm=new THREE.MeshStandardMaterial({map:tx,transparent:true,roughness:.35,metalness:.6,color:col||0xffffff,clippingPlanes:[clipG]});const m=new THREE.Mesh(new THREE.PlaneGeometry(pw,ph),mm);m.position.set(x,z,d/2+.07);C.raw(m);};DC(DT('AIRSTREAM',1024,128,'bold 96px Arial'),-2.35,4.05,1.45,.18);DC(DT('INTERSTATE X',1024,128,'bold italic 96px Arial'),2.3,4.1,1.6,.2,0x1a1a1a);DC(DT('4WD',256,128,'bold 90px Arial'),2.75,3.9,.3,.15,0x1a1a1a);C.mesh(new THREE.CylinderGeometry(.22,.22,.05,28),0xc9ccd0,1,{metalness:.9,roughness:.2},m=>{m.rotation.x=Math.PI/2;m.position.set(0,4.45,d/2+.08);});
-   // roof: A/C pod + solar panel
-   [-1,1].forEach(a=>C.lb(a*(w/2-.25)-.08,y0+4.6,a*(w/2-.25)+.08,d/2-.4,H+.05,H+.42,0x121212));for(let yy=y0+4.8;yy<d/2-.5;yy+=1.6)C.lb(-w/2+.25,yy-.06,w/2-.25,yy+.06,H+.3,H+.4,0x121212);C.lb(-1.35,d/2-3.6,1.35,d/2-.9,H,H+.85,0x1b1b1b);C.lb(-w/2+.5,y0+5.2,w/2-.5,y0+11.0,H+.1,H+.2,0x0d2240);C.lb(-1.6,y0+4.3,1.6,y0+4.6,H+.1,H+.45,0x0f0f0f);C.lb(-1.5,y0+4.25,1.5,y0+4.3,H+.15,H+.4,0xf4f6ff);
-   // wheels: front axle near the nose, dual rear
-   [[y0+2.75,1],[d/2-6.3,1]].forEach(([y])=>[-1,1].forEach(a=>C.mesh(new THREE.CylinderGeometry(1.25,1.25,.75,22),0x111111,1,{roughness:.9},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.28),1.25,y);})));},
- franklinbat(f,C,w,d){// FranklinWH aPower 2 style: slim white floor-standing unit, dark side band, LED bar
-   const W=0xf1f2f2; C.lb(-w/2,-d/2,w/2,d/2,0,.25,0x6b6f74);C.mesh(new THREE.BoxGeometry(w,f.h-.25,d),W,1,{roughness:.45,metalness:.05},m=>m.position.set(0,.25+(f.h-.25)/2,0));
-   C.lb(w/2,-d/2,w/2+.02,-d/2+.3,.35,f.h-.05,0x3a3e44);C.lb(w/2,-.55,w/2+.02,.55,f.h-.95,f.h-.86,0x41b6e6);
-   C.lb(w/2,d/2-.55,w/2+.02,d/2-.25,f.h-.6,f.h-.3,0x9aa0a6);},
- franklingate(f,C,w,d){// FranklinWH aGate style: wall-mounted white smart panel with a dark display strip
-   C.mesh(new THREE.BoxGeometry(w,f.h,d),0xf1f2f2,1,{roughness:.45},m=>m.position.set(0,f.h/2,0));
-   C.lb(w/2,-d/2+.25,w/2+.02,d/2-.25,f.h-.9,f.h-.55,0x2b2e33);C.lb(w/2+.02,-.25,w/2+.04,.25,f.h-.75,f.h-.68,0x41b6e6);},
+ p911(f,C,w,d){const MB=0x0a0a0b, MATTE={roughness:.95,metalness:0}, GL=0x0b1118, GLM={roughness:.15,metalness:.3}, y0=-d/2, L=d;
+   // nose at y0 (toward the back wall when parked nose-in). Low wide body + narrower teardrop cabin + round headlights + full-width rear light bar.
+   const ext=(pr,dep,col,mt,dx)=>{const sh=new THREE.Shape();pr.forEach(([u,v],i)=>i?sh.lineTo(y0+u,v):sh.moveTo(y0+u,v));
+     C.mesh(new THREE.ExtrudeGeometry(sh,{depth:dep,bevelEnabled:true,bevelSize:.12,bevelThickness:.12,bevelSegments:3}),col,1,mt,m=>{m.rotation.y=-Math.PI/2;m.position.x=dep/2+(dx||0);});};
+   ext([[0.1,.55],[0,1.35],[.35,1.75],[1.2,2.0],[3.9,2.3],[5.0,2.45],[9.8,2.55],[L-1.6,2.55],[L-.5,2.35],[L-.05,2.0],[L,1.3],[L-.1,.55]],w-.45,MB,MATTE);
+   ext([[4.8,2.4],[6.3,3.75],[7.4,3.98],[8.6,3.95],[10.0,3.5],[11.6,2.85],[12.4,2.55],[4.8,2.4]],w-1.9,MB,MATTE);
+   // rear haunches (wider fenders over the rear wheels)
+   [-1,1].forEach(a=>C.lb(a>0?w/2-.42:-w/2+.02,y0+L-4.7,a>0?w/2-.02:-w/2+.42,y0+L-1.4,1.0,2.45,MB));
+   // glass: windshield, side windows, rear glass
+   C.mesh(new THREE.PlaneGeometry(w-2.3,1.95),GL,1,GLM,m=>{m.position.set(0,3.1,y0+5.55);m.rotation.x=-Math.atan2(1.35,1.5)+Math.PI;});
+   [-1,1].forEach(a=>{const sh=new THREE.Shape();[[5.4,2.75],[6.5,3.6],[7.6,3.82],[9.6,3.55],[10.9,2.95],[5.4,2.75]].forEach(([u,v],i)=>i?sh.lineTo(y0+u,v):sh.moveTo(y0+u,v));
+     C.mesh(new THREE.ShapeGeometry(sh),GL,1,GLM,m=>{m.rotation.y=a>0?-Math.PI/2:Math.PI/2;m.position.x=a*((w-1.9)/2+.14);if(a<0)m.scale.x=-1;});});
+   // round headlights on the front fenders
+   [-1,1].forEach(a=>C.mesh(new THREE.CylinderGeometry(.36,.36,.12,24),0xdfe6ee,1,{emissive:0x334455,roughness:.2},m=>{m.rotation.x=Math.PI/2.6;m.position.set(a*(w/2-.85),1.95,y0+.75);}));
+   // full-width rear light bar + center brake detail
+   C.lb(-w/2+.3,y0+L-.12,w/2-.3,y0+L+.02,2.05,2.17,0xb3261e);
+   C.lb(-.9,y0+L-.12,.9,y0+L+.02,1.0,1.25,0x1a1a1a);
+   [[-1,y0+2.75],[1,y0+2.75],[-1,y0+L-2.95],[1,y0+L-2.95]].forEach(([a,y])=>C.mesh(new THREE.CylinderGeometry(1.08,1.08,.85,24),0x111111,1,{roughness:.9},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.38),1.08,y);}));
+   [[-1,y0+2.75],[1,y0+2.75],[-1,y0+L-2.95],[1,y0+L-2.95]].forEach(([a,y])=>C.mesh(new THREE.CylinderGeometry(.72,.72,.88,20),0x2a2a2c,1,{metalness:.6,roughness:.35},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.38),1.08,y);}));},
  airstream(f,C,w,d){const sil=0xc9ccd2,body=d-w,hb=f.h-1.0;
    C.mesh(new THREE.CylinderGeometry(w/2,w/2,body,28,1,true),sil,1,{metalness:.55,roughness:.35},m=>{m.rotation.x=Math.PI/2;m.scale.set(1,1,hb/w);m.position.set(0,1.0+hb/2,0);});
    [-1,1].forEach(s=>C.mesh(new THREE.SphereGeometry(w/2,24,16),sil,1,{metalness:.55,roughness:.35},m=>{m.scale.set(1,hb/w,1);m.position.set(0,1.0+hb/2,s*body/2);}));
@@ -431,7 +409,7 @@ function buildFurniture(){
 function buildOutdoor(){
   const G=-1.62, SID=0xb7bab5, TRIM=0xf7f7f5, ROOF=0x3f434a, BLK=0x151515;
   const sInfo=n=>infoOf(n,{layer:'Outdoor',note:'8′ × 13′ portable skid sauna (concept): changing room off the hot-tub deck, then a 7′ × 7′ hot room with two 7-foot lie-flat benches. Gray lap siding, white trim and a 2.5:12 shingle shed roof to match the shed and house.'});
-  const X0=32,X1=40,Y0=-25,Y1=-12, FL=G+1.1, hiTop=G+10.0, loTop=G+8.17, wt=0.45;
+  const X0=32,X1=40,Y0=-29,Y1=-16, FL=G+1.1, hiTop=G+10.0, loTop=G+8.17, wt=0.45;
   const B=(x0,y0,x1,y1,z0,z1,c,o,n)=>addBox('outdoor','house',null,x0,y0,x1,y1,z0,z1,c,o,sInfo(n||'Portable skid sauna'));
   B(X0-1.5,Y0-1.5,X1+1.5,Y1,G-0.02,G+0.06,0xb8b2a6,1,'Compacted gravel pad');
   [X0+0.4,(X0+X1)/2,X1-0.4].forEach(x=>B(x-.23,Y0-.3,x+.23,Y1-.05,G,G+.46,0x6f5a3f,1,'6×6 PT skid with tow eyes'));
@@ -461,6 +439,10 @@ function buildOutdoor(){
   addBox('outdoor','house',mm,-rl/2,(ry0-ry1)/2,rl/2,(ry1-ry0)/2,-.2,.2,ROOF,1,sInfo('Shingle shed roof, 2.5:12'));
   addBox('outdoor','house',mm,-rl/2,(ry0-ry1)/2,rl/2,(ry1-ry0)/2,-.45,-.2,TRIM,1,sInfo('White fascia + vented soffit'));
   [[X0,Y0],[X1,Y0],[X0,Y1],[X1,Y1]].forEach(([x,y])=>B(x-(x>X0?wt:0)-.05,y-(y>Y0?wt:0)-.05,x+(x>X0?0:wt)+.05,y+(y>Y0?0:wt)+.05,FL,wallTop(x),TRIM,1,'White corner board'));
+  // Nov 24 (Clark): sauna sits fully outside the porch roofline; a 4 ft composite boardwalk bridges the 4 ft from the deck edge (y=-12) to the sauna door
+  const BW=(x0,y0,x1,y1,z0,z1,c,n)=>addBox('outdoor','house',null,x0,y0,x1,y1,z0,z1,c,1,sInfo(n));
+  [34.0,37.9].forEach(x=>BW(x,Y1+.05,x+.15,-12.05,G,FL-.12,0x6f5a3f,'Boardwalk stringer (on deck blocks)'));
+  for(let y=Y1+.1;y<-12.1;y+=.47)BW(34.0,y,38.05,Math.min(y+.43,-12.1),FL-.12,FL-.02,0x8d8a84,'4 ft composite boardwalk, deck to sauna door (a 2 in step down off the deck)');
   const cy=Y0+1.2; B(33.55,cy-.27,34.05,cy+.27,FL+2.6,wallTop(33.8)+0.55+3.4,0x2b2b2b,1,'6″ Class-A chimney, spark arrestor (3 ft above the roof)');
   // existing shed (position approximate, from the aerial and listing photos): gray lap, white trim, roll-up door, shed roof
   const sx=6.8, sy=-87.3, W=12, D=10, shInfo=n=>infoOf(n,{layer:'Outdoor',note:'Existing rear shed. Position estimated from the aerial and listing photos (±10 ft); size estimated at about 12′ × 10′.'});

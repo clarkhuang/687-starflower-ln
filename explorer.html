@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>687 Starflower Ln · 3D explorer</title>
+<meta name="description" content="Interactive 3D explorer and satellite fly-over of 687 Starflower Ln: house, garage gym, sauna, lot boundary and trails to the VASA Pathway.">
+<link rel="stylesheet" href="explorer/explorer.css">
+</head><body>
+<div id="view"></div>
+<div id="labels"></div>
+<header id="top">
+  <a class="brand" href="index.html" title="Back to the site">687 Starflower <span>3D explorer</span></a>
+  <div class="seg" id="modes" role="group" aria-label="Navigation mode">
+    <button data-mode="orbit" class="on" title="Orbit (O)">Orbit</button><button data-mode="fly" title="Fly: WASD + drag (F)">Fly</button><button data-mode="walk" title="Walk at eye height (G)">Walk</button>
+  </div>
+  <div class="seg" id="tools" role="group" aria-label="Tool">
+    <button data-tool="select" class="on" title="Click to identify (I)">Identify</button><button data-tool="measure" title="Click two points to measure (M)">Measure</button>
+  </div>
+  <button id="tourBtn" class="accent" title="Animated fly-over: lot, trails, VASA (T)">▶ Fly-over tour</button>
+  <button id="helpBtn" class="ghost" title="Controls and sources (?)">?</button>
+  <button id="panelBtn" class="ghost mob" title="Layers and views">☰</button>
+</header>
+<aside id="left" class="panel">
+  <h2>Outliner</h2>
+  <ul id="layers"></ul>
+  <h2>Imagery</h2>
+  <div class="seg small" id="imagery"><button data-img="esri" class="on" title="Esri World Imagery, loaded live (newer, shows the house)">Esri live</button><button data-img="naip" title="USDA NAIP 2022, public domain (predates the house)">NAIP 2022</button></div>
+  <label class="row">Terrain relief <input type="range" id="exag" min="1" max="3" step="0.25" value="1"><b id="exagV">1×</b></label>
+</aside>
+<aside id="right" class="panel">
+  <h2>Views</h2>
+  <ol id="views"></ol>
+  <h2>Section</h2>
+  <div id="section"><input type="range" id="cut" min="0" max="2" step="0.01" value="1"><div class="ticks"><span data-cut="0">Basement</span><span data-cut="1">Main</span><span data-cut="2">Roof</span></div></div>
+</aside>
+<div id="info" class="panel hidden"><button class="x" aria-label="Close">×</button><div id="infoBody"></div></div>
+<div id="measureOut" class="hidden"></div>
+<div id="caption" class="hidden"></div>
+<div id="compass" title="North"><div id="needle"><b>N</b></div></div>
+<div id="status"></div>
+<div id="joy" class="hidden"><div id="joyKnob"></div></div>
+<div id="help" class="panel hidden"><button class="x" aria-label="Close">×</button>
+<h2>Controls</h2>
+<table>
+<tr><td>Orbit</td><td>Left-drag or one finger · right-drag / Shift-drag / two fingers to pan · wheel or pinch to zoom</td></tr>
+<tr><td>Fly (F)</td><td>W A S D to move, Q / E down / up, Shift for speed, drag to look. On a phone, use the joystick and drag to look.</td></tr>
+<tr><td>Walk (G)</td><td>Fly at eye height (5′6″) on the current floor or the ground</td></tr>
+<tr><td>Views</td><td>Number keys 1–9 jump to the saved views · Numpad 1 / 3 / 7 front, right, top · Home overview · . or Numpad . frames the selection</td></tr>
+<tr><td>Identify (I)</td><td>Click anything to see what it is and its size · H hides it · Alt+H shows everything again</td></tr>
+<tr><td>Measure (M)</td><td>Click two points; you get the straight-line distance, the level distance and the rise · Esc clears it</td></tr>
+<tr><td>Section</td><td>The slider cuts the house at the basement, main floor or roof</td></tr>
+<tr><td>Tour (T)</td><td>Flies over the lot, then follows the trail to the VASA network. Any key or click stops it.</td></tr>
+</table>
+<h2>Accuracy</h2>
+<p>Walls, doors and windows are traced from the listing's Cubicasa floor plan at its measured scale (24.53 px per foot; the garage is 39′6″ × 49′11″). Heights come from the plans: main ceiling 8′-1⅛″ with 12″ coffers, basement finished ceiling about 8′, garage walls 10′ with a 4/12 scissor vault to a 13′ flat center, and a stair of 15 risers at 7⅞″. Furniture marked “approx.” is a typical size, not measured. The house is placed on the map by matching its garage to the aerial photo, within about 3 ft. The lot line comes from county GIS, and it is not a survey. The backyard path to the two-track is inferred, since it's under tree cover.</p>
+<h2>Sources</h2>
+<ul id="credits"></ul>
+</div>
+<noscript><p style="padding:2em;color:#fff">This page needs JavaScript and WebGL.</p></noscript>
+<script src="lib/three.min.js"></script><script src="lib/OrbitControls.js"></script><script src="house-data.js"></script>
+<script src="explorer/explorer.js"></script>
+</body></html>

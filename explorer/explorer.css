@@ -1,0 +1,48 @@
+:root{--bg:#0f1115;--panel:rgba(18,20,25,.92);--line:#2a2e37;--ink:#e9e6e0;--mute:#9aa0aa;--acc:#e0a458;--acc2:#7fb4c9;--r:10px}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:13px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
+#view canvas{display:block;touch-action:none}
+button{font:inherit;color:var(--ink);background:#20242c;border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
+button:hover{border-color:#454b57}button.on{background:var(--acc);color:#16120c;border-color:var(--acc);font-weight:600}
+button.accent{background:#2b3a44;border-color:#3d5563;color:#dff1fa}button.ghost{background:transparent}
+.seg{display:inline-flex}.seg button{border-radius:0;margin-left:-1px}.seg button:first-child{border-radius:8px 0 0 8px}.seg button:last-child{border-radius:0 8px 8px 0}
+.seg.small button{padding:3px 8px;font-size:12px}
+#top{position:fixed;top:0;left:0;right:0;height:48px;display:flex;align-items:center;gap:10px;padding:0 12px;background:linear-gradient(#0f1115,rgba(15,17,21,.75));border-bottom:1px solid var(--line);z-index:5}
+.brand{color:var(--ink);text-decoration:none;font-weight:700;letter-spacing:.2px;margin-right:6px;white-space:nowrap}.brand span{color:var(--acc);font-weight:500}
+.panel{position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);z-index:4;backdrop-filter:blur(6px)}
+.panel h2{font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:var(--mute);margin:12px 0 6px;font-weight:600}
+#left{top:58px;left:10px;width:230px;padding:2px 12px 12px;max-height:calc(100% - 70px);overflow:auto}
+#right{top:58px;right:10px;width:250px;padding:2px 12px 12px;max-height:calc(100% - 150px);overflow:auto}
+#layers{list-style:none;margin:0;padding:0}#layers li{display:flex;align-items:center;gap:8px;padding:4px 2px;border-radius:6px;cursor:pointer;user-select:none}
+#layers li:hover{background:#1c2027}#layers .eye{width:18px;text-align:center;opacity:.95}#layers li.off{color:#6d727c}#layers li.off .eye{opacity:.35}
+#layers .sw{width:10px;height:10px;border-radius:2px;margin-left:auto}
+#views{margin:0;padding:0 0 0 20px}#views li{padding:3px 4px;border-radius:6px;cursor:pointer;color:#d8d4cc}#views li:hover{background:#1c2027;color:#fff}#views li::marker{color:var(--mute);font-size:11px}
+#views li.geo{color:#a9d6e8}
+.row{display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--mute)}.row input{flex:1}
+#section input{width:100%}.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--mute)}.ticks span{cursor:pointer}.ticks span:hover{color:#fff}
+#info{right:10px;bottom:10px;width:300px;padding:12px 14px;max-height:45%;overflow:auto}#info h3{margin:0 0 4px;font-size:14px}#info .k{color:var(--mute)}#info .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;background:#262b33;color:#cfd3da;margin:2px 4px 6px 0}
+.x{position:absolute;top:6px;right:6px;padding:0 7px;background:transparent;border:0;font-size:18px;color:var(--mute)}
+.hidden{display:none!important}
+#help{left:50%;top:50%;transform:translate(-50%,-50%);width:min(680px,94vw);max-height:84vh;overflow:auto;padding:6px 20px 16px;z-index:9}
+#help td{vertical-align:top;padding:4px 10px 4px 0}#help td:first-child{color:var(--acc);white-space:nowrap}#help p,#help li{color:#cfcbc4}#help a{color:var(--acc2)}
+#compass{position:fixed;right:276px;top:62px;width:46px;height:46px;border-radius:50%;background:var(--panel);border:1px solid var(--line);z-index:4;cursor:pointer}
+#needle{position:absolute;inset:0;transition:none}#needle b{position:absolute;left:50%;top:3px;transform:translateX(-50%);color:#ff6b5b;font-size:12px}
+#needle::after{content:"";position:absolute;left:50%;top:17px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:14px solid #ff6b5b;transform:translateX(-50%)}
+#status{position:fixed;left:252px;bottom:10px;color:#c9c5bd;font-size:12px;background:rgba(15,17,21,.7);padding:4px 9px;border-radius:7px;z-index:3;pointer-events:none}
+#caption{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);max-width:min(720px,92vw);background:rgba(10,12,15,.86);border:1px solid #3a4250;padding:10px 16px;border-radius:12px;font-size:15px;text-align:center;z-index:6}
+#caption small{display:block;color:var(--mute);font-size:12px;margin-top:2px}
+#measureOut{position:fixed;left:50%;top:60px;transform:translateX(-50%);background:#2a2214;border:1px solid var(--acc);color:#ffe3b8;padding:6px 12px;border-radius:9px;z-index:6;font-weight:600}
+#labels{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden}
+.lb{position:absolute;transform:translate(-50%,-100%);white-space:nowrap;font-size:11.5px;padding:2px 7px;border-radius:6px;background:rgba(12,14,18,.78);color:#f0e6d6;border:1px solid rgba(255,255,255,.12)}
+.lb.room{background:rgba(20,40,52,.72);color:#cfe9f4;font-size:11px}.lb.geo{background:rgba(10,30,40,.85);color:#bfeaff;border-color:#2f6d86}.lb.vasa{background:#16324a;color:#d6f0ff;border-color:#3c8fc7;font-weight:600}
+.lb.pin{background:#5a1d16;color:#ffd9d2;border-color:#d9574a;font-weight:700}.lb.ms{background:#2a2214;color:#ffe3b8;border-color:var(--acc)}
+.lb::after{content:"";position:absolute;left:50%;bottom:-5px;width:1px;height:5px;background:rgba(255,255,255,.4)}
+#joy{position:fixed;left:24px;bottom:24px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);z-index:6;touch-action:none}
+#joyKnob{position:absolute;left:40px;top:40px;width:40px;height:40px;border-radius:50%;background:rgba(224,164,88,.8)}
+.mob{display:none}
+@media (max-width:820px){
+ #top{gap:6px;padding:0 8px}.brand span{display:none}#tourBtn{padding:5px 8px}
+ .mob{display:inline-block}#left,#right{display:none}body.panels #left{display:block;top:56px;left:8px;right:8px;width:auto;max-height:42%}
+ body.panels #right{display:block;top:auto;bottom:8px;left:8px;right:8px;width:auto;max-height:38%}
+ #compass{right:10px;top:56px}#status{left:10px;bottom:auto;top:108px}#info{left:8px;right:8px;width:auto;bottom:8px}
+ #tools button,#modes button{padding:5px 7px}
+}

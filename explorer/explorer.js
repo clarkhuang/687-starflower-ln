@@ -408,7 +408,7 @@ function buildFurniture(){
 // ---------- outdoor: 8x13 portable skid sauna + existing shed ----------
 function buildOutdoor(){
   const G=-1.62, SID=0xb7bab5, TRIM=0xf7f7f5, ROOF=0x3f434a, BLK=0x151515;
-  const sInfo=n=>infoOf(n,{layer:'Outdoor',note:'8′ × 13′ portable skid sauna (concept): changing room off the hot-tub deck, then a 7′ × 7′ hot room with two 7-foot lie-flat benches. Gray lap siding, white trim and a 2.5:12 shingle shed roof to match the shed and house.'});
+  const sInfo=n=>infoOf(n,{layer:'Outdoor',note:'8′ × 13′ portable skid sauna (concept): changing room off the hot-tub deck, then a 7′ × 7′ hot room with two 7-foot lie-flat benches. Gray lap siding, white trim and a 2.5:12 shingle shed roof to match the shed and house. Set 4 ft off the deck with a boardwalk; non-combustible stove wall at the firing tunnel; low intake and opposite exhaust vents.'});
   const X0=32,X1=40,Y0=-29,Y1=-16, FL=G+1.1, hiTop=G+10.0, loTop=G+8.17, wt=0.45;
   const B=(x0,y0,x1,y1,z0,z1,c,o,n)=>addBox('outdoor','house',null,x0,y0,x1,y1,z0,z1,c,o,sInfo(n||'Portable skid sauna'));
   B(X0-1.5,Y0-1.5,X1+1.5,Y1,G-0.02,G+0.06,0xb8b2a6,1,'Compacted gravel pad');
@@ -443,7 +443,12 @@ function buildOutdoor(){
   const BW=(x0,y0,x1,y1,z0,z1,c,n)=>addBox('outdoor','house',null,x0,y0,x1,y1,z0,z1,c,1,sInfo(n));
   [34.0,37.9].forEach(x=>BW(x,Y1+.05,x+.15,-12.05,G,FL-.12,0x6f5a3f,'Boardwalk stringer (on deck blocks)'));
   for(let y=Y1+.1;y<-12.1;y+=.47)BW(34.0,y,38.05,Math.min(y+.43,-12.1),FL-.12,FL-.02,0x8d8a84,'4 ft composite boardwalk, deck to sauna door (a 2 in step down off the deck)');
-  const cy=Y0+1.2; B(33.55,cy-.27,34.05,cy+.27,FL+2.6,wallTop(33.8)+0.55+3.4,0x2b2b2b,1,'6″ Class-A chimney, spark arrestor (3 ft above the roof)');
+  const cy=Y0+1.2; B(33.55,cy-.27,34.05,cy+.27,FL+2.6,wallTop(33.8)+0.55+0.2+44/12,0x2b2b2b,1,'6″ Class-A chimney, spark arrestor cap about 44″ above the roof at the penetration (2 ft above anything within 10 ft)');
+  // Nov 24 review: non-combustible stove wall at the firing tunnel, plus sauna vents
+  B(X0+.05,Y0-.06,35.3,Y0+.02,FL-.1,wallTop(35.3),0x8f8f8f,1,'Non-combustible stove wall at the firing tunnel (steel studs + cement board, sized from the stove manual)');
+  B(33.3,Y0-.1,34.3,Y0-.04,FL+.15,FL+1.45,0x111111,1,'Firing door (stove fed from outside)');
+  B(X0+wt/2,Y0+wt+2.2,X0+wt/2+.04,Y0+wt+2.9,FL+.6,FL+.95,0x222222,1,'Adjustable fresh-air intake, low near the stove');
+  B(X1-wt/2-.04,Y0+wt+4.0,X1-wt/2,Y0+wt+4.7,FL+2.4,FL+2.75,0x222222,1,'Adjustable exhaust vent on the opposite wall (under the upper bench, per the stove maker)');
   // existing shed (position approximate, from the aerial and listing photos): gray lap, white trim, roll-up door, shed roof
   const sx=6.8, sy=-87.3, W=12, D=10, shInfo=n=>infoOf(n,{layer:'Outdoor',note:'Existing rear shed. Position estimated from the aerial and listing photos (±10 ft); size estimated at about 12′ × 10′.'});
   const SB=(x0,y0,x1,y1,z0,z1,c,o,n)=>addBox('outdoor','house',null,sx+x0,sy+y0,sx+x1,sy+y1,z0,z1,c,o,shInfo(n||'Existing shed'));

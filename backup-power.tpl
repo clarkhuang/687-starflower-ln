@@ -1,17 +1,17 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Backup power &amp; garage · 687 Starflower Ln</title><meta name="robots" content="noindex"><style>{{CSS}}</style></head><body>
-<header><div class="sub">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</div>
-<h1>687 Starflower Ln <span>· backup power &amp; garage</span></h1>
-<div class="sub">FranklinWH battery wall, generator choice, Wall Connector, solar-ready roof · planning notes updated Nov 22, 2026</div></header>
-<nav><a href="index.html">Concept site</a><a href="index.html#garage">Garage gym</a><a href="#plan">Current plan</a><a href="#batteries">FranklinWH wall</a><a href="#generator">Generator</a><a href="#airstream">Airstream</a><a href="#charger">Wall Connector</a><a href="#solar">Solar-ready</a><a href="#lift">Car lift</a><a href="687-Starflower-Concept.pdf">PDF</a></nav>
+<nav aria-label="Sections"><a href="index.html">Concept site</a><a href="index.html#garage">Garage gym</a><a href="#plan">Current plan</a><a href="#batteries">FranklinWH wall</a><a href="#generator">Portable generator</a><a href="#airstream">Airstream</a><a href="#charger">Wall Connector</a><a href="#solar">Solar-ready</a><a href="#lift">Car lift</a><a href="687-Starflower-Concept.pdf">PDF</a></nav>
+<header class="mast"><p class="mast-run">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</p>
+<div class="mast-stage"><div class="mast-text"><h1>687 Starflower Ln<span class="sep"> · </span><span class="h1-sub">backup power &amp; garage</span></h1>
+<p class="sub">3 FranklinWH batteries, a south-roof solar array and a portable-generator inlet · planning notes updated Nov 23, 2026</p></div></div></header>
 <main>
 <section id="plan">
-<p><a class="back" href="index.html" style="display:inline-block;margin:12px 8px 0 0;font-size:13px;color:var(--muted)">← Back to the concept site</a></p>
+<p class="back-row"><a class="back" href="index.html">← Back to the concept site</a></p>
 <h2>The current plan</h2>
-<p>Whole-house backup on a <b>FranklinWH</b> system: three aPower 2 batteries, an aGate, and a Generator Module, on the left wall of the garage. The plan adds a single emergency generator source, a Tesla Wall Connector on a load-managed circuit, and solar-ready provisions so panels can be added later. Propane heat is what makes about 45 kWh of batteries workable, because the furnace only needs its blower and controls.</p>
+<p>The plan is three parts: <b>three FranklinWH aPower 2 batteries</b> with the aGate on the left wall of the garage, <b>a starter solar array that fills the garage’s south roof</b>, and <b>space plus an outdoor inlet for a portable 240V dual-fuel generator</b> that plugs into the aGate’s generator input when needed. A Tesla Wall Connector sits on a load-managed circuit. Propane heat is what makes about 45 kWh of batteries workable, because the furnace only needs its blower and controls.</p>
 <div class="grid">
 <div class="card"><h3>About 2–3 days on batteries</h3><p>About <b>45 kWh</b> of storage covers essentials (well, furnace blower, fridge, lights, internet, roughly 15–20 kWh a day) for about <b>2½–3 days</b>. Heavy hot-tub or EV use shortens that.</p></div>
-<div class="card"><h3>Longer outages = generator</h3><p>The generator recharges the batteries and then shuts off, so it only runs a few hours at a time. In winter, solar on this lot adds little (see below), so the generator is what carries a long January outage.</p></div>
+<div class="card"><h3>Longer outages = solar, then the portable</h3><p>From spring to fall the south-roof array refills the batteries on most days. In a long winter outage, when trees and snow cut solar, the portable generator is rolled out, plugged into the inlet, run a few hours to recharge the batteries, and shut off.</p></div>
 <div class="card"><h3>Garage layout</h3><p>The battery wall is on the left (south) wall of the garage, with 36 in kept clear in front and bollards. One car lift is in the right bay, and the Wall Connector is on the right bay’s front wall. See the <a href="index.html#garage">garage v2 plan</a>.</p></div>
 </div>
 <p class="muted">Planning notes only, not a bid, load calculation or engineering document. The installer finalizes the equipment, the layout and the code details.</p>
@@ -23,7 +23,7 @@
 <div class="card"><h3>What goes on the wall</h3><ul>
 <li><b>3 × aPower 2</b>, about 15 kWh each, about 45 kWh total.</li>
 <li><b>aGate</b>, the control and transfer unit. It islands the house in an outage and has the solar and generator inputs.</li>
-<li><b>Generator Module</b>, for the one emergency generator source.</li>
+<li><b>Generator input</b> (FranklinWH Generator Module if the installer needs it) for the portable generator inlet.</li>
 </ul></div>
 <div class="card"><h3>Placement</h3><ul>
 <li>Along the left garage wall, away from the lifting platform and the car lift.</li>
@@ -35,19 +35,18 @@
 </section>
 
 <section id="generator">
-<h2>Generator: pick one emergency source</h2>
-<p>FranklinWH supports <b>a single emergency power source</b>: a standby generator, a portable generator, or vehicle-to-load. The house gets one or the other, not both.</p>
+<h2>Portable dual-fuel generator on an outdoor inlet</h2>
+<p>FranklinWH supports one generator source. This house uses a <b>portable</b> one: no permanent standby generator and no generator pad.</p>
 <div class="grid">
-<div class="card"><h3 class="ok">Option 1: 240V dual-fuel portable on an outdoor inlet</h3><ul>
-<li>The installer suggested a 240V portable (a typical home-center dual-fuel model) plugged into an outdoor generator inlet that feeds the Generator Module. It charges <b>about one battery per 3–4 hours</b>, roughly 4–5 kW into the batteries.</li>
-<li>It must be <b>240V split-phase</b>. Dual-fuel lets it run on gasoline or off the existing 500-gallon propane tank through an outdoor quick-connect.</li>
-<li><b>Manual start only:</b> someone starts it when the batteries run low, runs it a few hours, and shuts it off. It best fits if someone is usually home during winter outages.</li>
-<li>Run it outdoors only, well away from doors and windows. The inlet is marked on the garage plan near the battery wall.</li>
+<div class="card"><h3 class="ok">The setup</h3><ul>
+<li>A <b>240V split-phase dual-fuel portable</b> (a typical home-center model) runs on gasoline, or on propane from the existing tank through an outdoor quick-connect.</li>
+<li>It plugs into a weatherproof <b>outdoor generator inlet</b> on the outside of the south garage wall, wired to the aGate’s generator input. It charges <b>about one battery per 3–4 hours</b>, roughly 4–5 kW into the batteries.</li>
+<li>Keep a parking spot for it on the outside wall by the inlet, clear of windows and doors, and store it in the garage or shed between uses.</li>
 </ul></div>
-<div class="card"><h3>Option 2: optional propane standby</h3><ul>
-<li>A permanently installed propane standby on the existing 500-gallon tank. It sits on a pad outside the garage (an optional pad is shown on the plan).</li>
-<li><b>Starts and stops on its own</b> based on battery charge, so it protects a vacant house in a January outage (well, heat, freeze protection), for example while you’re away with the Airstream.</li>
-<li>If the house will often sit empty in winter, this is the safer choice. If someone is nearly always home, the portable is reasonable.</li>
+<div class="card"><h3>How it’s used</h3><ul>
+<li><b>Manual start:</b> when the batteries run low in a long outage, start it, run it a few hours, and shut it off.</li>
+<li>Run it outdoors only, well away from doors and windows. Never in the garage.</li>
+<li>The installer confirms the inlet rating, the generator size the aGate accepts, and the wiring.</li>
 </ul></div>
 </div>
 </section>
@@ -64,12 +63,12 @@
 </section>
 
 <section id="solar">
-<h2>Solar-ready now, panels later</h2>
-<p>Panels may not go up right away, or may start as a small array. The cheap steps now are done during the battery install:</p>
+<h2>Starter solar array: fill the garage south roof</h2>
+<p>The plan is a starter array that <b>fills the garage’s south roof</b>, about 36 panels after fire-code pathways and setbacks. It is installed with the batteries or soon after, with the inverter path the installer chooses (microinverters handle tree shade better; an aPower S with its built-in solar input is the other option).</p>
 <ul>
-<li><b>Reserve the aGate solar breaker position</b>, so a future inverter lands on the backed-up side.</li>
-<li><b>Run empty conduit</b> from the aGate to the garage attic or roof (dashed line on the garage plan), and leave wall space for an inverter.</li>
-<li><b>Consider an aPower S</b> in place of one aPower 2. It has a built-in solar input, so a small array could connect later without a separate inverter. Microinverters handle tree shade better, so the installer should model both.</li>
+<li><b>Reserve the aGate solar breaker position</b>, so the array lands on the backed-up side.</li>
+<li><b>Conduit</b> from the aGate up to the garage roof, and wall space for an inverter or disconnect beside the batteries.</li>
+<li>Get a measured shade report first; trimming the nearest band of trees helps more than extra panels.</li>
 </ul>
 <h3>Garage south roof: sun analysis</h3>
 <div class="grid">
@@ -89,9 +88,9 @@
 <li>About 2 kW makes too little to be worth it (under 1 kWh a day in winter).</li>
 </ul></div>
 </div>
-<p><b>What to expect:</b> from April to September, about 6 kW as-is roughly matches a frugal outage day (about one aPower a day in July). From December to February it covers only about <b>10–15% of an outage day</b> (about 2 kWh a day in January), so the generator is still needed in winter.</p>
+<p><b>What to expect:</b> a full south roof (about 15.5 kW) makes more than a frugal outage day from April to September, even with today’s trees. From December to February it covers only part of an outage day, so the portable generator stays in the plan for winter.</p>
 <div class="full"><figure><a href="img/bp-solar-monthly.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-solar-monthly.jpg" alt="Monthly solar output estimates for the garage south roof"></a><figcaption>Estimated monthly output per kW (left) and average daily output for 2.2, 4.3, 6 and 15.5 kW arrays with today’s tree line (right). PVWatts v8 with snow-loss and tree-shade estimates; tree inputs are estimates until a measured shade report.</figcaption></figure></div>
-<div class="full"><figure><a href="img/bp-roof-sketch.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-roof-sketch.jpg" alt="Garage south roof panel layout sketch"></a><figcaption>Garage south roof sketch, not to survey: about 36 panels at most (light blue) and a suggested 10-panel, about 4.3 kW starter block (dark blue), with the ridge setback and the 36 in fire pathway.</figcaption></figure></div>
+<div class="full"><figure><a href="img/bp-roof-sketch.jpg" target="_blank" rel="noopener"><img loading="lazy" src="img/bp-roof-sketch.jpg" alt="Garage south roof panel layout sketch"></a><figcaption>Garage south roof sketch, not to survey: about 36 panels (light blue) fill the roof in the plan; the dark-blue 10-panel block shows where a smaller array would start. Ridge setback and 36 in fire pathway shown.</figcaption></figure></div>
 </section>
 
 <section id="lift">
@@ -99,5 +98,5 @@
 <p>The garage plan keeps <b>one 4-post high-rise lift (BendPak HD-9XW class) in the right bay</b>: the Model Y parks under it and the 911 goes on top. It sits behind the side door’s open-panel line (about 10.5 ft in), so a car on top clears the door. The XT5 parks in the left bay without a lift, which leaves the left wall free for the FranklinWH battery wall. The Airstream stays in the 12×12 center bay. Do not use the top lock until the ceiling is taped, and confirm drive-under and post spacing with the lift installer.</p>
 </section>
 
-<p class="muted" style="margin-top:30px">Concept planning only, not a bid, load calculation or engineering document. Solar figures are model estimates (PVWatts v8, NSRDB TMY) with assumed snow and tree shading. Equipment choices and code details are confirmed by the installer on site.</p>
-</main></body></html>
+<p class="muted colophon">Concept planning only, not a bid, load calculation or engineering document. Solar figures are model estimates (PVWatts v8, NSRDB TMY) with assumed snow and tree shading. Equipment choices and code details are confirmed by the installer on site.</p>
+</main>{{JS}}</body></html>

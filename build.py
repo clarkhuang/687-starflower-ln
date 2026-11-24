@@ -1,4 +1,5 @@
-import html, pathlib
+import html, pathlib, re
+from PIL import Image
 root = pathlib.Path(__file__).resolve().parent
 CSS = open('/workspace/property/docs/deal-rd/site/index.html').read()
 css = CSS[CSS.index('<style>')+7:CSS.index('</style>')]
@@ -16,7 +17,7 @@ PH = {
 34:'Primary bath, tub',35:'Primary bedroom',36:'Primary bedroom, TV wall',37:'Primary bedroom, sitting end',
 38:'Primary closet',39:'Primary closet',40:'Primary closet island',
 41:'Lower family room, TV wall',42:'Lower family room',43:'Lower bedroom',44:'Lower bedroom',45:'Lower bedroom',
-46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door',51:'Speakeasy: round high-top for 4 and bar cart',
+46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door',51:'Speakeasy: square 4′6″ high-top for 4, matching chairs and the bar cart',
 52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream, one lift',55:'Garage interior, v2 layout',56:'Garage gym, stretch area and office',
 57:'Garage, looking out: one lift, Airstream, XT5',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
 62:'Covered deck from the yard',63:'Aerial',64:'Aerial, garage',65:'Aerial, backyard',
@@ -31,28 +32,7 @@ GROUPS = [
 ('Lower level',[41,42,43,44,45,46,47,48,49,50,51,52,53]),
 ('Garage',[54,55,56,57]),
 ]
-R = [
-('r-great_nw','Great room from the kitchen corner: Steinway B center, cigar chairs at the fireplace'),
-('r-great_foyer','From the front door: piano lid opens toward the fireplace lounge'),
-('r-great_dining','Through the dining arch: room to walk around the piano'),
-('r-family_ne','Lower family room: sectional tucked in the corner, massage chair at right'),
-('r-family_tv','From the sectional: 75" TV on the existing TV wall'),
-('r-office','Speakeasy behind the hinged bookcase: 42 in round high-top for 4, bar stools, brass bar cart, low pendant'),
-('r-kidroom',"Bedroom 2 (kids' room): full bed, nightstand, kids desk, 6-drawer dresser"),
-('r-bedroom3','Bedroom 3 (teen room, later guest): sleigh bed, nightstand, dresser, small desk'),
-('r-basement_office','Office in the storage / utility room: glass desk, Aeron, printer stand, storage'),
-('r-primary','Primary bedroom: king bed, nightstands, tall chests (bed wall to confirm)'),
-('r-dining','Dining table with 6 chairs; counter stools at the island'),
-('r-garage_gym','Garage gym v2: 8x8 platform and rig under the 13 ft center, rope, plunge, GHD'),
-('r-garage_rings','Garage: high rings and a 1.5 in climbing rope together on one center strongback in the 13 ft zone (truss-maker approval required)'),
-('r-garage_stretch','Garage: 8x8 stretch / bodyweight / TV area and the office under the rear loft'),
-('r-garage_lift','Garage: one 4-post lift in the right bay (Model Y under, 911 on top)'),
-('r-garage_top','Garage v2 from above'),
-('r-main_aerial','Main floor from above'),
-('r-lower_aerial','Lower level from above'),
-('r-exploded','Exploded cutaway: main floor lifted over the lower level'),
-('r-sauna','Elevation: 9×16 wood-fired skid sauna, 16 ft perpendicular to the deck'),
-]
+R = []  # 3D-model still screenshots removed Nov 23 (the interactive model stays)
 
 FULL = root / 'img' / 'full'
 def full(src):
@@ -77,14 +57,52 @@ for title, ids in GROUPS:
 gal = ''.join(gal_parts)
 renders = ''.join(fig(f'img/{a}.jpg', b) for a, b in R)
 
-JS = ''
+JS = '<script>' + (root/'enhance.js').read_text() + '</script>'
+
+def size_images(page):
+    """Give every local <img> its intrinsic width/height (no layout shift) and async decoding."""
+    def one(m):
+        tag, src = m.group(0), m.group(1)
+        f = root / src
+        if ' width=' in tag or not f.exists():
+            return tag
+        w, h = Image.open(f).size
+        return tag[:-1] + f' width="{w}" height="{h}" decoding="async">'
+    return re.sub(r'<img\b[^>]*?\bsrc="([^"]+)"[^>]*>', one, page)
+
+def label_tables(page):
+    """Wrap each data table for wide-screen scrolling and tag each cell with its column
+    header (data-l) so narrow screens can stack rows with labels. No text is changed."""
+    def tbl(m):
+        t = m.group(0)
+        heads = [re.sub(r'<[^>]+>', '', h).strip() for h in re.findall(r'<th[^>]*>(.*?)</th>', t, flags=re.S)]
+        def row(rm):
+            i = [0]
+            def td(tm):
+                attrs = tm.group(1)
+                sp = re.search(r'colspan="(\d+)"', attrs)
+                span = int(sp.group(1)) if sp else 1
+                lab = heads[i[0]] if i[0] < len(heads) else ''
+                first = i[0] == 0
+                i[0] += span
+                return f'<td{attrs}' + (f' data-l="{html.escape(lab)}"' if lab and span == 1 and not first else '') + '>'
+            return re.sub(r'<td((?:\s[^>]*)?)>', td, rm.group(0))
+        t = re.sub(r'<tr[^>]*>.*?</tr>', row, t, flags=re.S)
+        t = re.sub(r'<td([^>]*)>—</td>', r'<td\1 class="nil">—</td>', t)  # dash-only cells collapse in the stacked phone layout
+        return '<div class="table-wrap">' + t + '</div>'
+    return re.sub(r'<table class="costs[^>]*>.*?</table>', tbl, page, flags=re.S)
+
+def finish(page):
+    return size_images(label_tables(page))
 
 import systems
 SYS = systems.build()
+# Presentation only: the inspection photos get the compact thumbnail-and-note list; spacing lives in extra.css.
+SYS = SYS.replace('<div class="gal">', '<div class="gal sys-gal">').replace(' style="margin:12px 0"', '').replace(' style="break-inside:auto"', '')
 page = (root/'page.tpl').read_text()
 for k, v in {'{{CSS}}': css, '{{GAL}}': gal, '{{RENDERS}}': renders, '{{JS}}': JS, '{{SYSTEMS}}': SYS}.items():
     page = page.replace(k, v)
-(root/'index.html').write_text(page)
-backup = (root/'backup-power.tpl').read_text().replace('{{CSS}}', css)
+(root/'index.html').write_text(finish(page))
+backup = finish((root/'backup-power.tpl').read_text().replace('{{CSS}}', css).replace('{{JS}}', JS))
 (root/'backup-power.html').write_text(backup)
 print('ok', len(page), 'sliders', page.count('data-ba'), 'backup', len(backup))

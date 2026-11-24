@@ -200,11 +200,52 @@ const BUILD={
  bed(f,C,w,d){const c=hex(f.c);C.lb(-w/2,-d/2,w/2,d/2,0,1.1,c);C.lb(-w/2+.25,-d/2+.4,w/2-.25,d/2-.2,1.1,2.0,0xf2f2f2);C.lb(-w/2,-d/2,w/2,-d/2+.4,0,f.h,c);C.lb(-w/2+.5,-d/2+.5,w/2-.5,-d/2+1.6,2.0,2.35,0xffffff);},
  kdesk(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,2.35,2.5,0xf7f7f7);C.lb(-w/2,-d/2,-w/2+1.3,d/2,0,2.35,0xf0f0f0);C.lb(w/2-.12,-d/2,w/2,d/2,0,2.35,0xf0f0f0);C.lb(-w/2,d/2-.9,w/2,d/2,3.6,3.72,0xf7f7f7);},
  gofficed(f,C,w,d){C.lb(-w/2,-d/2,w/2,-d/2+2.5,0,2.5,0xd8dde6);},
- car(f,C,w,d){const c=hex(f.c),low=/911|porsche/i.test(f.name),hb=low?3.3:4.6,hBody=low?1.9:2.5;
+ car(f,C,w,d){if(/911|porsche/i.test(f.name||'')||f.id==='porsche')return BUILD.p911(f,C,w,d);const c=hex(f.c),low=/911|porsche/i.test(f.name),hb=low?3.3:4.6,hBody=low?1.9:2.5;
    C.lb(-w/2+.1,-d/2+.3,w/2-.1,d/2-.3,.55,hBody,c);C.lb(-w/2+.4,-d/2+(low?4.6:3.6),w/2-.4,d/2-(low?3.4:3.0),hBody,Math.min(f.h,hb+.2),0x1d2630);
    C.lb(-w/2+.45,-d/2+(low?4.8:3.8),w/2-.45,d/2-(low?3.6:3.2),Math.min(f.h,hb+.2),Math.min(f.h,hb+.28),c);
    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>C.mesh(new THREE.CylinderGeometry(1.05,1.05,.75,20),0x111111,1,{},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.3),1.05,b*(d/2-3.0));}));
-   C.lb(-w/2+.5,d/2-.32,-w/2+1.3,d/2-.25,1.6,2.0,0xf5f5f5);C.lb(w/2-1.3,d/2-.32,w/2-.5,d/2-.25,1.6,2.0,0xf5f5f5);C.lb(-w/2+.4,-d/2+.25,w/2-.4,-d/2+.32,1.7,2.0,0xb3261e);},
+   C.lb(-w/2+.5,-d/2+.25,-w/2+1.3,-d/2+.32,1.6,2.0,0xf5f5f5);C.lb(w/2-1.3,-d/2+.25,w/2-.5,-d/2+.32,1.6,2.0,0xf5f5f5);C.lb(-w/2+.4,d/2-.32,w/2-.4,d/2-.25,1.7,2.0,0xb3261e);},
+ p911(f,C,w,d){const MB=0x070708, MATTE={roughness:1,metalness:0}, y0=-d/2;
+   const pr=[[0,.5],[0,1.45],[.5,1.85],[3.9,2.3],[5.9,3.95],[7.7,4.05],[10.6,3.0],[d-.7,2.35],[d,2.05],[d,.5]];
+   const sh=new THREE.Shape();pr.forEach(([u,v],i)=>i?sh.lineTo(y0+u,v):sh.moveTo(y0+u,v));
+   C.mesh(new THREE.ExtrudeGeometry(sh,{depth:w-.2,bevelEnabled:false}),MB,1,MATTE,m=>{m.rotation.y=-Math.PI/2;m.position.x=(w-.2)/2;});
+   const gl=0x0b1118; C.lb(-w/2+.05,y0+6.0,-w/2+.12,y0+9.6,3.0,3.8,gl);C.lb(w/2-.12,y0+6.0,w/2-.05,y0+9.6,3.0,3.8,gl);
+   C.lb(-w/2+.6,y0+4.2,w/2-.6,y0+4.4,2.45,3.7,gl);
+   C.lb(-w/2+.35,d/2-.55,w/2-.35,d/2-.1,2.35,2.6,MB);C.lb(-w/2+.3,d/2-.08,w/2-.3,d/2-.02,1.55,1.75,0xb3261e);
+   C.lb(-w/2+.45,y0+.02,-w/2+1.15,y0+.1,1.35,1.7,0xf5f5f5);C.lb(w/2-1.15,y0+.02,w/2-.45,y0+.1,1.35,1.7,0xf5f5f5);
+   [[-1,y0+2.7],[1,y0+2.7],[-1,d/2-2.9],[1,d/2-2.9]].forEach(([a,y])=>C.mesh(new THREE.CylinderGeometry(1.08,1.08,.8,22),0x111111,1,{roughness:.9},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.3),1.08,y);}));},
+ sprinter(f,C,w,d){const S=0xc4c8cd, MET={metalness:.55,roughness:.38}, T=0x1a1a1a, G=0x121a22, y0=-d/2, H=f.h;
+   const box=(x0,ya,x1,yb,z0,z1,c,ex)=>C.mesh(new THREE.BoxGeometry(x1-x0,z1-z0,yb-ya),c,1,ex||MET,m=>m.position.set((x0+x1)/2,(z0+z1)/2,(ya+yb)/2));
+   // hood + front clip (nose toward the back wall, -y)
+   box(-w/2+.25,y0+.35,w/2-.25,y0+3.1,1.2,4.05,S);box(-w/2+.15,y0,w/2-.15,y0+.4,.95,2.15,T,{roughness:.8});
+   box(-w/2+.9,y0-.02,w/2-.9,y0+.36,2.25,3.55,0x0d0d0d,{roughness:.6});
+   C.lb(-w/2+.35,y0-.03,-w/2+1.0,y0+.05,3.15,3.6,0xf2f2f2);C.lb(w/2-1.0,y0-.03,w/2-.35,y0+.05,3.15,3.6,0xf2f2f2);
+   // raked windshield
+   C.mesh(new THREE.BoxGeometry(w-.5,3.45,.12),G,1,{roughness:.15,metalness:.3},m=>{m.position.set(0,5.65,y0+3.55);m.rotation.x=0.42;});
+   // high-roof body
+   box(-w/2,y0+3.1,w/2,d/2,2.0,4.1,S);box(-w/2,y0+4.35,w/2,d/2,4.1,H-.12,S);box(-w/2+.12,y0+4.35,w/2-.12,d/2-.05,H-.12,H,S);
+   box(-w/2+.4,y0+3.35,w/2-.4,y0+4.4,7.2,H-.12,S);
+   // black lower trim / rocker + rear bumper
+   box(-w/2-.02,y0+.4,w/2+.02,d/2,.95,2.0,T,{roughness:.85});box(-w/2,d/2-.3,w/2,d/2+.12,.9,1.95,T,{roughness:.85});
+   // windows: cab doors, sliding-door glass, rear doors
+   [-1,1].forEach(a=>{const x=a*(w/2+.015);
+     C.lb(x-.04,y0+4.4,x+.04,y0+7.0,4.5,6.9,G);C.lb(x-.04,y0+11.0,x+.04,y0+14.0,4.7,6.9,G);
+     C.lb(x-.03,y0+7.15,x+.03,y0+7.22,2.0,8.3,0x8e939a);
+     // mirrors (stick out past the 6'7" body)
+     C.lb(a>0?w/2+.05:-w/2-.75,y0+4.35,a>0?w/2+.75:-w/2-.05,y0+4.6,5.2,6.4,T);});
+   C.lb(-w/2+.5,d/2+.01,-.08,d/2+.05,5.0,7.6,G);C.lb(.08,d/2+.01,w/2-.5,d/2+.05,5.0,7.6,G);C.lb(-.04,d/2,.04,d/2+.06,2.0,H-.4,0x8e939a);
+   C.lb(-w/2+.15,d/2-.02,-w/2+.5,d/2+.06,2.2,4.4,0xb3261e);C.lb(w/2-.5,d/2-.02,w/2-.15,d/2+.06,2.2,4.4,0xb3261e);
+   // roof: A/C pod + solar panel
+   C.lb(-1.4,y0+15.0,1.4,y0+17.6,H,H+.75,0xe9eaec);C.lb(-w/2+.5,y0+6.0,w/2-.5,y0+12.5,H,H+.12,0x0d2240);
+   // wheels: front axle near the nose, dual rear
+   [[y0+2.75,1],[d/2-6.3,1]].forEach(([y])=>[-1,1].forEach(a=>C.mesh(new THREE.CylinderGeometry(1.25,1.25,.75,22),0x111111,1,{roughness:.9},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.28),1.25,y);})));},
+ franklinbat(f,C,w,d){// FranklinWH aPower 2 style: slim white floor-standing unit, dark side band, LED bar
+   const W=0xf1f2f2; C.lb(-w/2,-d/2,w/2,d/2,0,.25,0x6b6f74);C.mesh(new THREE.BoxGeometry(w,f.h-.25,d),W,1,{roughness:.45,metalness:.05},m=>m.position.set(0,.25+(f.h-.25)/2,0));
+   C.lb(w/2,-d/2,w/2+.02,-d/2+.3,.35,f.h-.05,0x3a3e44);C.lb(w/2,-.55,w/2+.02,.55,f.h-.95,f.h-.86,0x41b6e6);
+   C.lb(w/2,d/2-.55,w/2+.02,d/2-.25,f.h-.6,f.h-.3,0x9aa0a6);},
+ franklingate(f,C,w,d){// FranklinWH aGate style: wall-mounted white smart panel with a dark display strip
+   C.mesh(new THREE.BoxGeometry(w,f.h,d),0xf1f2f2,1,{roughness:.45},m=>m.position.set(0,f.h/2,0));
+   C.lb(w/2,-d/2+.25,w/2+.02,d/2-.25,f.h-.9,f.h-.55,0x2b2e33);C.lb(w/2+.02,-.25,w/2+.04,.25,f.h-.75,f.h-.68,0x41b6e6);},
  airstream(f,C,w,d){const sil=0xc9ccd2,body=d-w,hb=f.h-1.0;
    C.mesh(new THREE.CylinderGeometry(w/2,w/2,body,28,1,true),sil,1,{metalness:.55,roughness:.35},m=>{m.rotation.x=Math.PI/2;m.scale.set(1,1,hb/w);m.position.set(0,1.0+hb/2,0);});
    [-1,1].forEach(s=>C.mesh(new THREE.SphereGeometry(w/2,24,16),sil,1,{metalness:.55,roughness:.35},m=>{m.scale.set(1,hb/w,1);m.position.set(0,1.0+hb/2,s*body/2);}));
@@ -219,7 +260,7 @@ const BUILD={
 };
 function classify(f){const n=f.name||'',id=f.id||'';
   if(/^(apw|agate|genmod|esszone|pvstub|geninlet)/.test(id)||/franklin|battery|generator|solar/i.test(n))return'power';
-  if(['car','airstream','lift'].includes(f.kind)||id==='wallconn')return'vehicles';
+  if(['car','airstream','sprinter','lift'].includes(f.kind)||id==='wallconn')return'vehicles';
   if(f.lv==='garage'){ if(id==='loft'||id==='cab'||/fixed/i.test(n)&&/loft|cabinet|workbench/i.test(n))return'structure';
     if(/^(goffice|gdesk|gchair|sdesk)/.test(id)||/office|desk|task chair/i.test(n))return'furniture'; return'gym';}
   if(f.lv==='site')return'outdoor'; return'furniture';}
@@ -238,7 +279,7 @@ const GFIT={
  tread:[-33.9,17.4,-31.9,25.5], rower:[-30.6,18.6,-28.6,24.6],
  mats:[-39.3,-2.2,-7.51,18.6],
  xt5:[-35.0,28.6,-28.9,44.6,'Cadillac XT5 (left / south bay, nose-in)'],
- airstream:[-23.29,19.9,-16.71,44.9,'Airstream Interstate 24X, 25′ (center bay, nose-in)'],
+ airstream:[-23.29,19.9,-16.71,44.9],
  lift:[-12.84,18.5,-3.76,34.97,'One 4-post high-rise lift, right bay, shifted 1 ft toward the house (Model Y under, 911 on top)'],
  modely:[-11.4,18.6,-5.18,34.27], porsche:[-11.3,18.9,-5.28,33.67]
 };
@@ -250,7 +291,12 @@ const SPKFU={spanelW:[0.89,0.89,1.01,14.38],spanelS:[1.01,0.89,10.06,1.01],spane
 function planOverrides(FU){
   let list=FU.filter(f=>!/^(tire rack|mini-?split)/i.test(f.name||'')&&!/added light|mini-?split/i.test((f.name||''))&&f.lv!=='site');
   list.forEach(f=>{const g=f.lv==='garage'?GFIT[f.id]:(f.lv==='lower'?SPKFU[f.id]:null); if(!g)return;
-    Object.assign(f,{x0:g[0],y0:g[1],x1:g[2],y1:g[3]}); if(g[4])f.name=g[4]; f.src=(f.lv==='garage'?'garage-fit plan v3 (Cubicasa 39′6″ × 49′11″)':'Cubicasa plan, 9′2″ × 13′6″');});
+    Object.assign(f,{x0:g[0],y0:g[1],x1:g[2],y1:g[3]}); if(g[4])f.name=g[4]; if(f.id==='airstream')Object.assign(f,{kind:'sprinter',h:9.75,name:'2022 Airstream Interstate 24X: Mercedes Sprinter high-roof Class B van, about 24′6″–25′ × 6′7″ (plus mirrors) × 9′9″, nose-in in the center bay'});
+    if(f.id==='porsche')f.name='Porsche 911 Carrera 4S, matte black (on top of the lift)';
+    if(/^apw/.test(f.id))Object.assign(f,{kind:'franklinbat',x1:f.x0+0.8,h:3.6,name:f.name.replace(/\(.*\)/,'(FranklinWH aPower 2-style floor unit)')});
+    if(f.id==='agate')Object.assign(f,{kind:'franklingate',x1:f.x0+0.45,z0:1.6,h:2.6,name:'FranklinWH aGate (wall-mounted smart panel)'});
+    if(f.id==='genmod')Object.assign(f,{kind:'franklingate',x1:f.x0+0.4,z0:2.6,h:1.3,name:'FranklinWH generator module (wall unit)'});
+    f.src=(f.lv==='garage'?'garage-fit plan v3 (Cubicasa 39′6″ × 49′11″)':'Cubicasa plan, 9′2″ × 13′6″');});
   if(!list.some(f=>/standing/i.test(f.name||''))){ const g=list.find(f=>f.id==='gdesk2');
     if(g){Object.assign(g,{kind:'standdesk',name:'Standing desk at the south (back) window W2 (new), faces the window',h:3.6,src:'plan update'});} list=list.filter(f=>f.id!=='gchair'); }
   if(!list.some(f=>/partition|divider/i.test(f.name||''))){
@@ -480,7 +526,8 @@ function buildViews(){
    {k:'front',l:'Front & driveway',p:[-30,14,135],t:[2,7,20],cut:'roof'},
    {k:'gym',l:'Garage gym',p:[-25.5,9.5,31],t:[-20,3.0,8],cut:'main'},
    {k:'goffice',l:'Garage office (south window)',p:[-30.6,5.8,13.6],t:[-39,3.2,9.5],cut:'main'},
-   {k:'vehicles',l:'Garage: lift, Airstream, XT5',p:[-5,9,8],t:[-18,4.5,36],cut:'main'},
+   {k:'vehicles',l:'Garage: lift, Sprinter van, XT5',p:[-5,9,8],t:[-18,4.5,36],cut:'main'},
+   {k:'power',l:'Backup power (south wall)',p:[-35.6,5.6,16.2],t:[-39.4,2.6,30],cut:'main'},
    {k:'speakeasy',l:'Speakeasy (behind the bookcase)',p:[8.4,-4.3,13.3],t:[3.6,-7.4,3.0],cut:'basement'},
    {k:'piano',l:'Piano lounge',p:[31,5.6,18],t:[22,2.6,25],cut:'main'},
    {k:'living',l:'Living room',p:[16.2,5.5,15.6],t:[28,3.4,31],cut:'main'},

@@ -268,6 +268,34 @@ const BUILD={
    C.lb(-.9,y0+L-.12,.9,y0+L+.02,1.0,1.25,0x1a1a1a);
    [[-1,y0+2.75],[1,y0+2.75],[-1,y0+L-2.95],[1,y0+L-2.95]].forEach(([a,y])=>C.mesh(new THREE.CylinderGeometry(1.08,1.08,.85,24),0x111111,1,{roughness:.9},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.38),1.08,y);}));
    [[-1,y0+2.75],[1,y0+2.75],[-1,y0+L-2.95],[1,y0+L-2.95]].forEach(([a,y])=>C.mesh(new THREE.CylinderGeometry(.72,.72,.88,20),0x2a2a2c,1,{metalness:.6,roughness:.35},m=>{m.rotation.z=Math.PI/2;m.position.set(a*(w/2-.38),1.08,y);}));},
+ sprinter(f,C,w,d){const S=0xc9ccd2,K=0x1b1c1e,G=0x0c1117,GM={metalness:.6,roughness:.08},y0=-d/2,U=u=>y0+u*d/25,hx=(w-.5)/2+.13;
+   BUILD.suvp(f,C,w,d,[[0,.9],[0,2.6],[.25,3.35],[.9,3.75],[2.4,4.15],[2.75,4.4],[4.7,7.15],[5.3,7.55],[5.7,9.35],[6.1,9.7],[24.75,9.7],[25,9.4],[25,1.0]],S,
+   {mat:{metalness:.55,roughness:.28},side:[[4.35,4.75],[5.0,7.0],[7.35,7.0],[7.35,4.75]],glass:[[2.75,4.4,4.7,7.15]],wheels:[[3.0,1.25],[17.2,1.25]],rim:0x2a2a2c,mir:[3.3,5.0],
+    lights:[[-w/2+.35,U(.15),-w/2+1.45,U(.6),2.95,3.5,0xeef2f5],[w/2-1.45,U(.15),w/2-.35,U(.6),2.95,3.5,0xeef2f5],
+            [-1.45,U(-.04),1.45,U(.2),1.95,3.25,K],[-w/2+.1,U(-.08),w/2-.1,U(.3),.85,1.95,K],
+            [-w/2+.15,U(24.9),-w/2+.45,U(25.06),2.6,5.2,0xb3101b],[w/2-.45,U(24.9),w/2-.15,U(25.06),2.6,5.2,0xb3101b],[-w/2+.1,U(24.7),w/2-.1,U(25.1),.9,1.6,K],[-.03,U(24.95),.03,U(25.08),1.6,9.3,0x8a8d92]]});
+   {const ya=U(2.75),yb=U(4.7),va=4.4,vb=7.15,L=Math.hypot(yb-ya,vb-va),an=Math.atan2(vb-va,yb-ya);
+    C.mesh(new THREE.BoxGeometry(w-1.0,.06,L-.3),G,1,GM,m=>{m.rotation.x=-an;m.position.set(0,(va+vb)/2+Math.cos(an)*.2,(ya+yb)/2-Math.sin(an)*.2);});}
+   [-1,1].forEach(a=>C.lb(a>0?w/2-1.5:-w/2+.3,U(-.07),a>0?w/2-.3:-w/2+1.5,U(.35),2.5,3.0,0xeef2f5));
+   C.lb(-1.4,U(-.09),1.4,U(.1),1.95,2.6,K);
+   // grille bars and the Mercedes star
+   for(let i=0;i<2;i++)C.lb(-1.3,U(-.12),1.3,U(-.08),2.1+i*.25,2.16+i*.25,0xb9bdc2);
+   C.mesh(new THREE.CylinderGeometry(.26,.26,.06,24),0xd7dade,1,{metalness:.9,roughness:.2},m=>{m.rotation.x=Math.PI/2;m.position.set(0,2.75,U(-.1));});
+   [-1,1].forEach(a=>{const X=a*hx;
+     // black lower cladding, fender flares
+     C.lb(a>0?X-.03:X-.05,U(.3),a>0?X+.05:X+.03,U(24.7),.9,1.75,K);
+     [3.0,17.2].forEach(u=>C.lb(a>0?X-.03:X-.07,U(u-1.75),a>0?X+.07:X+.03,U(u+1.75),1.7,2.75,K));
+     // rear side windows and the sliding-door / mid window
+     [[8.2,11.6],[12.6,15.4],[19.4,22.6]].forEach(([u0,u1])=>C.lb(a>0?X-.02:X-.04,U(u0),a>0?X+.04:X+.02,U(u1),5.0,7.35,G,1,GM));
+     // body crease line
+     C.lb(a>0?X-.02:X-.03,U(4.3),a>0?X+.03:X+.02,U(24.6),4.55,4.62,0xaeb2b8);});
+   // sliding door seams + track on the passenger side (+x)
+   [7.75,12.1].forEach(u=>C.lb(hx-.02,U(u),hx+.05,U(u)+.05,1.75,7.55,0x55585d));C.lb(hx-.02,U(7.75),hx+.05,U(21.5),7.55,7.62,0x55585d);
+   // awning box on the passenger side, roof rack and solar
+   C.lb(hx,U(6.5),hx+.35,U(21.5),8.85,9.3,0xe9eaec);
+   C.lb(-hx+.2,U(6.6),hx-.2,U(23.9),9.7,9.9,K);C.lb(-hx+.45,U(8),hx-.45,U(19.5),9.9,9.95,0x1d2630);
+   // rear door split + ladder hint
+   C.lb(-.03,U(24.98),.03,U(25.1),1.6,9.3,0x55585d);},
  airstream(f,C,w,d){const sil=0xc9ccd2,body=d-w,hb=f.h-1.0;
    C.mesh(new THREE.CylinderGeometry(w/2,w/2,body,28,1,true),sil,1,{metalness:.55,roughness:.35},m=>{m.rotation.x=Math.PI/2;m.scale.set(1,1,hb/w);m.position.set(0,1.0+hb/2,0);});
    [-1,1].forEach(s=>C.mesh(new THREE.SphereGeometry(w/2,24,16),sil,1,{metalness:.55,roughness:.35},m=>{m.scale.set(1,hb/w,1);m.position.set(0,1.0+hb/2,s*body/2);}));

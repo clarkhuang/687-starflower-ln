@@ -188,10 +188,28 @@ const BUILD={
    for(let i=0;i<5;i++){const x=r0+.12+i*(r1-r0-.24)/4;[h+.16,h+.55].forEach(z=>C.mesh(new THREE.CylinderGeometry(.11,.11,q1-q0+.1,14),i%2?0x2f4a2a:0x4a1622,1,{roughness:.3},m=>{m.rotation.x=Math.PI/2;m.position.set(x,z,0);}));}},
  futon(f,C,w,d){const cs=hex(f.c,'#a89f91');legs4(C,w,d,.15,.55,0xc9ccd0,.045);const bk=w/2-.42;
    C.lb(-w/2,-d/2,bk,d/2,.55,1.4,cs);C.lb(bk,-d/2,w/2,d/2,.55,2.75,0x9b9285);C.lb(-w/2+.05,-d/2,w/2-.05,-d/2+.06,.5,.6,0xc9ccd0);C.lb(-w/2+.05,d/2-.06,w/2-.05,d/2,.5,.6,0xc9ccd0);},
+ plunge(f,C,w,d){const c=0xf4f4f2,h=f.h,L=w>=d,a=L?w:d,b=L?d:w;const B=(u0,v0,u1,v1,z0,z1,col)=>L?C.lb(u0,v0,u1,v1,z0,z1,col):C.lb(v0,u0,v1,u1,z0,z1,col);
+   B(-a/2+.35,-b/2+.12,a/2-.35,b/2-.12,0,.35,c);B(-a/2+.18,-b/2+.06,a/2-.18,b/2-.06,.35,.8,c);B(-a/2,-b/2,a/2,b/2,.8,.95,c);
+   B(-a/2,-b/2,-a/2+.12,b/2,.95,h,c);B(a/2-.12,-b/2,a/2,b/2,.95,h,c);B(-a/2,-b/2,a/2,-b/2+.12,.95,h,c);B(-a/2,b/2-.12,a/2,b/2,.95,h,c);
+   B(-a/2+.12,-b/2+.12,a/2-.12,b/2-.12,.95,h-.3,0x9fd8ee);},
+ pchiller(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,f.h,0xf4f4f2);C.lb(-w/2+.25,-d/2-.01,w/2-.25,-d/2,.3,1.1,0x9a9a9a);},
+ xebex(f,C,w,d){const K=0x1b1b1b,R=0x2b2b2b;C.lb(-w/2,-d/2,-w/2+.25,d/2,0,1.0,K);C.lb(w/2-.25,-d/2,w/2,d/2,0,1.0,K);
+   for(let i=0;i<14;i++){const z0=-d/2+.35+i*(d-.9)/14,z1=z0+(d-.9)/14-.02,u=(i+.5)/14,y=.55+1.4*Math.pow(u-.55,2);C.lb(-w/2+.27,z0,w/2-.27,z1,y-.08,y,R);}
+   C.lb(-w/2,d/2-.5,w/2,d/2-.2,0,.4,K);C.lb(-.12,d/2-.45,.12,d/2-.25,.4,4.3,K);C.lb(-.55,d/2-.6,.55,d/2-.2,4.3,4.75,0x333333);
+   C.lb(-w/2+.05,d/2-2.6,-w/2+.18,d/2-.3,3.3,3.42,0x888888);C.lb(w/2-.18,d/2-2.6,w/2-.05,d/2-.3,3.3,3.42,0x888888);
+   C.lb(-w/2+.05,d/2-.45,-w/2+.18,d/2-.3,1.0,3.42,0x888888);C.lb(w/2-.18,d/2-.45,w/2-.05,d/2-.3,1.0,3.42,0x888888);},
+ skirow(f,C,w,d){const K=0x1a1a1a,A=0x9ea3a8;C.lb(-.18,-d/2,.18,d/2-1.6,.35,.55,A);C.lb(-w/2+.3,-d/2,w/2-.3,-d/2+.2,0,.35,K);
+   C.lb(-.35,-d/2+3.0,.35,-d/2+3.9,.55,.75,K);C.lb(-.6,d/2-1.1,.6,d/2-.5,0,.3,K);
+   C.mesh(new THREE.CylinderGeometry(.95,.95,.55,28),0x222222,1,{},m=>{m.rotation.z=Math.PI/2;m.position.set(0,1.25,d/2-1.25);});
+   C.lb(-.2,d/2-1.7,.2,d/2-1.3,.3,7.0,K);C.lb(-.45,d/2-1.75,.45,d/2-1.4,6.6,6.9,K);C.lb(-.35,d/2-2.3,.35,d/2-1.8,.35,.5,K);},
+ floorglute(f,C,w,d){const K=0x161616,R=0xb01c1c;C.lb(-w/2,-d/2,w/2,-d/2+.17,0,.25,K);C.lb(-w/2,d/2-.17,w/2,d/2,0,.25,K);C.lb(-w/2,-d/2,-w/2+.25,d/2,0,.2,K);
+   C.lb(-w/2+.75,-d/2+.08,w/2-.05,d/2-.08,.4,.62,0x111111);C.lb(-w/2+.05,-d/2,-w/2+.25,d/2,.2,1.2,R);
+   C.mesh(new THREE.CylinderGeometry(.16,.16,d-.35,18),0x111111,1,{},m=>{m.rotation.x=Math.PI/2;m.position.set(-w/2+.3,1.3,0);});
+   C.mesh(new THREE.CylinderGeometry(.16,.16,d-.35,18),0x111111,1,{},m=>{m.rotation.x=Math.PI/2;m.position.set(-w/2+.55,.85,0);});},
  pendant(f,C,w,d){C.lb(-.02,-.02,.02,.02,f.h-.05,f.h+1.0,0x111111);C.mesh(new THREE.CylinderGeometry(.15,.45,.5,20),hex(f.c,'#c9a24a'),1,{metalness:.6,roughness:.3,emissive:0x553311},m=>m.position.y=f.h-.25);},
  lift(f,C,w,d){const c=hex(f.c,'#6a1b9a');[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>C.lb(a*w/2-(a>0?.6:0),b*d/2-(b>0?.6:0),a*w/2+(a<0?.6:0),b*d/2+(b<0?.6:0),0,f.h,c));
    C.lb(-w/2+.7,-d/2+.6,-w/2+2.5,d/2-.6,6.3,6.6,0x555a60);C.lb(w/2-2.5,-d/2+.6,w/2-.7,d/2-.6,6.3,6.6,0x555a60);C.lb(-w/2,-d/2,w/2,-d/2+.6,6.0,6.6,c);C.lb(-w/2,d/2-.6,w/2,d/2,6.0,6.6,c);},
- loft(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,f.h,0xb9a27e);[[-w/2+.3,d/2-.3],[w/2-.3,d/2-.3]].forEach(([x,y])=>C.lb(x-.3,y-.3,x+.3,y+.3,-(f.z0-GZ),0,0xf4f2ec));},
+ loft(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,f.h,0xb9a27e);C.lb(-w/2,d/2-.12,w/2,d/2,f.h,f.h+.9,0xf4f2ec);[[-w/2+.3,d/2-.3],[0,d/2-.3],[w/2-.3,d/2-.3],[-w/2+.3,-d/2+.3],[w/2-.3,-d/2+.3]].forEach(([x,y])=>C.lb(x-.3,y-.3,x+.3,y+.3,f.h,4.4,0xf4f2ec));},
  gofficeloft(f,C,w,d){const c=0xd8dde6;C.lb(-w/2,d/2-.3,w/2-3.2,d/2,0,f.h,c,.55);C.lb(w/2-.3,-d/2,w/2,d/2,0,f.h,c,.55);C.lb(w/2-3.2,d/2-.15,w/2-.3,d/2-.1,0,6.8,0x9fc6e0,.45);},
  target(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,f.h,0xe0c36a);},
  tv(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,f.h,0x0b0b0c);}, soundbar(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,f.h,0x1a1a1a);},
@@ -285,18 +303,20 @@ function classify(f){const n=f.name||'',id=f.id||'';
 const GFIT={
  cab:[-36.1,-4.44,-24.4,-2.3,'Existing gray cabinets + lit workbench (back wall, rear left, fixed; position per the Cubicasa plan)'],
  dbrack:[-24.0,-3.9,-19.6,-2.0], plates:[-19.3,-3.9,-15.5,-2.0], bartree:[-15.2,-3.9,-13.3,-2.0], plyo:[-13.0,-3.9,-10.6,-2.0], bench:[-10.3,-4.1,-5.6,-2.3],
- stretch:[-38.6,-2.0,-30.6,4.4], srack:[-39.5,1.6,-38.81,4.2], gtv:[-39.5,-1.7,-39.2,1.3], hswall:[-38.5,4.3,-34.96,4.7],
- goffice:[-39.5,4.75,-29.43,14.4,'Mini office at the south (back) window, about 10′ × 9′8″'],
+ srack:[-39.5,1.6,-38.81,4.2], gtv:[-39.5,-1.7,-39.2,1.3],
+ goffice:[-39.5,4.75,-29.43,14.4,'Garage office zone at the south (back) window, about 10′ × 9′8″: open, defined by IKEA PAX / IVAR / KALLAX pieces and a curtain, no built walls'],
  gdesk2:[-39.2,7.0,-36.7,12.0], 
  agate:[-39.45,15.8,-38.66,17.6], genmod:[-39.45,17.8,-38.86,19.0],
  apw0:[-39.45,19.7,-38.46,22.2], apw1:[-39.45,28.0,-38.46,30.5], apw2:[-39.45,30.7,-38.46,33.2],
  esszone:[-39.5,15.5,-35.55,33.6], pvstub:[-39.35,33.4,-39.11,33.65],
- tread:[-33.9,17.4,-31.9,25.5], rower:[-30.6,18.6,-28.6,24.6],
- mats:[-39.3,-2.2,-7.51,18.6,'Rogue black rubber gym mats (3/4 in), whole gym floor'],
+ tread:[-34.9,19.58,-31.98,25.5], rower:[-30.5,16.92,-27.58,25.5],
+
  xt5:[-35.0,28.6,-28.9,44.6,'Cadillac XT5 (left / south bay, nose-in)'],
  airstream:[-23.29,19.9,-16.71,44.9],
  lift:[-12.84,19.03,-3.76,35.5,'One 4-post lift (HD-9XW class), right bay: front posts ~10 ft in, just behind the end of the door tracks (8 ft door, standard-lift track, wall-mount opener); Model Y under, 911 on top'],
- modely:[-11.4,28.83,-5.18,44.5,'Tesla Model Y (white), parked just inside the right door, under the lift'], porsche:[-11.3,20.23,-5.28,35.0]
+ modely:[-11.4,28.83,-5.18,44.5,'Tesla Model Y (white), parked just inside the right door, under the lift'], porsche:[-11.3,20.23,-5.28,35.0],
+ // plan v5 (Clark's corrections, Nov 24): overhead work right of center, futon set back facing the TV, The Plunge
+ platform:[-23.78,9.77,-15.88,17.76,'8×8 lifting platform, right of center under the 13 ft flat (plan v5)'], rig:[-23.78,6.38,-15.88,9.67,'Sturdy 4-post rig (our current rack, set up as a 4-post): pull-ups, rings + rope bar in front (plan v5, right of center)'], wbt:[-27.95,6.25,-26.75,6.3,'Wall-ball target, 10 ft line (9 ft women), on the loft front face at the front-left ceiling hanger, above the ~8.3 ft deck edge (the loft has no floor posts); 3.5 ft throw zone in front'], sbA:[-17.65,9.97,-17.35,17.96,'Ceiling strongback for rings + rope, right of center at the overhead-work line (truss letter required)'], rstrap0:[-17.54,16.02,-17.46,16.1], ring0:[-17.65,15.81,-17.35,16.31], rstrap1:[-17.54,14.35,-17.46,14.43], ring1:[-17.65,14.14,-17.35,14.64], rope:[-17.6,11.97,-17.4,12.17], ropemat:[-19.47,10.07,-15.53,14.06], cplunge:[-12.84,9.24,-7.29,11.87], pchiller:[-12.6,7.95,-11.1,9.05], gpax1:[-39.2,12.49,-35.92,14.4], gpax2:[-35.9,12.49,-32.62,14.4], givar:[-32.55,12.73,-29.95,14.4], gkallax1:[-30.71,4.77,-29.43,9.6], gkallax2:[-38.5,4.77,-33.67,6.05], gcurtain:[-33.6,4.87,-30.75,4.95], sup:[-26.9,-3.57,-15.9,-0.9], kayak1:[-26.5,-0.6,-16.0,1.9], kayak2:[-26.5,2.1,-16.0,4.6], nglute:[-22.2,1.0,-17.03,3.0,'Rogue Floor Glute (our own, from FL) for Nordic curls / glute-ham raises: 62 × 24 in, roller 15–20 in tall; ~7 ft clear fall-forward lane toward the GHD'], peloton:[-27.64,0.91,-25.66,4.9], abike:[-25.07,0.71,-23.1,4.9], futon:[-31.3,-2.0,-28.67,3.9,'Futon sofa (existing), 71 × 31.5 in, 33 in tall (71 × 42 in open), gray-beige, chrome legs: set back at the east edge of the stretch area, facing the TV'], stretch:[-38.6,-2.0,-31.5,4.4,'Stretch / bodyweight / TV area (clear floor between the TV and the futon)'], mats:[-39.3,-2.2,-7.1,18.6,'Rogue black rubber gym mats (3/4 in), whole gym floor']
 };
 // Speakeasy (behind the bookcase) = 9'2" x 13'6" per the Cubicasa plan: interior x 0.89-10.06, y 0.89-14.38.
 const SPK={x0:0.89,y0:0.89,x1:10.06,y1:14.38};
@@ -312,10 +332,15 @@ function planOverrides(FU){
   list.forEach(f=>{const g=f.lv==='garage'?GFIT[f.id]:(f.lv==='lower'?SPKFU[f.id]:null); if(!g)return;
     Object.assign(f,{x0:g[0],y0:g[1],x1:g[2],y1:g[3]}); if(g[4])f.name=g[4]; if(f.id==='airstream')Object.assign(f,{kind:'sprinter',h:9.75,name:'2022 Airstream Interstate 24X: Mercedes Sprinter high-roof Class B van, about 24′6″–25′ × 6′7″ (plus mirrors) × 9′9″, nose-in in the center bay'});
     if(f.id==='porsche')f.name='Porsche 911 Carrera 4S, matte black (on top of the lift)';
+    if(f.id==='nglute')Object.assign(f,{kind:'floorglute',h:1.4});
+    if(f.id==='tread')Object.assign(f,{kind:'xebex',h:5.0,name:'Curved treadmill: Xebex Runner Smart Connect (our own), 71 × 35 × 60 in, non-motorized; console toward the doors'});
+    if(f.id==='rower')Object.assign(f,{kind:'skirow',h:3.4,name:'EnergyFit Ski-Row Air (our own, from FL): rower 103 × 33 × 40 in, flips up to a ski-erg (54 in long, 84 in tall)'});
+    if(f.id==='cplunge')Object.assign(f,{kind:'plunge',h:2.17,c:'#f4f4f2',name:'Cold plunge: The Plunge (original), white acrylic laydown tub, 66⅝ × 31½ × 26 in, by the stair wall'});
+    if(f.id==='pchiller')Object.assign(f,{kind:'pchiller',h:1.45,c:'#f4f4f2',name:'Plunge Pro Chiller (white), behind the tub'});
     if(/^apw/.test(f.id))Object.assign(f,{kind:'franklinbat',x1:f.x0+0.8,h:3.6,name:f.name.replace(/\(.*\)/,'(FranklinWH aPower 2-style floor unit)')});
     if(f.id==='agate')Object.assign(f,{kind:'franklingate',x1:f.x0+0.45,z0:1.6,h:2.6,name:'FranklinWH aGate (wall-mounted smart panel)'});
     if(f.id==='genmod')Object.assign(f,{kind:'franklingate',x1:f.x0+0.4,z0:2.6,h:1.3,name:'FranklinWH generator module (wall unit)'});
-    f.src=(f.lv==='garage'?'garage-fit plan v3 (Cubicasa 39′6″ × 49′11″)':'Cubicasa plan, 9′2″ × 13′6″');});
+    f.src=(f.lv==='garage'?'garage fit plan v5 (Cubicasa 39′6″ × 49′11″)':'Cubicasa plan, 9′2″ × 13′6″');});
   list.forEach(f=>{if(f.lv!=='lower')return; if(/^stool_s/.test(f.id))Object.assign(f,{kind:'counterchair',h:3.7,c:'#3a2416',name:'Matching counter-height chair: dark brown wood, taupe upholstered seat, tall slatted back'}); if(SPKX[f.id])Object.assign(f,SPKX[f.id]); if(SPKFU[f.id]&&/^(stable|stool_s|barcart)/.test(f.id))f.src="Jenny's tape measurements; Cubicasa room 9′2″ × 13′6″";});
   if(!list.some(f=>/standing/i.test(f.name||''))){ const g=list.find(f=>f.id==='gdesk2');
     if(g){Object.assign(g,{kind:'standdesk',name:'Standing desk at the south (back) window W2 (new), faces the window',h:3.6,src:'plan update'});} list=list.filter(f=>f.id!=='gchair'); }
@@ -546,13 +571,19 @@ function buildViews(){
    {k:'front',l:'Front & driveway',p:[-30,14,135],t:[2,7,20],cut:'roof'},
    {k:'gym',l:'Garage gym',p:[-25.5,9.5,31],t:[-20,3.0,8],cut:'main'},
    {k:'goffice',l:'Garage office (south window)',p:[-30.6,5.8,13.6],t:[-39,3.2,9.5],cut:'main'},
-   {k:'vehicles',l:'Garage: lift, Sprinter van, XT5',p:[-5,9,8],t:[-18,4.5,36],cut:'main'},
+   {k:'vehicles',l:'Garage: XT5, Airstream, lift (911 over Model Y)',p:[-5,9,8],t:[-18,4.5,36],cut:'main'},
    {k:'power',l:'Backup power (south wall)',p:[-35.6,5.6,16.2],t:[-39.4,2.6,30],cut:'main'},
    {k:'gymoffice',l:'Gym from the office door',p:[-29.0,4.9,13.0],t:[-14.5,3.0,5.0],cut:'main'},
    {k:'gymhouse',l:'Gym from the house door',p:[-3.0,4.9,22.0],t:[-26,3.0,4.0],cut:'main'},
    {k:'gymbackleft',l:'Gym from the back-left corner',p:[-37.6,5.4,-2.4],t:[-17,3.0,22],cut:'main'},
    {k:'gymbackright',l:'Gym from the back-right corner',p:[-2.6,5.4,-2.6],t:[-24,3.0,18],cut:'main'},
    {k:'gymoverhead',l:'Gym overhead (iso)',p:[-4,30,34],t:[-21,0,10],cut:'main'},
+   {k:'gymbackcenter',l:'Gym from the back wall, looking out',p:[-19.5,5.4,-1.2],t:[-19.5,3.2,30],cut:'main'},
+   {k:'stretchcorner',l:'Stretch corner, futon and TV',p:[-28.0,5.2,1.0],t:[-39.5,3.0,2.5],cut:'main'},
+   {k:'ph55',l:'Garage from the front left, like listing photo 55',p:[-36.5,5.5,39.5],t:[-9.5,4,0.5],cut:'main'},
+   {k:'ph56',l:'Garage back-left corner, like listing photo 56',p:[-17.5,5.5,23.5],t:[-33.5,5,-3.5],cut:'main'},
+   {k:'ph57',l:'Garage from the back looking out, like listing photo 57',p:[-14.5,5.5,-0.5],t:[-21.5,4,45.5],cut:'main'},
+   {k:'gymtop',l:'Garage plan view from above (true 39′6″ × 49′11″, house wall on the right)',p:[-19.75,78,22.0],t:[-19.75,0,20.5],cut:'main'},
    {k:'doorsin',l:'Garage from the doors',p:[-20,9.0,44.6],t:[-20,3.5,10],cut:'main'},
    {k:'speakeasy',l:'Speakeasy (behind the bookcase)',p:[8.4,-4.3,13.3],t:[3.6,-7.4,3.0],cut:'basement'},
    {k:'piano',l:'Piano lounge',p:[31,5.6,18],t:[22,2.6,25],cut:'main'},

@@ -17,8 +17,8 @@ PH = {
 34:'Primary bath, tub',35:'Primary bedroom',36:'Primary bedroom, TV wall',37:'Primary bedroom, sitting end',
 38:'Primary closet',39:'Primary closet',40:'Primary closet island',
 41:'Lower family room, TV wall',42:'Lower family room',43:'Lower bedroom',44:'Lower bedroom',45:'Lower bedroom',
-46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door',51:'Speakeasy: square 4′6″ high-top for 4, matching chairs and the bar cart',
-52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream, one lift',55:'Garage interior, v2 layout',56:'Garage gym, stretch area and office',
+46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door',51:'Speakeasy: Jenny’s 42″ × 42″ high-top, 4 counter chairs and her bar cart',
+52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream, Model Y just inside; lift about 10 ft in',55:'Garage from the doors: vehicles at the doors, gym on rubber mats',56:'Garage gym: back wall, gray cabinets, futon and stretch corner',
 57:'Garage, looking out: one lift, Airstream, XT5',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
 62:'Covered deck from the yard',63:'Aerial',64:'Aerial, garage',65:'Aerial, backyard',
 }

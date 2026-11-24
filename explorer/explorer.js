@@ -173,6 +173,21 @@ const BUILD={
    C.lb(-.6,back>0?-.62:.5,.6,back>0?-.5:.62,2.62,f.h,c);},
  barcart(f,C,w,d){const c=hex(f.c,'#b8913f');legs4(C,w,d,.05,f.h,c,.04);C.lb(-w/2,-d/2,w/2,d/2,f.h-.6,f.h-.55,0x2a1a10);C.lb(-w/2,-d/2,w/2,d/2,.8,.85,0x2a1a10);
    [-.9,-.4,.1,.6].forEach((x,i)=>C.lb(x-.12,-.12,x+.12,.12,f.h-.55,f.h-.55+.9+(i%2)*.25,i%2?0x3d6b3a:0x6b3a1e));},
+ pubtable(f,C,w,d){const c=hex(f.c,'#3a2416'),h=f.h;C.lb(-w/2,-d/2,w/2,d/2,h-.1,h,c);
+   [Math.PI/4,-Math.PI/4].forEach(r=>C.mesh(new THREE.BoxGeometry(Math.min(w,d)*1.38,.006,.03),0x6b4529,1,{},m=>{m.position.y=h+.004;m.rotation.y=r;}));
+   C.lb(-w/2+.06,-d/2+.06,w/2-.06,d/2-.06,h-.45,h-.1,c);legs4(C,w,d,.16,h-.45,c,.1);},
+ counterchair(f,C,w,d){const c=hex(f.c,'#3a2416'),sc=0xa59a8a,s=2.15,h=f.h;legs4(C,w,d,.07,s-.12,c,.055);
+   C.lb(-w/2+.04,-d/2+.04,w/2-.04,d/2-.04,s-.12,s+.06,sc);C.lb(-w/2+.1,-d/2+.1,w/2-.1,-d/2+.15,.75,.82,c);C.lb(-w/2+.1,d/2-.15,w/2-.1,d/2-.1,.75,.82,c);
+   const F=f.face||'S',T=.1;let E;if(F==='S')E=[-w/2,-d/2,w/2,-d/2+T,'x'];else if(F==='N')E=[-w/2,d/2-T,w/2,d/2,'x'];else if(F==='W')E=[-w/2,-d/2,-w/2+T,d/2,'y'];else E=[w/2-T,-d/2,w/2,d/2,'y'];
+   const[x0,y0,x1,y1,ax]=E;C.lb(x0,y0,x1,y1,h-.28,h,c);
+   for(let i=0;i<6;i++){const u=i/5;if(ax==='x'){const x=x0+.05+(x1-x0-.1)*u;C.lb(x-.045,y0,x+.045,y1,s+.06,h-.28,c);}else{const y=y0+.05+(y1-y0-.1)*u;C.lb(x0,y-.045,x1,y+.045,s+.06,h-.28,c);}}},
+ barcart2(f,C,w,d){const oak=hex(f.c,'#c8923f'),h=f.h;legs4(C,w,d,.05,h-.04,oak,.05);C.lb(-w/2,-d/2,w/2,d/2,h-.14,h-.04,oak);
+   C.lb(-w/2+.1,-d/2+.1,w/2-.1,d/2-.1,h-.05,h,0xdcd0bb);C.lb(-w/2,-d/2,w/2,d/2,.5,.58,oak);C.lb(-w/2+.1,-d/2+.1,w/2-.1,d/2-.1,.58,.6,0xdcd0bb);
+   const r0=-w/2+.25,r1=w/2-.25,q0=-d/2+.2,q1=d/2-.2,rh=.8;[[r0,q0],[r1,q0],[r0,q1],[r1,q1]].forEach(([x,y])=>C.lb(x-.015,y-.015,x+.015,y+.015,h,h+rh,0x111111));
+   [h+.02,h+rh/2,h+rh].forEach(z=>{C.lb(r0,q0,r1,q0+.02,z-.01,z+.01,0x111111);C.lb(r0,q1-.02,r1,q1,z-.01,z+.01,0x111111);});
+   for(let i=0;i<5;i++){const x=r0+.12+i*(r1-r0-.24)/4;[h+.16,h+.55].forEach(z=>C.mesh(new THREE.CylinderGeometry(.11,.11,q1-q0+.1,14),i%2?0x2f4a2a:0x4a1622,1,{roughness:.3},m=>{m.rotation.x=Math.PI/2;m.position.set(x,z,0);}));}},
+ futon(f,C,w,d){const cs=hex(f.c,'#a89f91');legs4(C,w,d,.15,.55,0xc9ccd0,.045);const bk=w/2-.42;
+   C.lb(-w/2,-d/2,bk,d/2,.55,1.4,cs);C.lb(bk,-d/2,w/2,d/2,.55,2.75,0x9b9285);C.lb(-w/2+.05,-d/2,w/2-.05,-d/2+.06,.5,.6,0xc9ccd0);C.lb(-w/2+.05,d/2-.06,w/2-.05,d/2,.5,.6,0xc9ccd0);},
  pendant(f,C,w,d){C.lb(-.02,-.02,.02,.02,f.h-.05,f.h+1.0,0x111111);C.mesh(new THREE.CylinderGeometry(.15,.45,.5,20),hex(f.c,'#c9a24a'),1,{metalness:.6,roughness:.3,emissive:0x553311},m=>m.position.y=f.h-.25);},
  lift(f,C,w,d){const c=hex(f.c,'#6a1b9a');[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>C.lb(a*w/2-(a>0?.6:0),b*d/2-(b>0?.6:0),a*w/2+(a<0?.6:0),b*d/2+(b<0?.6:0),0,f.h,c));
    C.lb(-w/2+.7,-d/2+.6,-w/2+2.5,d/2-.6,6.3,6.6,0x555a60);C.lb(w/2-2.5,-d/2+.6,w/2-.7,d/2-.6,6.3,6.6,0x555a60);C.lb(-w/2,-d/2,w/2,-d/2+.6,6.0,6.6,c);C.lb(-w/2,d/2-.6,w/2,d/2,6.0,6.6,c);},
@@ -277,17 +292,21 @@ const GFIT={
  apw0:[-39.45,19.7,-38.46,22.2], apw1:[-39.45,28.0,-38.46,30.5], apw2:[-39.45,30.7,-38.46,33.2],
  esszone:[-39.5,15.5,-35.55,33.6], pvstub:[-39.35,33.4,-39.11,33.65],
  tread:[-33.9,17.4,-31.9,25.5], rower:[-30.6,18.6,-28.6,24.6],
- mats:[-39.3,-2.2,-7.51,18.6],
+ mats:[-39.3,-2.2,-7.51,18.6,'Rogue black rubber gym mats (3/4 in), whole gym floor'],
  xt5:[-35.0,28.6,-28.9,44.6,'Cadillac XT5 (left / south bay, nose-in)'],
  airstream:[-23.29,19.9,-16.71,44.9],
- lift:[-12.84,18.5,-3.76,34.97,'One 4-post high-rise lift, right bay, shifted 1 ft toward the house (Model Y under, 911 on top)'],
- modely:[-11.4,18.6,-5.18,34.27], porsche:[-11.3,18.9,-5.28,33.67]
+ lift:[-12.84,19.03,-3.76,35.5,'One 4-post lift (HD-9XW class), right bay: front posts ~10 ft in, just behind the end of the door tracks (8 ft door, standard-lift track, wall-mount opener); Model Y under, 911 on top'],
+ modely:[-11.4,28.83,-5.18,44.5,'Tesla Model Y (white), parked just inside the right door, under the lift'], porsche:[-11.3,20.23,-5.28,35.0]
 };
 // Speakeasy (behind the bookcase) = 9'2" x 13'6" per the Cubicasa plan: interior x 0.89-10.06, y 0.89-14.38.
 const SPK={x0:0.89,y0:0.89,x1:10.06,y1:14.38};
 const SPKFU={spanelW:[0.89,0.89,1.01,14.38],spanelS:[1.01,0.89,10.06,1.01],spanelN:[1.01,14.26,10.06,14.38],srug:[2.6,4.6,8.35,10.67],
- stable:[3.225,5.385,7.725,9.885],stool_s0:[4.775,3.985,6.175,5.385],stool_s1:[4.775,9.885,6.175,11.285],stool_s2:[1.825,6.935,3.225,8.335],stool_s3:[7.725,6.935,9.125,8.335],
- barcart:[3.975,1.01,6.975,2.51],spend:[5.225,7.385,5.725,7.885]};
+ stable:[3.725,5.885,7.225,9.385],stool_s0:[4.725,4.45,6.225,6.05],stool_s1:[4.725,9.22,6.225,10.82],stool_s2:[2.25,6.885,3.85,8.385],stool_s3:[7.1,6.885,8.7,8.385],
+ barcart:[4.29,1.01,6.665,2.47],spend:[5.225,7.385,5.725,7.885]};
+// Jenny's actual pieces (tape photos, Nov 23): 42x42x36 in high-top + 4 counter chairs, 28.5x17.5x34.5 in oak/marble bar cart.
+const SPKX={stable:{kind:'pubtable',h:3.0,c:'#3a2416',name:"Jenny's high-top table: 42 × 42 in, 36 in tall, espresso wood, diagonal 4-way veneer top, thick apron, square legs (34 in to each side wall)"},
+ stool_s0:{face:'S'},stool_s1:{face:'N'},stool_s2:{face:'W'},stool_s3:{face:'E'},
+ barcart:{kind:'barcart2',h:2.875,c:'#c8923f',name:"Jenny's bar cart: honey-oak frame, beige cultured-marble inset top, 28.5 × 17.5 in, 34.5 in tall, black wire wine rack on top"}};
 function planOverrides(FU){
   let list=FU.filter(f=>!/^(tire rack|mini-?split)/i.test(f.name||'')&&!/added light|mini-?split/i.test((f.name||''))&&f.lv!=='site');
   list.forEach(f=>{const g=f.lv==='garage'?GFIT[f.id]:(f.lv==='lower'?SPKFU[f.id]:null); if(!g)return;
@@ -297,6 +316,7 @@ function planOverrides(FU){
     if(f.id==='agate')Object.assign(f,{kind:'franklingate',x1:f.x0+0.45,z0:1.6,h:2.6,name:'FranklinWH aGate (wall-mounted smart panel)'});
     if(f.id==='genmod')Object.assign(f,{kind:'franklingate',x1:f.x0+0.4,z0:2.6,h:1.3,name:'FranklinWH generator module (wall unit)'});
     f.src=(f.lv==='garage'?'garage-fit plan v3 (Cubicasa 39′6″ × 49′11″)':'Cubicasa plan, 9′2″ × 13′6″');});
+  list.forEach(f=>{if(f.lv!=='lower')return; if(/^stool_s/.test(f.id))Object.assign(f,{kind:'counterchair',h:3.7,c:'#3a2416',name:'Matching counter-height chair: dark brown wood, taupe upholstered seat, tall slatted back'}); if(SPKX[f.id])Object.assign(f,SPKX[f.id]); if(SPKFU[f.id]&&/^(stable|stool_s|barcart)/.test(f.id))f.src="Jenny's tape measurements; Cubicasa room 9′2″ × 13′6″";});
   if(!list.some(f=>/standing/i.test(f.name||''))){ const g=list.find(f=>f.id==='gdesk2');
     if(g){Object.assign(g,{kind:'standdesk',name:'Standing desk at the south (back) window W2 (new), faces the window',h:3.6,src:'plan update'});} list=list.filter(f=>f.id!=='gchair'); }
   if(!list.some(f=>/partition|divider/i.test(f.name||''))){
@@ -528,6 +548,12 @@ function buildViews(){
    {k:'goffice',l:'Garage office (south window)',p:[-30.6,5.8,13.6],t:[-39,3.2,9.5],cut:'main'},
    {k:'vehicles',l:'Garage: lift, Sprinter van, XT5',p:[-5,9,8],t:[-18,4.5,36],cut:'main'},
    {k:'power',l:'Backup power (south wall)',p:[-35.6,5.6,16.2],t:[-39.4,2.6,30],cut:'main'},
+   {k:'gymoffice',l:'Gym from the office door',p:[-29.0,4.9,13.0],t:[-14.5,3.0,5.0],cut:'main'},
+   {k:'gymhouse',l:'Gym from the house door',p:[-3.0,4.9,22.0],t:[-26,3.0,4.0],cut:'main'},
+   {k:'gymbackleft',l:'Gym from the back-left corner',p:[-37.6,5.4,-2.4],t:[-17,3.0,22],cut:'main'},
+   {k:'gymbackright',l:'Gym from the back-right corner',p:[-2.6,5.4,-2.6],t:[-24,3.0,18],cut:'main'},
+   {k:'gymoverhead',l:'Gym overhead (iso)',p:[-4,30,34],t:[-21,0,10],cut:'main'},
+   {k:'doorsin',l:'Garage from the doors',p:[-20,9.0,44.6],t:[-20,3.5,10],cut:'main'},
    {k:'speakeasy',l:'Speakeasy (behind the bookcase)',p:[8.4,-4.3,13.3],t:[3.6,-7.4,3.0],cut:'basement'},
    {k:'piano',l:'Piano lounge',p:[31,5.6,18],t:[22,2.6,25],cut:'main'},
    {k:'living',l:'Living room',p:[16.2,5.5,15.6],t:[28,3.4,31],cut:'main'},

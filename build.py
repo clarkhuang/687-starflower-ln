@@ -17,9 +17,9 @@ PH = {
 34:'Primary bath, tub',35:'Primary bedroom',36:'Primary bedroom, TV wall',37:'Primary bedroom, sitting end',
 38:'Primary closet',39:'Primary closet',40:'Primary closet island',
 41:'Lower family room, TV wall',42:'Lower family room',43:'Lower bedroom',44:'Lower bedroom',45:'Lower bedroom',
-46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door',51:'Speakeasy: Jenny’s 42″ × 42″ high-top, 4 counter chairs and her bar cart',
-52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream, Model Y just inside; lift about 10 ft in',55:'Garage from the doors: vehicles at the doors, gym on rubber mats',56:'Garage gym: back wall, gray cabinets, futon and stretch corner',
-57:'Garage, looking out: one lift, Airstream, XT5',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
+46:'Lower bedroom',47:'Lower bath',48:'Lower hall',49:'Hinged bookcase',50:'Speakeasy through the open bookcase door: existing orange wall and art kept, Jenny’s table and chair, red rug',51:'Speakeasy with its existing walls: Jenny’s 42″ × 42″ espresso high-top, 4 counter chairs and her honey-oak and marble bar cart',
+52:'Unfinished storage',53:'Unfinished storage',54:'Garage doors: XT5, Airstream and the lift with the 911 over the Model Y, all nose-in just inside the doors',55:'Garage from the doors: vehicles at the doors, gym on rubber mats',56:'Back-left corner: TV on the south wall with the futon 8 ft back facing it, the existing gray cabinets, Peloton, air bike, Floor Glute, and the paddleboard and kayaks on the suspended loft',
+57:'Along the south wall toward the doors: the window by the side door, the side door, the batteries, the Xebex and Ski-Row, and the Airstream and XT5 noses',58:'Shed',59:'Backyard',60:'Hot tub (included)',61:'Covered deck',
 62:'Covered deck from the yard',63:'Aerial',64:'Aerial, garage',65:'Aerial, backyard',
 }
 GROUPS = [
@@ -30,7 +30,7 @@ GROUPS = [
 ('Mudroom, powder, laundry',[25,26,28,29]),
 ('Primary suite',[27,30,31,32,33,34,35,36,37,38,39,40]),
 ('Lower level',[41,42,43,44,45,46,47,48,49,50,51,52,53]),
-('Garage',[54,55,56,57]),
+('Garage',[54,56]),
 ]
 R = []  # 3D-model still screenshots removed Nov 23 (the interactive model stays)
 

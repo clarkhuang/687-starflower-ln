@@ -220,6 +220,15 @@ const BUILD={
  bench(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,1.35,1.7,0x101010);legs4(C,w,d,.12,1.35,0x101010,.08);},
  ottoman(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,.9,f.h,0x2b2420);legs4(C,w,d,.1,.9,0x111111,.05);C.lb(-w/2,-d/2,w/2,d/2,.15,.2,0x111111);},
  chair(f,C,w,d){const c=0x141414;C.lb(-w/2,-d/2,w/2,d/2,.4,1.45,c);C.lb(-w/2,d/2-.75,w/2,d/2,1.45,f.h,c);C.lb(-w/2,-d/2,-w/2+.55,d/2,1.45,2.2,c);C.lb(w/2-.55,-d/2,w/2,d/2,1.45,2.2,c);C.lb(-w/2+.55,-d/2+.1,w/2-.55,d/2-.75,1.45,1.75,0x262626);C.lb(-w/2+.1,-d/2+.1,w/2-.1,d/2-.1,0,.4,0x2a1c12);},
+ lsect(f,C,w,d){const c=0x9a9b9d,cs=0xadaeb0,X0=-w/2,Y0=-d/2,dep=3.33,X1=X0+w,Y1=Y0+d;
+   // L-sectional, long leg along the low-y (back) side, short leg along the high-x side; 1.5 ft seat, 2.8 ft back
+   C.lb(X0,Y0,X1,Y0+dep,0,1.2,c);C.lb(X0,Y0,X1,Y0+.85,1.2,2.8,c);
+   C.lb(X1-dep,Y0+dep,X1,Y1,0,1.2,c);C.lb(X1-.85,Y0,X1,Y1,1.2,2.8,c);
+   C.lb(X0,Y0,X0+.6,Y0+dep,1.2,2.1,c);C.lb(X1-dep,Y1-.6,X1-.85,Y1,1.2,2.1,c);
+   const L1=w-dep-.6,n1=Math.max(1,Math.round(L1/2.6));for(let i=0;i<n1;i++){const a=X0+.6+i*L1/n1;C.lb(a+.04,Y0+.85,a+L1/n1-.04,Y0+dep-.05,1.2,1.55,cs);}
+   C.lb(X1-dep+.05,Y0+.85,X1-.85,Y0+dep,1.2,1.55,cs);
+   const L2=d-dep-.6,n2=Math.max(1,Math.round(L2/2.6));for(let i=0;i<n2;i++){const a=Y0+dep+i*L2/n2;C.lb(X1-dep+.05,a+.04,X1-.85,a+L2/n2-.04,1.2,1.55,cs);}
+   [X0+.7,X0+3.2].forEach(x=>C.lb(x,Y0+.88,x+1.4,Y0+1.28,1.55,2.75,0xd9d4c8));C.lb(X1-1.25,Y1-2.4,X1-.85,Y1-1.0,1.55,2.75,0xd9d4c8);},
  sectional(f,C,w,d){const c=0x9a9b9d,cs=0xadaeb0,X0=-w/2,Y0=-d/2,dep=3.33;C.lb(X0,Y0,X0+w,Y0+dep,0,1.5,c);C.lb(X0,Y0,X0+w,Y0+.85,1.5,2.8,c);C.lb(X0,Y0+dep,X0+dep,Y0+d,0,1.5,c);C.lb(X0,Y0,X0+.85,Y0+d,1.5,2.8,c);
    C.lb(X0+w-2.9,Y0+dep,X0+w,Y0+5.45,0,1.5,cs);C.lb(X0+w-.6,Y0,X0+w,Y0+5.45,1.5,2.1,c);C.lb(X0+.85,Y0+d-.6,X0+dep,Y0+d,1.5,2.1,c);for(let i=0;i<4;i++)C.lb(X0+.95+i*2.6,Y0+.9,X0+3.4+i*2.6,Y0+dep-.1,1.5,1.75,cs);},
  massage(f,C,w,d){C.lb(-w/2,-d/2,w/2,d/2,0,.6,0x2b2b2b);C.lb(-w/2+.35,-d/2+.6,w/2-.35,d/2-.4,.6,1.6,0x3a3a3a);C.lb(-w/2,d/2-1.3,w/2,d/2-.1,1.2,f.h,0x1d1d1d);C.lb(-w/2,-d/2+.5,-w/2+.45,d/2-.4,.6,2.4,0x8f9399);C.lb(w/2-.45,-d/2+.5,w/2,d/2-.4,.6,2.4,0x8f9399);},
@@ -708,6 +717,7 @@ function buildViews(){
    {k:'ph57',l:'Garage from the back looking out, like listing photo 57',p:[-14.5,5.5,-0.5],t:[-21.5,4,45.5],cut:'main'},
    {k:'gymtop',l:'Garage plan view from above (true 39′6″ × 49′11″, house wall on the right)',p:[-19.75,78,22.0],t:[-19.75,0,20.5],cut:'main'},
    {k:'doorsin',l:'Garage from the doors',p:[-20,9.0,44.6],t:[-20,3.5,10],cut:'main'},
+   {k:'family',l:'Basement family room: L-sectional facing the TV',p:[11.5,-4.6,16.8],t:[24,-8.2,4],cut:'basement'},
    {k:'speakeasy',l:'Speakeasy (behind the bookcase)',p:[8.4,-4.3,13.3],t:[3.6,-7.4,3.0],cut:'basement'},
    {k:'piano',l:'Piano lounge',p:[31,5.6,18],t:[22,2.6,25],cut:'main'},
    {k:'living',l:'Living room',p:[16.2,5.5,15.6],t:[28,3.4,31],cut:'main'},

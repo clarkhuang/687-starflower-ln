@@ -33,7 +33,7 @@ Object.assign(sun.shadow.camera,{left:-150,right:150,top:150,bottom:-150,near:10
 // ---------- layers ----------
 const LAYERS=[
  ['structure','Structure & walls',true,'#d9d4c8'],['roof','Roof',true,'#4b4f57'],['furniture','Furniture',true,'#8a6a45'],['gym','Gym',true,'#c2185b'],
- ['vehicles','Vehicles',true,'#9aa3ad'],['outdoor','Outdoor (deck, sauna, shed)',true,'#b9824f'],['power','Backup power & solar',true,'#2e7d32'],
+ ['vehicles','Vehicles',true,'#9aa3ad'],['outdoor','Outdoor (deck, shed)',true,'#b9824f'],['power','Backup power & solar',true,'#2e7d32'],
  ['rooms','Room labels',true,'#7fb4c9'],['terrain','Terrain & imagery',true,'#5f7f3f'],['boundary','Lot boundary',true,'#ff4b3a'],['trails','Trails to VASA',true,'#ffa726']];
 const L={}; const world=new THREE.Group(); scene.add(world);
 const HR=new THREE.Group(); world.add(HR); // house root (model frame)
@@ -114,7 +114,7 @@ function buildStructure(){
   H.B.forEach(b=>{ if(b.c==='none')return; if(b.lv==='lower'&&['furnace','water heater','storage shelving'].includes(b.t))return; // superseded by basement plan v3 (FU)
  if(['main','lower','garage'].includes(b.lv)&&SKIPB.has(b.c))return;
     if(b.lv==='gstair'&&b.c==='wall')return;
-    if(b.lv==='site'){ if(b.y1<=-11.15&&!['trim','deck','porchroof'].includes(b.c))return; // old sauna replaced below
+    if(b.lv==='site'){ if(b.y1<=-11.15&&!['trim','deck','porchroof'].includes(b.c))return; // skip the old site-level boxes past the deck edge
       addBox('outdoor','site',null,b.x0,b.y0,b.x1,b.y1,b.z0,b.z1,COL[b.c]??0xcccccc,1,infoOf(b.t,{dims:dims(b.x1-b.x0,b.y1-b.y0,b.z1-b.z0),layer:'Outdoor'}));return;}
     let z0=b.z0,z1=b.z1; if(b.c==='beam'){z0=PLAN.heights.main_ceiling-PLAN.heights.coffer_depth;z1=PLAN.heights.main_ceiling;}
     const dom=b.lv==='garage'?'garage':'house';
@@ -491,50 +491,9 @@ function buildFurniture(){
   addBox('power','site',null,gi[0]-12.2,16.8,gi[0]-9.8,18.7,GZ-0.6,GZ+1.4,0xd84315,1,infoOf('Portable dual-fuel generator (stored inside, run outside)',{layer:'Backup power & solar'}));
 }
 
-// ---------- outdoor: 8x13 portable skid sauna + existing shed ----------
+// ---------- outdoor: existing shed ----------
 function buildOutdoor(){
   const G=-1.62, SID=0xb7bab5, TRIM=0xf7f7f5, ROOF=0x3f434a, BLK=0x151515;
-  const sInfo=n=>infoOf(n,{layer:'Outdoor',note:'8′ × 13′ portable skid sauna (concept): changing room off the hot-tub deck, then a 7′ × 7′ hot room with two 7-foot lie-flat benches. Gray lap siding, white trim and a 2.5:12 shingle shed roof to match the shed and house. Set 4 ft off the deck with a boardwalk; non-combustible stove wall at the firing tunnel; low intake and opposite exhaust vents.'});
-  const X0=32,X1=40,Y0=-29,Y1=-16, FL=G+1.1, hiTop=G+10.0, loTop=G+8.17, wt=0.45;
-  const B=(x0,y0,x1,y1,z0,z1,c,o,n)=>addBox('outdoor','house',null,x0,y0,x1,y1,z0,z1,c,o,sInfo(n||'Portable skid sauna'));
-  B(X0-1.5,Y0-1.5,X1+1.5,Y1,G-0.02,G+0.06,0xb8b2a6,1,'Compacted gravel pad');
-  [X0+0.4,(X0+X1)/2,X1-0.4].forEach(x=>B(x-.23,Y0-.3,x+.23,Y1-.05,G,G+.46,0x6f5a3f,1,'6×6 PT skid with tow eyes'));
-  B(X0,Y0,X1,Y1,G+.46,FL,0x8a6a45,1,'Floor framing');
-  const wallTop=x=>loTop+(x-X0)/(X1-X0)*(hiTop-loTop)-0.55;
-  // long walls (x = X0 low side, x = X1 high side) with openings
-  const longWall=(x,top,ops)=>{let y=Y0;ops.concat([[Y1,Y1,0,0]]).forEach(([a,b,s,h])=>{if(a>y)B(x-wt/2,y,x+wt/2,a,FL,top,SID);if(b>a){B(x-wt/2,a,x+wt/2,b,FL,FL+s,SID);B(x-wt/2,a,x+wt/2,b,FL+h,top,SID);B(x-wt/2+.05,a,x+wt/2-.05,b,FL+s,FL+h,0x1b2530,.55,'Window');
-      [[a-.25,a],[b,b+.25]].forEach(([p,q])=>B(x-wt/2-.04,p,x+wt/2+.04,q,FL+s-.2,FL+h+.2,TRIM,1,'White casing'));}y=b;});};
-  longWall(X0,wallTop(X0),[[-23.6,-21.6,2.6,4.6],[-15.6,-13.4,3.0,6.3]]);
-  longWall(X1,wallTop(X1),[[-15.6,-13.4,3.0,6.3]]);
-  // end walls with door
-  B(X0,Y1-wt,34.6,Y1,FL,wallTop(34.6),SID);B(37.3,Y1-wt,X1,Y1,FL,wallTop(X1),SID);B(34.6,Y1-wt,37.3,Y1,FL+6.7,wallTop(37.3),SID);
-  B(34.65,Y1-wt+.05,37.25,Y1-.05,FL,FL+6.7,BLK,1,'32″ black half-lite door (outswing to the deck)');B(35.0,Y1-.06,36.9,Y1-.03,FL+3.6,FL+6.2,0x1b2530,.6,'Door lite');
-  B(X0,Y0,X1,Y0+wt,FL,wallTop(X1),SID,1,'Yard end (stove fired from outside)');
-  // interior partition with glass sauna door
-  const yP=Y1-wt-4.8; B(X0,yP-.2,34.8,yP+.2,FL,wallTop(34.8),0xd9b27c,1,'Cedar partition');B(36.85,yP-.2,X1,yP+.2,FL,wallTop(X1),0xd9b27c,1,'Cedar partition');
-  B(34.8,yP-.04,36.85,yP+.04,FL,FL+6.17,0xa8d5e2,.4,'24″ × 74″ tempered glass sauna door');B(34.8,yP-.2,36.85,yP+.2,FL+6.17,wallTop(36.85),0xd9b27c);
-  // benches on the high wall: upper 24" @ 38", lower 22" @ 18", both 7 ft long (lie-flat)
-  const by0=Y0+wt+.05, by1=yP-.25;
-  B(X1-wt-2.0,by0,X1-wt,by1,FL+3.0,FL+3.17,0xe2c08f,1,'Upper bench 24″ × 84″ at 38″ (lie-flat #1)');B(X1-wt-2.0,by0,X1-wt-1.85,by1,FL,FL+3.0,0xd9b27c,1,'Bench riser');
-  B(X1-wt-3.85,by0,X1-wt-2.0,by1,FL+1.33,FL+1.5,0xe2c08f,1,'Lower bench 22″ × 84″ at 18″ (lie-flat #2)');
-  B(33.0,Y0+wt+.3,34.6,Y0+wt+1.9,FL,FL+2.6,0x262626,1,'Wood-fired sauna stove (fired from outside)');
-  B(32.6,Y1-wt-4.5,33.4,Y1-wt-0.6,FL+1.4,FL+1.6,0xd9b27c,1,'Changing-room bench + hooks');
-  // shed roof 2.5:12, low at X0, with overhangs, white fascia
-  const rp=Math.atan(2.5/12), rx0=X0-.75, rx1=X1+.75, ry0=Y0-1, ry1=Y1+1, rz0=loTop-(0.75*2.5/12), rz1=hiTop+(0.75*2.5/12);
-  const rl=Math.hypot(rx1-rx0,rz1-rz0); const mm=new THREE.Matrix4().makeTranslation((rx0+rx1)/2,(rz0+rz1)/2-.25,(ry0+ry1)/2).multiply(new THREE.Matrix4().makeRotationZ(rp));
-  addBox('outdoor','house',mm,-rl/2,(ry0-ry1)/2,rl/2,(ry1-ry0)/2,-.2,.2,ROOF,1,sInfo('Shingle shed roof, 2.5:12'));
-  addBox('outdoor','house',mm,-rl/2,(ry0-ry1)/2,rl/2,(ry1-ry0)/2,-.45,-.2,TRIM,1,sInfo('White fascia + vented soffit'));
-  [[X0,Y0],[X1,Y0],[X0,Y1],[X1,Y1]].forEach(([x,y])=>B(x-(x>X0?wt:0)-.05,y-(y>Y0?wt:0)-.05,x+(x>X0?0:wt)+.05,y+(y>Y0?0:wt)+.05,FL,wallTop(x),TRIM,1,'White corner board'));
-  // Nov 24 (Clark): sauna sits fully outside the porch roofline; a 4 ft composite boardwalk bridges the 4 ft from the deck edge (y=-12) to the sauna door
-  const BW=(x0,y0,x1,y1,z0,z1,c,n)=>addBox('outdoor','house',null,x0,y0,x1,y1,z0,z1,c,1,sInfo(n));
-  [34.0,37.9].forEach(x=>BW(x,Y1+.05,x+.15,-12.05,G,FL-.12,0x6f5a3f,'Boardwalk stringer (on deck blocks)'));
-  for(let y=Y1+.1;y<-12.1;y+=.47)BW(34.0,y,38.05,Math.min(y+.43,-12.1),FL-.12,FL-.02,0x8d8a84,'4 ft composite boardwalk, deck to sauna door (a 2 in step down off the deck)');
-  const cy=Y0+1.2; B(33.55,cy-.27,34.05,cy+.27,FL+2.6,wallTop(33.8)+0.55+0.2+44/12,0x2b2b2b,1,'6″ Class-A chimney, spark arrestor cap about 44″ above the roof at the penetration (2 ft above anything within 10 ft)');
-  // Nov 24 review: non-combustible stove wall at the firing tunnel, plus sauna vents
-  B(X0+.05,Y0-.06,35.3,Y0+.02,FL-.1,wallTop(35.3),0x8f8f8f,1,'Non-combustible stove wall at the firing tunnel (steel studs + cement board, sized from the stove manual)');
-  B(33.3,Y0-.1,34.3,Y0-.04,FL+.15,FL+1.45,0x111111,1,'Firing door (stove fed from outside)');
-  B(X0+wt/2,Y0+wt+2.2,X0+wt/2+.04,Y0+wt+2.9,FL+.6,FL+.95,0x222222,1,'Adjustable fresh-air intake, low near the stove');
-  B(X1-wt/2-.04,Y0+wt+4.0,X1-wt/2,Y0+wt+4.7,FL+2.4,FL+2.75,0x222222,1,'Adjustable exhaust vent on the opposite wall (under the upper bench, per the stove maker)');
   // existing shed (position approximate, from the aerial and listing photos): gray lap, white trim, roll-up door, shed roof
   const sx=6.8, sy=-87.3, W=12, D=10, shInfo=n=>infoOf(n,{layer:'Outdoor',note:'Existing rear shed. Position estimated from the aerial and listing photos (±10 ft); size estimated at about 12′ × 10′.'});
   const SB=(x0,y0,x1,y1,z0,z1,c,o,n)=>addBox('outdoor','house',null,sx+x0,sy+y0,sx+x1,sy+y1,z0,z1,c,o,shInfo(n||'Existing shed'));
@@ -556,7 +515,6 @@ function buildRoomLabels(){
   const cub={Garage:"39′6″ × 49′11″"};
   H.ROOMS.forEach(([lv,n,dm,x0,y0,x1,y1])=>{if(lv==='lower'&&/speakeasy/i.test(n)){({x0,y0,x1,y1}=SPK);}if(lv==='garage'){[x0,y0,x1,y1]=PLAN.garage_inner;}const base={main:0,lower:LZ,garage:GZ}[lv];const p=new THREE.Vector3((x0+x1)/2,base+0.4,(y0+y1)/2);HR.updateMatrixWorld(true);HR.localToWorld(p);
     const d=(cub[n]||dm||'').replace(/'/g,'′').replace(/"/g,'″');addLabel(clean(n)+(d?'<br><small>'+d+'</small>':''),p,'room','rooms',lv,0,260);});
-  const sp=new THREE.Vector3(36,8,-18.5);HR.localToWorld(sp);addLabel('Skid sauna 8′ × 13′',sp,'room','outdoor','site',0,700);
   const shp=new THREE.Vector3(6.8,9,-87.3);HR.localToWorld(shp);addLabel('Shed',shp,'room','outdoor','site',0,900);
 }
 
@@ -733,8 +691,7 @@ function buildViews(){
    {k:'piano',l:'Piano lounge',p:[31,5.6,18],t:[22,2.6,25],cut:'main'},
    {k:'living',l:'Living room',p:[16.2,5.5,15.6],t:[28,3.4,31],cut:'main'},
    {k:'boffice',l:'Basement office & storage',p:[9,-4.2,31.5],t:[25,-7.6,25],cut:'basement'},
-   {k:'deck',l:'Deck, hot tub & sauna',p:[62,16,-50],t:[33,2,-14],cut:'roof'},
-   {k:'sauna_in',l:'Inside the sauna (cut open)',p:[34,9.5,-14],t:[38.5,0,-21],cut:'main'},
+   {k:'deck',l:'Deck & hot tub',p:[62,16,-50],t:[33,2,-14],cut:'roof'},
    {k:'shed',l:'Shed',p:[40,16,-58],t:[6.8,2,-87],cut:'roof'},
    Object.assign({k:'trail',l:'Trail access from the backyard',cut:'roof',geo:1},geoV([r0[2][0]+160,r0[2][1]-260,140],[r0[2][0],r0[2][1]+120,0])),
    Object.assign({k:'lot',l:'Lot boundary (aerial)',cut:'roof',geo:1},geoV([hc[0]+380,hc[1]-900,820],[hc[0]-60,hc[1]+20,0])),
@@ -848,7 +805,7 @@ function tourSteps(){const hc=houseENU(),j=GEO.points[0],sk=GEO.points[1],v25=GE
   S.push({p:W_(hc[0]+1800,hc[1]-2600,2200),t:W_(hc[0],hc[1],0),d:0.01,c:'687 Starflower Ln',s:'Grand Traverse County, next to Pere Marquette State Forest land'});
   S.push({p:W_(pc[0]+420,pc[1]-760,520),t:W_(pc[0],pc[1],0),d:5,c:'The lot: about '+GEO.parcel_area_ac+' acres (red line)',s:'Lot line from county parcel GIS, not a survey'});
   [[1,-1],[1,1],[-1,1],[-1,-1]].forEach(([a,b],i)=>S.push({p:W_(pc[0]+a*520,pc[1]+b*520,360),t:W_(pc[0],pc[1],0),d:3.2,c:i==0?'Orbiting the boundary':null}));
-  S.push({p:toWorld(-70,40,85),t:toWorld(10,2,0),d:4,c:'House, 40 × 50 garage, deck, sauna and shed',s:'Walls traced from the Cubicasa floor plan at true scale',cut:2});
+  S.push({p:toWorld(-70,40,85),t:toWorld(10,2,0),d:4,c:'House, 40 × 50 garage, deck and shed',s:'Walls traced from the Cubicasa floor plan at true scale',cut:2});
   const r=GEO.routes[0].p; const n=r.length; const idx=[0,2,Math.floor(n*0.2),Math.floor(n*0.45),Math.floor(n*0.7),n-1];
   idx.forEach((k,i)=>{const a=r[Math.min(k,n-1)],b=r[Math.min(k+6,n-1)];const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;
     S.push({p:W_(a[0]-dx/l*260+120,a[1]-dy/l*260,230),t:W_(b[0],b[1],0),d:i?3.2:3.5,c:i==0?'Out the back: the path past the shed to the state-land two-track':(i==3?'Crossing Supply Rd':null),s:i==0?'Backyard path inferred (under the trees); the two-track is on public land':null});});

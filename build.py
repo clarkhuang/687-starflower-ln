@@ -24,7 +24,7 @@ PH = {
 }
 GROUPS = [
 ('Exterior and the lot',[0,1,3,4,58,63,64,65]),
-('Deck and backyard',[2,59,60,61,62]),
+('Deck and backyard',[60,61,62]),
 ('Main living',[5,6,23]),
 ('Kitchen and dining',[8,9,10,11,12,13,15,16,17,18,19]),
 ('Mudroom, powder, laundry',[25,26,28]),

@@ -320,6 +320,12 @@ dialog.lb::backdrop{background:#0b100d}
   main a[href^="http"]{color:var(--link)}
   figure a:hover>img{filter:none}
 }
+
+.wt-video{margin:14px 0 8px}.wt-video video{width:100%;aspect-ratio:16/9;background:#0b0f14;border-radius:12px;display:block}
+.wt-video figcaption{font-size:.85em;color:#5b6570;margin-top:6px}.printonly{display:none}
+.wt-stills{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}.wt-stills img{width:100%;border-radius:8px;display:block}
+@media(max-width:700px){.wt-stills{grid-template-columns:1fr}}
+@media print{.printonly{display:block;width:100%;border-radius:8px}.wt-stills{grid-template-columns:repeat(3,1fr)}}
 </style></head><body>
 <nav aria-label="Sections"><a href="index.html">Concept site</a><a href="index.html#garage">Garage gym</a><a href="#plan">Current plan</a><a href="#batteries">FranklinWH wall</a><a href="#generator">Portable generator</a><a href="#airstream">Airstream</a><a href="#charger">Wall Connector</a><a href="#solar">Solar-ready</a><a href="#lift">Car lift</a><a href="687-Starflower-Concept.pdf">PDF</a></nav>
 <header class="mast"><p class="mast-run">WOODLAND TRAILS · WHITEWATER TOWNSHIP, MICHIGAN · CLARK + JENNY’S PROPERTY CONCEPT</p>
